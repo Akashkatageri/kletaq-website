@@ -8,10 +8,16 @@ import {
   CalendarCheck,
 } from "lucide-react";
 
+import homeShot from "@/assets/2.home_dashboard.png.asset.json";
+import focusShot from "@/assets/3.focus_timer.png.asset.json";
+import questShot from "@/assets/4.quest_overview.png.asset.json";
+import backlogShot from "@/assets/5.backlog_management.png.asset.json";
+import profileShot from "@/assets/8.profile.png.asset.json";
 import { NotebookBackground } from "@/components/klytaq/NotebookBackground";
 import { PhoneMockup } from "@/components/klytaq/PhoneMockup";
 import { DashboardPreview } from "@/components/klytaq/DashboardPreview";
 import { ScreenshotSlot } from "@/components/klytaq/ScreenshotSlot";
+
 
 const TITLE = "Klytaq — Turn your syllabus into quests";
 const DESCRIPTION =
@@ -72,29 +78,35 @@ const shots = [
   {
     label: "Home dashboard",
     caption: "Everything for today on one page.",
+    src: homeShot.url,
     items: ["Streak", "XP", "Continue learning", "Spaced repetition", "Daily tasks"],
   },
   {
     label: "Focus timer",
     caption: "One topic, one timer, zero tabs.",
+    src: focusShot.url,
     items: ["Timer running", "Current topic", "Session duration", "Panda widget"],
   },
   {
     label: "Quest overview",
     caption: "A topic broken down into what you must actually do.",
+    src: questShot.url,
     items: ["Concepts", "Formulas", "PYQs", "Estimated time", "Progress"],
   },
   {
     label: "Backlog management",
     caption: "Clear old semesters without losing the current one.",
+    src: backlogShot.url,
     items: ["Semester selection", "Backlog badge", "Completed subjects", "Progress"],
   },
   {
     label: "Profile / statistics",
     caption: "Proof that the semester happened.",
+    src: profileShot.url,
     items: ["Total XP", "Hours studied", "Topics completed", "Current streak"],
   },
 ];
+
 
 function Index() {
   return (
@@ -245,7 +257,7 @@ function Index() {
 
           <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {shots.map((s) => (
-              <ScreenshotSlot key={s.label} {...s} />
+              <ScreenshotSlot key={s.label} aspect="aspect-[9/16]" {...s} />
             ))}
           </div>
         </section>

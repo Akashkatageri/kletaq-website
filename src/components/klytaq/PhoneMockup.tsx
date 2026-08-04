@@ -1,4 +1,6 @@
+import heroShot from "@/assets/1.hero_screenshot.png.asset.json";
 import { ScreenshotSlot } from "./ScreenshotSlot";
+
 
 /** Right-side phone mockup used in the hero. */
 export function PhoneMockup() {
@@ -58,11 +60,13 @@ export function PhoneMockup() {
 
       <div className="mt-6">
         <ScreenshotSlot
-          label="Hero screenshot"
-          aspect="aspect-[9/12]"
+          label="Journey map"
+          src={heroShot.url}
+          aspect="aspect-[9/16]"
           caption="Semester 3 · Computer Science / Partial Differentiation / Total Derivative / Jacobians"
         />
       </div>
+
     </div>
   );
 }

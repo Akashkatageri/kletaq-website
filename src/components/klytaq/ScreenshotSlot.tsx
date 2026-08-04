@@ -9,6 +9,7 @@ export function ScreenshotSlot({
   label,
   caption,
   items,
+  src,
   aspect = "aspect-[16/10]",
   className,
   children,
@@ -16,6 +17,7 @@ export function ScreenshotSlot({
   label: string;
   caption?: string;
   items?: string[];
+  src?: string;
   aspect?: string;
   className?: string;
   children?: ReactNode;
@@ -24,21 +26,32 @@ export function ScreenshotSlot({
     <figure className={cn("flex flex-col gap-3", className)}>
       <div
         className={cn(
-          "slot-dashed relative flex w-full items-center justify-center overflow-hidden p-4",
+          "relative flex w-full items-center justify-center overflow-hidden",
+          src ? "paper-card p-2" : "slot-dashed p-4",
           aspect,
         )}
       >
-        <div className="ruled absolute inset-0 opacity-60" />
-        {children ?? (
-          <div className="relative flex flex-col items-center gap-2 text-center">
-            <span className="ink-border rounded-full px-3 py-1 font-mono text-[10px] tracking-widest uppercase">
-              Screenshot
-            </span>
-            <span className="font-hand text-2xl leading-none">{label}</span>
-            <span className="font-mono text-[11px] text-muted-foreground">paste image here</span>
-          </div>
-        )}
+        {!src && <div className="ruled absolute inset-0 opacity-60" />}
+        {children ??
+          (src ? (
+            <img
+              src={src}
+              alt={`${label} — ${caption ?? "Klytaq app screenshot"}`}
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full rounded-[10px] object-cover object-top"
+            />
+          ) : (
+            <div className="relative flex flex-col items-center gap-2 text-center">
+              <span className="ink-border rounded-full px-3 py-1 font-mono text-[10px] tracking-widest uppercase">
+                Screenshot
+              </span>
+              <span className="font-hand text-2xl leading-none">{label}</span>
+              <span className="font-mono text-[11px] text-muted-foreground">paste image here</span>
+            </div>
+          ))}
       </div>
+
       <figcaption className="min-w-0">
         <p className="font-hand text-xl leading-tight">{label}</p>
         {caption ? <p className="text-sm text-muted-foreground">{caption}</p> : null}
