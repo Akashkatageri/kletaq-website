@@ -20,9 +20,9 @@ import { DashboardPreview } from "@/components/klytaq/DashboardPreview";
 import { ScreenshotSlot } from "@/components/klytaq/ScreenshotSlot";
 
 
-const TITLE = "Klytaq — Turn your syllabus into quests";
+const TITLE = "Kletaq — Turn your syllabus into quests";
 const DESCRIPTION =
-  "Klytaq transforms subjects, modules, and backlogs into a visual learning journey built for engineering students.";
+  "Kletaq transforms subjects, modules, and backlogs into a visual learning journey built for engineering students.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,7 +64,7 @@ const features = [
   {
     icon: Repeat,
     title: "Spaced Repetition",
-    body: "Klytaq schedules reviews before you forget, so exam week isn't a re-learning marathon.",
+    body: "Kletaq schedules reviews before you forget, so exam week isn't a re-learning marathon.",
     tag: "review",
   },
   {
@@ -125,7 +125,7 @@ function Index() {
           <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border-[1.5px] border-border font-hand text-xl leading-none">
             K
           </span>
-          <span className="truncate font-hand text-2xl leading-none">Klytaq</span>
+          <span className="truncate font-hand text-2xl leading-none">Kletaq</span>
         </a>
         <nav className="flex shrink-0 items-center gap-2 sm:gap-4">
           <a
@@ -284,7 +284,7 @@ function Index() {
               <figure className="paper-card -rotate-1 p-2.5">
                 <img
                   src={heroShot.url}
-                  alt="Klytaq journey map for Semester 3 Computer Science"
+                  alt="Kletaq journey map for Semester 3 Computer Science"
                   loading="lazy"
                   decoding="async"
                   className="aspect-[9/20] w-full rounded-[12px] object-cover object-top"
@@ -341,7 +341,7 @@ function Index() {
         <div className="paper-card grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 p-5 sm:p-6">
           <div className="min-w-0">
             <p className="font-hand text-2xl leading-tight">
-              Klytaq — Turn your syllabus into quests.
+              Kletaq — Turn your syllabus into quests.
             </p>
             <p className="mt-1 text-sm text-muted-foreground">
               Built by a student, for students.

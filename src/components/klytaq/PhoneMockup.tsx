@@ -4,11 +4,12 @@ import heroShot from "@/assets/1.hero_screenshot.png.asset.json";
 import homeShot from "@/assets/2.home_dashboard.png.asset.json";
 
 const floatingCards = [
-  { Icon: Zap, label: "840 XP", pos: "left-0 top-[16%]", accent: true },
-  { Icon: Flame, label: "12-day streak", pos: "right-0 top-[34%]" },
-  { Icon: BookOpen, label: "4/12 subjects", pos: "left-0 bottom-[24%]" },
-  { Icon: Target, label: "3 active backlogs", pos: "right-0 bottom-[17%] sm:bottom-[12%]" },
+  { Icon: Zap, label: "840 XP", pos: "left-0 top-[16%] sm:-left-6", accent: true },
+  { Icon: Flame, label: "12-day streak", pos: "right-0 top-[34%] sm:-right-8" },
+  { Icon: BookOpen, label: "4/12 subjects", pos: "left-0 bottom-[24%] sm:-left-8" },
+  { Icon: Target, label: "3 active backlogs", pos: "right-0 bottom-[17%] sm:-right-10 sm:bottom-[12%]" },
 ];
+
 
 /**
  * Hero visual: the Journey screenshot pinned in a phone frame, with the home
@@ -17,14 +18,15 @@ const floatingCards = [
  */
 export function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-full max-w-[420px] px-6 pt-12 pb-10 sm:px-10">
+    <div className="relative mx-auto w-full max-w-[420px] px-6 pt-16 pb-10 sm:px-10">
       {/* handwritten margin notes */}
-      <span className="absolute left-2 top-1 -rotate-2 font-hand text-lg leading-none text-muted-foreground">
+      <span className="absolute left-2 top-0 -rotate-2 font-hand text-lg leading-none text-muted-foreground">
         VTU exam in 24 days
       </span>
-      <span className="absolute right-2 top-6 rotate-2 font-hand text-lg leading-none text-primary">
+      <span className="absolute right-2 top-7 rotate-2 font-hand text-lg leading-none text-primary">
         Module 1 complete ✓
       </span>
+
       <span className="absolute bottom-1 left-6 rotate-1 font-hand text-lg leading-none text-muted-foreground">
         PYQs remaining
       </span>
@@ -66,7 +68,7 @@ export function PhoneMockup() {
       {/* stacked note behind: home dashboard */}
       <div
         aria-hidden
-        className="absolute left-4 right-14 top-[11%] -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)] sm:left-6 sm:right-16"
+        className="absolute left-2 right-20 top-[14%] -z-0 -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)] sm:left-4 sm:right-24"
       >
         <img
           src={homeShot.url}
@@ -82,7 +84,7 @@ export function PhoneMockup() {
         <div className="ink-border overflow-hidden rounded-[24px] bg-card">
           <img
             src={heroShot.url}
-            alt="Klytaq journey map — Semester 3 Computer Science, Partial Differentiation, Total Derivative, Jacobians"
+            alt="Kletaq journey map — Semester 3 Computer Science, Partial Differentiation, Total Derivative, Jacobians"
             className="aspect-[9/19] w-full object-cover object-top"
             decoding="async"
           />
@@ -93,7 +95,7 @@ export function PhoneMockup() {
       {floatingCards.map(({ Icon, label, pos, accent }) => (
         <span
           key={label}
-          className={`absolute ${pos} inline-flex items-center gap-1.5 rounded-xl border-[1.5px] border-border bg-card px-2.5 py-1.5 font-mono text-[10px] leading-none shadow-[0_2px_0_0_var(--ink)] sm:text-[11px] ${
+          className={`absolute z-20 ${pos} inline-flex items-center gap-1.5 rounded-xl border-[1.5px] border-border bg-card px-2.5 py-1.5 font-mono text-[10px] leading-none shadow-[0_2px_0_0_var(--ink)] sm:text-[11px] ${
             accent ? "text-primary" : ""
           }`}
         >
