@@ -8,10 +8,16 @@ import {
   CalendarCheck,
 } from "lucide-react";
 
+import homeShot from "@/assets/2.home_dashboard.png.asset.json";
+import focusShot from "@/assets/3.focus_timer.png.asset.json";
+import questShot from "@/assets/4.quest_overview.png.asset.json";
+import backlogShot from "@/assets/5.backlog_management.png.asset.json";
+import profileShot from "@/assets/8.profile.png.asset.json";
 import { NotebookBackground } from "@/components/klytaq/NotebookBackground";
 import { PhoneMockup } from "@/components/klytaq/PhoneMockup";
 import { DashboardPreview } from "@/components/klytaq/DashboardPreview";
 import { ScreenshotSlot } from "@/components/klytaq/ScreenshotSlot";
+
 
 const TITLE = "Klytaq — Turn your syllabus into quests";
 const DESCRIPTION =
