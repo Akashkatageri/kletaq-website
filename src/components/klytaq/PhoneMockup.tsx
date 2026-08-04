@@ -4,11 +4,12 @@ import heroShot from "@/assets/1.hero_screenshot.png.asset.json";
 import homeShot from "@/assets/2.home_dashboard.png.asset.json";
 
 const floatingCards = [
-  { Icon: Zap, label: "840 XP", pos: "left-0 top-[16%]", accent: true },
-  { Icon: Flame, label: "12-day streak", pos: "right-0 top-[34%]" },
-  { Icon: BookOpen, label: "4/12 subjects", pos: "left-0 bottom-[24%]" },
-  { Icon: Target, label: "3 active backlogs", pos: "right-0 bottom-[17%] sm:bottom-[12%]" },
+  { Icon: Zap, label: "840 XP", pos: "left-0 top-[16%] sm:-left-6", accent: true },
+  { Icon: Flame, label: "12-day streak", pos: "right-0 top-[34%] sm:-right-8" },
+  { Icon: BookOpen, label: "4/12 subjects", pos: "left-0 bottom-[24%] sm:-left-8" },
+  { Icon: Target, label: "3 active backlogs", pos: "right-0 bottom-[17%] sm:-right-10 sm:bottom-[12%]" },
 ];
+
 
 /**
  * Hero visual: the Journey screenshot pinned in a phone frame, with the home
