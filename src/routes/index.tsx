@@ -257,7 +257,7 @@ function Index() {
 
           <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {shots.map((s) => (
-              <ScreenshotSlot key={s.label} aspect="aspect-[9/16]" {...s} />
+              <ScreenshotSlot key={s.label} {...s} />
             ))}
           </div>
         </section>

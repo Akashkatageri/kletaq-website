@@ -10,7 +10,7 @@ export function ScreenshotSlot({
   caption,
   items,
   src,
-  aspect = "aspect-[16/10]",
+  aspect = "aspect-[9/20]",
   className,
   children,
 }: {
@@ -39,7 +39,7 @@ export function ScreenshotSlot({
               alt={`${label} — ${caption ?? "Klytaq app screenshot"}`}
               loading="lazy"
               decoding="async"
-              className="h-full w-full rounded-[10px] object-cover object-top"
+              className="h-full w-full rounded-[10px] object-contain object-top"
             />
           ) : (
             <div className="relative flex flex-col items-center gap-2 text-center">
