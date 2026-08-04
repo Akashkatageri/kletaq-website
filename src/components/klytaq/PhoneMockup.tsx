@@ -66,14 +66,14 @@ export function PhoneMockup() {
       {/* stacked note behind: home dashboard */}
       <div
         aria-hidden
-        className="absolute left-1 right-16 top-[9%] -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)] sm:left-3 sm:right-20"
+        className="absolute left-4 right-14 top-[11%] -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)] sm:left-6 sm:right-16"
       >
         <img
           src={homeShot.url}
           alt=""
           loading="lazy"
           decoding="async"
-          className="aspect-[9/19] w-full object-cover object-top opacity-60"
+          className="aspect-[9/15] w-full object-cover object-top opacity-55"
         />
       </div>
 
@@ -102,7 +102,7 @@ export function PhoneMockup() {
         </span>
       ))}
 
-      <figcaption className="mt-6 text-center font-mono text-[11px] leading-relaxed text-muted-foreground">
+      <figcaption className="relative mt-8 text-center font-mono text-[11px] leading-relaxed text-muted-foreground">
         Semester 3 · Computer Science / Partial Differentiation / Total Derivative / Jacobians
       </figcaption>
     </div>
