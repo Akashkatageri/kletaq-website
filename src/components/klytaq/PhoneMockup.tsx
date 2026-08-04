@@ -5,12 +5,12 @@ import homeShot from "@/assets/2.home_dashboard.png.asset.json";
 
 type Card = { Icon: typeof Zap; label: string; accent?: boolean };
 
-const leftCards: Card[] = [
+const leftCards: [Card, Card] = [
   { Icon: Zap, label: "840 XP", accent: true },
   { Icon: BookOpen, label: "4/12 subjects" },
 ];
 
-const rightCards: Card[] = [
+const rightCards: [Card, Card] = [
   { Icon: Flame, label: "12-day streak" },
   { Icon: Target, label: "3 active backlogs" },
 ];

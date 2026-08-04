@@ -144,7 +144,7 @@ function Index() {
             href="#screens"
             className="ink-border rounded-full bg-primary px-3.5 py-1.5 font-mono text-xs text-primary-foreground"
           >
-            Get early access
+            Explore the journey
           </a>
         </nav>
       </header>
