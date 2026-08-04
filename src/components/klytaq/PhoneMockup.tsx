@@ -62,7 +62,6 @@ export function PhoneMockup() {
         <ScreenshotSlot
           label="Journey map"
           src={heroShot.url}
-          aspect="aspect-[9/16]"
           caption="Semester 3 · Computer Science / Partial Differentiation / Total Derivative / Jacobians"
         />
       </div>
