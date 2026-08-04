@@ -151,7 +151,7 @@ function Index() {
 
       <main id="top">
         {/* ---------- Hero ---------- */}
-        <section className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 pt-8 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-14 lg:pt-16">
+        <section className="mx-auto grid w-full max-w-6xl items-center gap-8 px-4 pt-6 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-10 lg:pt-10">
           <div className="min-w-0">
             <span className="ink-border inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-[11px] tracking-wider uppercase">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -163,7 +163,7 @@ function Index() {
               <span className="scribble-underline text-primary">quests.</span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
               {DESCRIPTION}
             </p>
 
@@ -182,7 +182,7 @@ function Index() {
               </a>
             </div>
 
-            <dl className="mt-10 grid max-w-lg grid-cols-3 gap-3">
+            <dl className="mt-8 grid max-w-md grid-cols-3 gap-3">
               {[
                 ["6", "core modes"],
                 ["1", "map per semester"],
