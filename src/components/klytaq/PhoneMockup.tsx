@@ -17,14 +17,15 @@ const floatingCards = [
  */
 export function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-full max-w-[420px] px-6 pt-12 pb-10 sm:px-10">
+    <div className="relative mx-auto w-full max-w-[420px] px-6 pt-16 pb-10 sm:px-10">
       {/* handwritten margin notes */}
-      <span className="absolute left-2 top-1 -rotate-2 font-hand text-lg leading-none text-muted-foreground">
+      <span className="absolute left-2 top-0 -rotate-2 font-hand text-lg leading-none text-muted-foreground">
         VTU exam in 24 days
       </span>
-      <span className="absolute right-2 top-6 rotate-2 font-hand text-lg leading-none text-primary">
+      <span className="absolute right-2 top-7 rotate-2 font-hand text-lg leading-none text-primary">
         Module 1 complete ✓
       </span>
+
       <span className="absolute bottom-1 left-6 rotate-1 font-hand text-lg leading-none text-muted-foreground">
         PYQs remaining
       </span>
@@ -66,7 +67,7 @@ export function PhoneMockup() {
       {/* stacked note behind: home dashboard */}
       <div
         aria-hidden
-        className="absolute left-4 right-14 top-[11%] -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)] sm:left-6 sm:right-16"
+        className="absolute left-2 right-20 top-[14%] -z-0 -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)] sm:left-4 sm:right-24"
       >
         <img
           src={homeShot.url}
