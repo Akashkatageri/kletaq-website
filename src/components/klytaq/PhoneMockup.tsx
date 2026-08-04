@@ -1,4 +1,6 @@
+import heroShot from "@/assets/1.hero_screenshot.png.asset.json";
 import { ScreenshotSlot } from "./ScreenshotSlot";
+
 
 /** Right-side phone mockup used in the hero. */
 export function PhoneMockup() {
