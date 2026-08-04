@@ -7,7 +7,7 @@ const floatingCards = [
   { Icon: Zap, label: "840 XP", pos: "left-0 top-[16%]", accent: true },
   { Icon: Flame, label: "12-day streak", pos: "right-0 top-[34%]" },
   { Icon: BookOpen, label: "4/12 subjects", pos: "left-0 bottom-[24%]" },
-  { Icon: Target, label: "3 active backlogs", pos: "right-0 bottom-[9%]" },
+  { Icon: Target, label: "3 active backlogs", pos: "right-0 bottom-[17%] sm:bottom-[12%]" },
 ];
 
 /**
