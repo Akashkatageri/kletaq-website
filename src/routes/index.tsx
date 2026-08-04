@@ -72,29 +72,35 @@ const shots = [
   {
     label: "Home dashboard",
     caption: "Everything for today on one page.",
+    src: homeShot.url,
     items: ["Streak", "XP", "Continue learning", "Spaced repetition", "Daily tasks"],
   },
   {
     label: "Focus timer",
     caption: "One topic, one timer, zero tabs.",
+    src: focusShot.url,
     items: ["Timer running", "Current topic", "Session duration", "Panda widget"],
   },
   {
     label: "Quest overview",
     caption: "A topic broken down into what you must actually do.",
+    src: questShot.url,
     items: ["Concepts", "Formulas", "PYQs", "Estimated time", "Progress"],
   },
   {
     label: "Backlog management",
     caption: "Clear old semesters without losing the current one.",
+    src: backlogShot.url,
     items: ["Semester selection", "Backlog badge", "Completed subjects", "Progress"],
   },
   {
     label: "Profile / statistics",
     caption: "Proof that the semester happened.",
+    src: profileShot.url,
     items: ["Total XP", "Hours studied", "Topics completed", "Current streak"],
   },
 ];
+
 
 function Index() {
   return (
