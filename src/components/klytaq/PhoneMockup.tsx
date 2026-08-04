@@ -46,54 +46,50 @@ export function PhoneMockup() {
         </span>
       </p>
 
-      <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[auto_minmax(0,1fr)_auto] md:gap-6 lg:gap-8">
-        {/* left column (desktop) */}
-        <div className="order-2 hidden flex-col items-start gap-6 md:order-none md:flex">
-          {leftCards.map((c) => (
-            <StatCard key={c.label} {...c} />
-          ))}
+      {/* top row: cards sit above the phone, outside its bounds */}
+      <div className="mb-6 hidden items-center justify-between gap-6 sm:flex">
+        <StatCard {...leftCards[0]} />
+        <StatCard {...rightCards[0]} />
+      </div>
+
+      {/* phone */}
+      <div className="relative mx-auto w-full max-w-[300px] sm:max-w-[340px]">
+        <div
+          aria-hidden
+          className="absolute inset-x-6 top-4 -z-10 -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)]"
+        >
+          <img
+            src={homeShot.url}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="aspect-[9/13] w-full object-cover object-top opacity-55"
+          />
         </div>
 
-        {/* phone */}
-        <div className="relative mx-auto w-full max-w-[300px] md:max-w-none">
-          <div
-            aria-hidden
-            className="absolute inset-x-6 top-4 -z-10 -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)]"
-          >
+        <figure className="paper-card relative rotate-1 rounded-[32px] p-2.5">
+          <div className="ink-border overflow-hidden rounded-[24px] bg-card">
             <img
-              src={homeShot.url}
-              alt=""
-              loading="lazy"
+              src={heroShot.url}
+              alt="Kletaq journey map — Semester 3 Computer Science, Partial Differentiation, Total Derivative, Jacobians"
+              className="aspect-[9/19] w-full object-cover object-top"
               decoding="async"
-              className="aspect-[9/13] w-full object-cover object-top opacity-55"
             />
           </div>
+        </figure>
+      </div>
 
-          <figure className="paper-card relative rotate-1 rounded-[32px] p-2.5">
-            <div className="ink-border overflow-hidden rounded-[24px] bg-card">
-              <img
-                src={heroShot.url}
-                alt="Kletaq journey map — Semester 3 Computer Science, Partial Differentiation, Total Derivative, Jacobians"
-                className="aspect-[9/19] w-full object-cover object-top"
-                decoding="async"
-              />
-            </div>
-          </figure>
-        </div>
+      {/* bottom row (desktop/tablet) */}
+      <div className="mt-6 hidden items-center justify-between gap-6 sm:flex">
+        <StatCard {...leftCards[1]} />
+        <StatCard {...rightCards[1]} />
+      </div>
 
-        {/* right column (desktop) */}
-        <div className="order-3 hidden flex-col items-end gap-6 md:order-none md:flex">
-          {rightCards.map((c) => (
-            <StatCard key={c.label} {...c} />
-          ))}
-        </div>
-
-        {/* stacked cards (mobile) */}
-        <div className="flex flex-wrap justify-center gap-3 md:hidden">
-          {[...leftCards, ...rightCards].map((c) => (
-            <StatCard key={c.label} {...c} />
-          ))}
-        </div>
+      {/* stacked cards (mobile) */}
+      <div className="mt-6 flex flex-wrap justify-center gap-3 sm:hidden">
+        {[...leftCards, ...rightCards].map((c) => (
+          <StatCard key={c.label} {...c} />
+        ))}
       </div>
 
       <p className="mt-4 px-1 font-hand text-lg leading-none text-muted-foreground">
