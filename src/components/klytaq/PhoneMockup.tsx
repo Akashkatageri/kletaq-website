@@ -1,11 +1,13 @@
+import { Zap, Flame, BookOpen, Target } from "lucide-react";
+
 import heroShot from "@/assets/1.hero_screenshot.png.asset.json";
 import homeShot from "@/assets/2.home_dashboard.png.asset.json";
 
 const floatingCards = [
-  { icon: "⚡", label: "840 XP", pos: "-left-2 top-[12%] sm:-left-8", accent: true },
-  { icon: "🔥", label: "12-day streak", pos: "-right-2 top-[30%] sm:-right-6" },
-  { icon: "📚", label: "4/12 subjects complete", pos: "-left-3 bottom-[26%] sm:-left-12" },
-  { icon: "🎯", label: "3 active backlogs", pos: "-right-1 bottom-[10%] sm:-right-8" },
+  { Icon: Zap, label: "840 XP", pos: "left-0 top-[16%]", accent: true },
+  { Icon: Flame, label: "12-day streak", pos: "right-0 top-[34%]" },
+  { Icon: BookOpen, label: "4/12 subjects", pos: "left-0 bottom-[24%]" },
+  { Icon: Target, label: "3 active backlogs", pos: "right-0 bottom-[9%]" },
 ];
 
 /**
@@ -15,81 +17,92 @@ const floatingCards = [
  */
 export function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-full max-w-[375px] px-2 pt-10 pb-6 sm:px-6">
+    <div className="relative mx-auto w-full max-w-[420px] px-6 pt-12 pb-10 sm:px-10">
       {/* handwritten margin notes */}
-      <span className="absolute left-0 top-0 font-hand text-lg leading-none text-muted-foreground">
+      <span className="absolute left-2 top-1 -rotate-2 font-hand text-lg leading-none text-muted-foreground">
         VTU exam in 24 days
       </span>
-      <span className="absolute right-0 top-[6%] hidden -rotate-3 font-hand text-lg leading-none text-primary sm:block">
+      <span className="absolute right-2 top-6 rotate-2 font-hand text-lg leading-none text-primary">
         Module 1 complete ✓
       </span>
-      <span className="absolute bottom-0 left-1 rotate-2 font-hand text-lg leading-none text-muted-foreground">
+      <span className="absolute bottom-1 left-6 rotate-1 font-hand text-lg leading-none text-muted-foreground">
         PYQs remaining
       </span>
 
       {/* pencil arrows pointing at journey nodes */}
       <svg
         aria-hidden
-        viewBox="0 0 320 460"
-        className="pointer-events-none absolute inset-0 h-full w-full text-foreground/45"
+        viewBox="0 0 380 560"
+        preserveAspectRatio="none"
+        className="pointer-events-none absolute inset-0 h-full w-full text-foreground/40"
         fill="none"
       >
         <path
-          d="M44 34 C 92 52, 108 92, 132 118"
+          d="M62 34 C 110 54, 130 92, 156 124"
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
         />
-        <path d="M132 118 l -13 -3 M132 118 l 2 -13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         <path
-          d="M282 300 C 250 312, 228 300, 206 288"
+          d="M156 124 l -14 -2 M156 124 l 1 -14"
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
         />
-        <path d="M206 288 l 13 1 M206 288 l 6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path
+          d="M334 372 C 300 386, 274 372, 250 356"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M250 356 l 14 1 M250 356 l 5 13"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
       </svg>
 
       {/* stacked note behind: home dashboard */}
       <div
         aria-hidden
-        className="absolute left-[14%] right-[14%] top-[7%] -rotate-6 overflow-hidden rounded-[28px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)]"
+        className="absolute left-1 right-16 top-[9%] -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)] sm:left-3 sm:right-20"
       >
         <img
           src={homeShot.url}
           alt=""
           loading="lazy"
           decoding="async"
-          className="aspect-[9/20] w-full object-cover object-top opacity-70"
+          className="aspect-[9/19] w-full object-cover object-top opacity-60"
         />
       </div>
 
       {/* front phone: journey map */}
-      <figure className="paper-card relative rotate-1 rounded-[34px] p-2.5">
-        <div className="ink-border overflow-hidden rounded-[26px] bg-card">
+      <figure className="paper-card relative rotate-1 rounded-[32px] p-2.5">
+        <div className="ink-border overflow-hidden rounded-[24px] bg-card">
           <img
             src={heroShot.url}
             alt="Klytaq journey map — Semester 3 Computer Science, Partial Differentiation, Total Derivative, Jacobians"
-            className="aspect-[9/20] w-full object-cover object-top"
+            className="aspect-[9/19] w-full object-cover object-top"
             decoding="async"
           />
         </div>
       </figure>
 
       {/* floating stat cards */}
-      {floatingCards.map((c) => (
+      {floatingCards.map(({ Icon, label, pos, accent }) => (
         <span
-          key={c.label}
-          className={`absolute ${c.pos} inline-flex max-w-[9.5rem] items-center gap-1.5 rounded-xl border-[1.5px] border-border bg-card px-2.5 py-1.5 font-mono text-[10px] leading-none shadow-[0_2px_0_0_var(--ink)] sm:text-[11px] ${
-            c.accent ? "text-primary" : ""
+          key={label}
+          className={`absolute ${pos} inline-flex items-center gap-1.5 rounded-xl border-[1.5px] border-border bg-card px-2.5 py-1.5 font-mono text-[10px] leading-none shadow-[0_2px_0_0_var(--ink)] sm:text-[11px] ${
+            accent ? "text-primary" : ""
           }`}
         >
-          <span aria-hidden>{c.icon}</span>
-          <span className="truncate">{c.label}</span>
+          <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} />
+          <span className="whitespace-nowrap">{label}</span>
         </span>
       ))}
 
-      <figcaption className="mt-5 text-center font-mono text-[11px] text-muted-foreground">
+      <figcaption className="mt-6 text-center font-mono text-[11px] leading-relaxed text-muted-foreground">
         Semester 3 · Computer Science / Partial Differentiation / Total Derivative / Jacobians
       </figcaption>
     </div>
