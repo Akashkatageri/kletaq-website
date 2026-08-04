@@ -94,7 +94,7 @@ export function PhoneMockup() {
       {floatingCards.map(({ Icon, label, pos, accent }) => (
         <span
           key={label}
-          className={`absolute ${pos} inline-flex items-center gap-1.5 rounded-xl border-[1.5px] border-border bg-card px-2.5 py-1.5 font-mono text-[10px] leading-none shadow-[0_2px_0_0_var(--ink)] sm:text-[11px] ${
+          className={`absolute z-20 ${pos} inline-flex items-center gap-1.5 rounded-xl border-[1.5px] border-border bg-card px-2.5 py-1.5 font-mono text-[10px] leading-none shadow-[0_2px_0_0_var(--ink)] sm:text-[11px] ${
             accent ? "text-primary" : ""
           }`}
         >
