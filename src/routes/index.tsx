@@ -8,6 +8,7 @@ import {
   CalendarCheck,
 } from "lucide-react";
 
+import heroShot from "@/assets/1.hero_screenshot.png.asset.json";
 import homeShot from "@/assets/2.home_dashboard.png.asset.json";
 import focusShot from "@/assets/3.focus_timer.png.asset.json";
 import questShot from "@/assets/4.quest_overview.png.asset.json";
@@ -253,14 +254,81 @@ function Index() {
           </div>
         </section>
 
-        {/* ---------- Screenshot slots ---------- */}
-        <section id="screens" className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
-          <p className="font-mono text-[11px] tracking-widest uppercase text-muted-foreground">
-            04 — screens
-          </p>
-          <h2 className="mt-2 font-hand text-4xl leading-none sm:text-5xl">Inside the app</h2>
+        {/* ---------- Screens ---------- */}
+        <section id="screens" className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
+            <div className="min-w-0">
+              <p className="font-mono text-[11px] tracking-widest uppercase text-muted-foreground">
+                04 — screens
+              </p>
+              <h2 className="mt-2 font-hand text-4xl leading-none sm:text-5xl lg:text-6xl">
+                Inside the app
+              </h2>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+                Six pinned clippings from a real semester — the journey map first, then the screens
+                you'll live in every day.
+              </p>
+            </div>
+            <span className="hidden shrink-0 rotate-2 font-hand text-xl text-muted-foreground sm:block">
+              pinned ↓
+            </span>
+          </div>
 
-          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Hero clipping — journey map */}
+          <div className="mt-12 grid items-center gap-10 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-16">
+            <div className="relative mx-auto w-full max-w-[300px]">
+              <span
+                aria-hidden
+                className="absolute -top-2 left-1/2 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-[1.5px] border-border bg-primary shadow-[0_1px_0_0_var(--ink)]"
+              />
+              <figure className="paper-card -rotate-1 p-2.5">
+                <img
+                  src={heroShot.url}
+                  alt="Klytaq journey map for Semester 3 Computer Science"
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[9/20] w-full rounded-[12px] object-cover object-top"
+                />
+              </figure>
+            </div>
+
+            <div className="min-w-0">
+              <span className="ink-border inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-[10px] tracking-widest uppercase">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                hero screen
+              </span>
+              <h3 className="mt-4 font-hand text-4xl leading-none sm:text-5xl">
+                The <span className="text-primary">journey map</span>
+              </h3>
+              <p className="mt-4 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
+                Your entire semester drawn as one path. Nodes unlock as you clear them, so the next
+                topic is never a guess.
+              </p>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {[
+                  "Semester 3 · Computer Science",
+                  "Partial Differentiation",
+                  "Total Derivative",
+                  "Jacobians",
+                ].map((t) => (
+                  <li
+                    key={t}
+                    className="ink-border rounded-full bg-card px-3 py-1 font-mono text-[11px] text-muted-foreground"
+                  >
+                    {t}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 font-hand text-xl text-muted-foreground">
+                ↳ one map, one semester, zero guesswork
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-16 h-px w-full bg-border/25" />
+
+          {/* Remaining clippings */}
+          <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
             {shots.map((s) => (
               <ScreenshotSlot key={s.label} {...s} />
             ))}
