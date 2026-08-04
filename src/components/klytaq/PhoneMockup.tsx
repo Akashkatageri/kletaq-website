@@ -73,12 +73,12 @@ export function PhoneMockup() {
           alt=""
           loading="lazy"
           decoding="async"
-          className="aspect-[9/15] w-full object-cover object-top opacity-55"
+          className="aspect-[9/13] w-full object-cover object-top opacity-55"
         />
       </div>
 
       {/* front phone: journey map */}
-      <figure className="paper-card relative rotate-1 rounded-[32px] p-2.5">
+      <figure className="paper-card relative z-10 rotate-1 rounded-[32px] p-2.5">
         <div className="ink-border overflow-hidden rounded-[24px] bg-card">
           <img
             src={heroShot.url}
@@ -102,7 +102,7 @@ export function PhoneMockup() {
         </span>
       ))}
 
-      <figcaption className="relative mt-8 text-center font-mono text-[11px] leading-relaxed text-muted-foreground">
+      <figcaption className="relative z-10 mt-8 text-center font-mono text-[11px] leading-relaxed text-muted-foreground">
         Semester 3 · Computer Science / Partial Differentiation / Total Derivative / Jacobians
       </figcaption>
     </div>
