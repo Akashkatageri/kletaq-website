@@ -24,6 +24,8 @@ const TITLE = "Kletaq — Turn your syllabus into quests";
 const DESCRIPTION =
   "Kletaq transforms subjects, modules, and backlogs into a visual learning journey built for engineering students.";
 
+const SITE_URL = "https://syllabus-to-quests.lovable.app";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -31,6 +33,33 @@ export const Route = createFileRoute("/")({
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "Kletaq",
+          description: DESCRIPTION,
+          applicationCategory: "EducationalApplication",
+          operatingSystem: "Android, iOS, Web",
+          url: `${SITE_URL}/`,
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Kletaq",
+          url: `${SITE_URL}/`,
+        }),
+      },
     ],
   }),
   component: Index,
