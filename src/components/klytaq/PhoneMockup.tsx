@@ -1,71 +1,110 @@
+import { Zap, Flame, BookOpen, Target } from "lucide-react";
+
 import heroShot from "@/assets/1.hero_screenshot.png.asset.json";
-import { ScreenshotSlot } from "./ScreenshotSlot";
+import homeShot from "@/assets/2.home_dashboard.png.asset.json";
 
+const floatingCards = [
+  { Icon: Zap, label: "840 XP", pos: "left-0 top-[16%]", accent: true },
+  { Icon: Flame, label: "12-day streak", pos: "right-0 top-[34%]" },
+  { Icon: BookOpen, label: "4/12 subjects", pos: "left-0 bottom-[24%]" },
+  { Icon: Target, label: "3 active backlogs", pos: "right-0 bottom-[17%] sm:bottom-[12%]" },
+];
 
-/** Right-side phone mockup used in the hero. */
+/**
+ * Hero visual: the Journey screenshot pinned in a phone frame, with the home
+ * dashboard tucked behind it like stacked engineering notes, plus floating
+ * stat cards, handwritten margin notes and pencil arrows.
+ */
 export function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-full max-w-[300px]">
-      {/* handwritten arrow note */}
-      <span className="absolute -top-8 -left-6 hidden font-hand text-lg text-muted-foreground sm:block">
-        your semester ↴
+    <div className="relative mx-auto w-full max-w-[420px] px-6 pt-12 pb-10 sm:px-10">
+      {/* handwritten margin notes */}
+      <span className="absolute left-2 top-1 -rotate-2 font-hand text-lg leading-none text-muted-foreground">
+        VTU exam in 24 days
+      </span>
+      <span className="absolute right-2 top-6 rotate-2 font-hand text-lg leading-none text-primary">
+        Module 1 complete ✓
+      </span>
+      <span className="absolute bottom-1 left-6 rotate-1 font-hand text-lg leading-none text-muted-foreground">
+        PYQs remaining
       </span>
 
-      <div className="paper-card relative rounded-[36px] p-3">
-        <div className="ink-border ruled relative overflow-hidden rounded-[26px] bg-card">
-          {/* status bar */}
-          <div className="flex items-center justify-between border-b-[1.5px] border-border px-4 py-2 font-mono text-[10px]">
-            <span>9:41</span>
-            <span className="h-1.5 w-16 rounded-full bg-foreground/80" />
-            <span>100%</span>
-          </div>
+      {/* pencil arrows pointing at journey nodes */}
+      <svg
+        aria-hidden
+        viewBox="0 0 380 560"
+        preserveAspectRatio="none"
+        className="pointer-events-none absolute inset-0 h-full w-full text-foreground/40"
+        fill="none"
+      >
+        <path
+          d="M62 34 C 110 54, 130 92, 156 124"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M156 124 l -14 -2 M156 124 l 1 -14"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M334 372 C 300 386, 274 372, 250 356"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M250 356 l 14 1 M250 356 l 5 13"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      </svg>
 
-          <div className="space-y-3 p-4">
-            <p className="font-mono text-[10px] tracking-widest uppercase text-muted-foreground">
-              Semester 3 · Computer Science
-            </p>
-            <h3 className="font-hand text-2xl leading-none">Partial Differentiation</h3>
-
-            <div className="ink-border rounded-xl p-3">
-              <div className="flex items-center justify-between font-mono text-[11px]">
-                <span>Total Derivative</span>
-                <span className="text-primary">68%</span>
-              </div>
-              <div className="mt-2 h-2 w-full overflow-hidden rounded-full border-[1.5px] border-border">
-                <div className="h-full w-[68%] bg-primary" />
-              </div>
-            </div>
-
-            <div className="ink-border rounded-xl p-3">
-              <div className="flex items-center justify-between font-mono text-[11px]">
-                <span>Jacobians</span>
-                <span className="text-muted-foreground">24%</span>
-              </div>
-              <div className="mt-2 h-2 w-full overflow-hidden rounded-full border-[1.5px] border-border">
-                <div className="h-full w-[24%] bg-foreground" />
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <span className="ink-border rounded-full px-2.5 py-1 font-mono text-[10px]">
-                🔥 12 day streak
-              </span>
-              <span className="ink-border rounded-full bg-primary px-2.5 py-1 font-mono text-[10px] text-primary-foreground">
-                +240 XP
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-6">
-        <ScreenshotSlot
-          label="Journey map"
-          src={heroShot.url}
-          caption="Semester 3 · Computer Science / Partial Differentiation / Total Derivative / Jacobians"
+      {/* stacked note behind: home dashboard */}
+      <div
+        aria-hidden
+        className="absolute left-4 right-14 top-[11%] -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)] sm:left-6 sm:right-16"
+      >
+        <img
+          src={homeShot.url}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="aspect-[9/13] w-full object-cover object-top opacity-55"
         />
       </div>
 
+      {/* front phone: journey map */}
+      <figure className="paper-card relative z-10 rotate-1 rounded-[32px] p-2.5">
+        <div className="ink-border overflow-hidden rounded-[24px] bg-card">
+          <img
+            src={heroShot.url}
+            alt="Klytaq journey map — Semester 3 Computer Science, Partial Differentiation, Total Derivative, Jacobians"
+            className="aspect-[9/19] w-full object-cover object-top"
+            decoding="async"
+          />
+        </div>
+      </figure>
+
+      {/* floating stat cards */}
+      {floatingCards.map(({ Icon, label, pos, accent }) => (
+        <span
+          key={label}
+          className={`absolute ${pos} inline-flex items-center gap-1.5 rounded-xl border-[1.5px] border-border bg-card px-2.5 py-1.5 font-mono text-[10px] leading-none shadow-[0_2px_0_0_var(--ink)] sm:text-[11px] ${
+            accent ? "text-primary" : ""
+          }`}
+        >
+          <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} />
+          <span className="whitespace-nowrap">{label}</span>
+        </span>
+      ))}
+
+      <figcaption className="relative z-10 mt-8 text-center font-mono text-[11px] leading-relaxed text-muted-foreground">
+        Semester 3 · Computer Science / Partial Differentiation / Total Derivative / Jacobians
+      </figcaption>
     </div>
   );
 }
