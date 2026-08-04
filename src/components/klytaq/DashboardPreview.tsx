@@ -8,7 +8,7 @@ export function DashboardPreview() {
         <span className="h-2.5 w-2.5 rounded-full border-[1.5px] border-border" />
         <span className="h-2.5 w-2.5 rounded-full border-[1.5px] border-border bg-primary" />
         <span className="ml-2 truncate font-mono text-[11px] text-muted-foreground">
-          klytaq / semester-3 / journey
+          kletaq / semester-3 / journey
         </span>
       </div>
 

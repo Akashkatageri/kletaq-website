@@ -83,7 +83,7 @@ export function PhoneMockup() {
         <div className="ink-border overflow-hidden rounded-[24px] bg-card">
           <img
             src={heroShot.url}
-            alt="Klytaq journey map — Semester 3 Computer Science, Partial Differentiation, Total Derivative, Jacobians"
+            alt="Kletaq journey map — Semester 3 Computer Science, Partial Differentiation, Total Derivative, Jacobians"
             className="aspect-[9/19] w-full object-cover object-top"
             decoding="async"
           />

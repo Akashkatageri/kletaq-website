@@ -44,7 +44,7 @@ export function ScreenshotSlot({
             (src ? (
               <img
                 src={src}
-                alt={`${label} — ${caption ?? "Klytaq app screenshot"}`}
+                alt={`${label} — ${caption ?? "Kletaq app screenshot"}`}
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full rounded-[10px] object-cover object-top"
