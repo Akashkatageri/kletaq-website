@@ -1,7 +1,7 @@
 import { Zap, Flame, BookOpen, Target } from "lucide-react";
 
-import heroShot from "@/assets/1.hero_screenshot.png.asset.json";
-import homeShot from "@/assets/2.home_dashboard.png.asset.json";
+import { heroShot, homeShot } from "@/lib/screens";
+
 
 type Card = { Icon: typeof Zap; label: string; accent?: boolean };
 
@@ -59,7 +59,7 @@ export function PhoneMockup() {
           className="absolute inset-x-6 top-4 -z-10 -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)]"
         >
           <img
-            src={homeShot.url}
+            src={homeShot}
             alt=""
             loading="lazy"
             decoding="async"
@@ -70,7 +70,7 @@ export function PhoneMockup() {
         <figure className="paper-card relative rotate-1 rounded-[32px] p-2.5">
           <div className="ink-border overflow-hidden rounded-[24px] bg-card">
             <img
-              src={heroShot.url}
+              src={heroShot}
               alt="Kletaq journey map — Semester 3 Computer Science, Partial Differentiation, Total Derivative, Jacobians"
               className="aspect-[9/19] w-full object-cover object-top"
               decoding="async"

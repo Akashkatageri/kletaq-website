@@ -8,12 +8,14 @@ import {
   CalendarCheck,
 } from "lucide-react";
 
-import heroShot from "@/assets/1.hero_screenshot.png.asset.json";
-import homeShot from "@/assets/2.home_dashboard.png.asset.json";
-import focusShot from "@/assets/3.focus_timer.png.asset.json";
-import questShot from "@/assets/4.quest_overview.png.asset.json";
-import backlogShot from "@/assets/5.backlog_management.png.asset.json";
-import profileShot from "@/assets/8.profile.png.asset.json";
+import {
+  heroShot,
+  homeShot,
+  focusShot,
+  questShot,
+  backlogShot,
+  profileShot,
+} from "@/lib/screens";
 import { NotebookBackground } from "@/components/klytaq/NotebookBackground";
 import { PhoneMockup } from "@/components/klytaq/PhoneMockup";
 import { DashboardPreview } from "@/components/klytaq/DashboardPreview";
@@ -109,35 +111,35 @@ const shots = [
     index: "01",
     label: "Home dashboard",
     caption: "Everything you need for today's study session.",
-    src: homeShot.url,
+    src: homeShot,
     items: ["Streak", "XP", "Continue learning", "Spaced repetition", "Daily tasks"],
   },
   {
     index: "02",
     label: "Focus timer",
     caption: "Focus on one quest at a time.",
-    src: focusShot.url,
+    src: focusShot,
     items: ["Timer running", "Current topic", "Session duration", "Panda widget"],
   },
   {
     index: "03",
     label: "Quest overview",
     caption: "Every topic becomes a structured quest.",
-    src: questShot.url,
+    src: questShot,
     items: ["Concepts", "Formulas", "PYQs", "Estimated time", "Progress"],
   },
   {
     index: "04",
     label: "Backlog management",
     caption: "Defeat your backlogs, one topic at a time.",
-    src: backlogShot.url,
+    src: backlogShot,
     items: ["Semester selection", "Backlog badge", "Completed subjects", "Progress"],
   },
   {
     index: "05",
     label: "Profile / statistics",
     caption: "See how far you've come.",
-    src: profileShot.url,
+    src: profileShot,
     items: ["Total XP", "Hours studied", "Topics completed", "Current streak"],
   },
 ];
@@ -312,7 +314,7 @@ function Index() {
               />
               <figure className="paper-card -rotate-1 p-2.5">
                 <img
-                  src={heroShot.url}
+                  src={heroShot}
                   alt="Kletaq journey map for Semester 3 Computer Science"
                   loading="lazy"
                   decoding="async"
