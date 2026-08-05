@@ -26,7 +26,7 @@ const TITLE = "Kletaq — Turn your syllabus into quests";
 const DESCRIPTION =
   "Kletaq transforms subjects, modules, and backlogs into a visual learning journey built for engineering students.";
 
-const SITE_URL = "https://syllabus-to-quests.lovable.app";
+const SITE_URL = "https://kletaq.5122006.xyz";
 
 export const Route = createFileRoute("/")({
   head: () => ({

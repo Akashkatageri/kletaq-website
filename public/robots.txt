@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://syllabus-to-quests.lovable.app/sitemap.xml
+Sitemap: https://kletaq.5122006.xyz/sitemap.xml
