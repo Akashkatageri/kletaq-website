@@ -179,7 +179,7 @@ function Index() {
             screens
           </a>
           <a
-            href="/kletaq.apk"
+            href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
             download="kletaq.apk"
             className="ink-border inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 font-mono text-xs font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
           >
@@ -209,7 +209,7 @@ function Index() {
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
-                href="/kletaq.apk"
+                href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
                 download="kletaq.apk"
                 className="ink-border inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
               >
@@ -395,7 +395,7 @@ function Index() {
           </div>
           <div className="flex items-center gap-3">
             <a
-              href="/kletaq.apk"
+              href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
               download="kletaq.apk"
               className="ink-border inline-flex items-center gap-1.5 rounded-xl bg-primary px-3.5 py-2 font-mono text-xs font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
             >
