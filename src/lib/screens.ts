@@ -1,10 +1,10 @@
-﻿/** Static screenshot paths served from /public */
-export const heroShot = "/screens/1.hero_screenshot.webp";
-export const homeShot = "/screens/home_dashboard_v2.png";
-export const focusShot = "/screens/focus_timer_v2.png";
-export const questShot = "/screens/4.quest_overview.webp";
-export const backlogShot = "/screens/5.backlog_management.webp";
-export const profileShot = "/screens/8.profile.webp";
-export const calendarShot = "/screens/calendar_view.png";
-export const quickActionsShot = "/screens/quick_actions_v2.png";
+﻿/** Static screenshot paths served from /public — 100% fresh in-app captures */
+export const heroShot = "/screens/hero_journey.png";
+export const homeShot = "/screens/home_dashboard.png";
+export const focusShot = "/screens/focus_timer.png";
+export const oledShot = "/screens/oled_ambient.png";
+export const calendarShot = "/screens/calendar_agenda.png";
+export const questShot = "/screens/quest_detail.png";
+export const quickActionsShot = "/screens/quick_actions.png";
+export const profileShot = "/screens/profile_stats.png";
 export const pandaWidgetShot = "/screens/panda_streak.png";

@@ -9,17 +9,15 @@ import {
   Moon,
   Smartphone,
   Sparkles,
-  QrCode,
-  ShieldCheck,
-  CheckCircle2,
+  Zap,
 } from "lucide-react";
 
 import {
   heroShot,
   homeShot,
   focusShot,
+  oledShot,
   questShot,
-  backlogShot,
   profileShot,
   calendarShot,
   quickActionsShot,
@@ -78,49 +76,49 @@ const features = [
   {
     icon: Map,
     title: "Journey Mode",
-    body: "Your whole semester as one interactive quest path. Modules unlock as you clear them, so the next topic is never a guess.",
+    body: "Your entire semester as an interactive quest roadmap. Modules unlock as you master concepts, so you always know what to study next.",
     tag: "roadmap",
   },
   {
     icon: Calendar,
     title: "Study Calendar",
-    body: "Google Calendar-style month & agenda views. Pick exact due dates and custom notification times for exams, labs, and assignments.",
+    body: "Google Calendar-style month & agenda views. Set custom notification reminder times and due dates for assignments, labs, and exams.",
     tag: "schedule",
   },
   {
     icon: Moon,
     title: "OLED Ambient Focus",
-    body: "Study for hours with zero battery anxiety. Pitch-black AMOLED sleep display keeps your timer ticking safely without screen burn-in.",
+    body: "Study for hours with zero battery drain. Pitch-black AMOLED sleep display keeps your timer running safely with an anti-burn-in clock.",
     tag: "battery-saver",
   },
   {
     icon: Smartphone,
     title: "Live Panda Widget",
-    body: "Android Glance 2×1 & 4×2 home-screen widgets that atomically sync your streak, today's XP, and reactive mascot mood.",
+    body: "Android Glance 2×1 & 4×2 home-screen widgets that atomically sync your streak, today's XP, and reactive panda mascot mood.",
     tag: "home-widget",
   },
   {
     icon: Swords,
     title: "Smart Quests",
-    body: "Every topic becomes a focused quest with formula sheets, core concepts, and verified past-year VTU exam questions.",
+    body: "Every syllabus topic broken into digestible quests with formulas, core concepts, and verified past-year VTU exam questions.",
     tag: "quests",
   },
   {
     icon: Sparkles,
     title: "VTU 2025 Multi-Branch",
-    body: "Complete 2025 Scheme curricula for Computer Science (CSE), Information Science (ISE), IoT, and AIML branches.",
+    body: "Official 2025 Scheme curricula mapped for Computer Science (CSE), Information Science (ISE), IoT, and AIML branches.",
     tag: "vtu-2025",
   },
   {
     icon: Repeat,
     title: "Spaced Repetition",
-    body: "Kletaq algorithmically schedules reviews before you forget, eliminating high-stress cramming the night before finals.",
+    body: "Automated review intervals prevent memory decay before finals, eliminating chaotic cramming sessions.",
     tag: "review",
   },
   {
     icon: Flame,
-    title: "XP & Streaks",
-    body: "Earn XP per completed topic, build daily study streaks, and watch real habit progression unfold across your semester.",
+    title: "XP & Daily Streaks",
+    body: "Earn experience points with every cleared concept, keep your streak alive, and build lasting engineering study habits.",
     tag: "habits",
   },
 ];
@@ -131,49 +129,49 @@ const shots = [
     label: "Home dashboard",
     caption: "Your clean daily study headquarters.",
     src: homeShot,
-    items: ["Streak tracking", "Today's XP", "Continue learning", "Spaced review", "Central + button"],
+    items: ["Daily streak", "XP progression", "Continue learning", "Upcoming tasks", "Central + button"],
   },
   {
     index: "02",
     label: "Study calendar & agenda",
-    caption: "Google Calendar-style schedule with native pickers and alarms.",
+    caption: "Google Calendar-style scheduling with custom notification alarms.",
     src: calendarShot,
-    items: ["Month view", "Daily agenda", "Native DatePicker", "Custom alarm time", "Quick checkoff"],
+    items: ["Month view", "Daily agenda", "Due date selector", "Custom alarm time", "Quick checkoff"],
   },
   {
     index: "03",
-    label: "Focus timer & OLED ambient",
-    caption: "Study without battery drain using pitch-black AMOLED sleep mode.",
+    label: "Focus timer",
+    caption: "Distraction-free Pomodoro sessions tied directly to your syllabus topics.",
     src: focusShot,
-    items: ["Topic-tied timer", "OLED battery saver", "Anti-burn-in clock", "Panda widget companion"],
+    items: ["25:00 dial", "Session presets", "Topic binding", "XP rewards", "OLED Sleep toggle"],
   },
   {
     index: "04",
-    label: "Quick actions hub",
-    caption: "Everything one tap away without cluttering the home feed.",
-    src: quickActionsShot,
-    items: ["Start Focus", "Add Task", "Open Calendar", "Explore Syllabus", "Clean sheet"],
+    label: "OLED Ambient Sleep Mode",
+    caption: "Study without battery drain using pitch-black AMOLED power-saving display.",
+    src: oledShot,
+    items: ["Pure black background", "Minimal glowing clock", "Anti-burn-in shift", "Tap anywhere to wake"],
   },
   {
     index: "05",
-    label: "Quest overview & PYQs",
-    caption: "Every module topic converted into an actionable quest.",
+    label: "Smart quest & PYQs",
+    caption: "Every topic broken into actionable concepts, formulas, and VTU PYQs.",
     src: questShot,
-    items: ["Concept notes", "Formulas", "VTU PYQs", "Estimated duration", "Topic progress"],
+    items: ["Theory lesson", "Concept breakdown", "VTU PYQ practice", "+80 XP completion"],
   },
   {
     index: "06",
-    label: "Backlog management",
-    caption: "Structured roadmap to conquer pending backlog subjects.",
-    src: backlogShot,
-    items: ["Semester filter", "Backlog badge", "Completed modules", "Clear roadmap"],
+    label: "Quick actions hub",
+    caption: "Start a focus timer, open the calendar, or create tasks in one clean tap.",
+    src: quickActionsShot,
+    items: ["Floating + menu", "Calendar shortcut", "New task creator", "Focus timer launcher"],
   },
   {
     index: "07",
-    label: "Profile & statistics",
-    caption: "Track your engineering progress with privacy built in.",
+    label: "Student profile & stats",
+    caption: "Track engineering study hours, achievement badges, and activity heatmaps.",
     src: profileShot,
-    items: ["Total XP", "Hours studied", "Topics completed", "Private study goals"],
+    items: ["Study heatmap", "Weekly hours", "Badges & trophies", "Streak records", "Private goals"],
   },
 ];
 
@@ -231,7 +229,7 @@ function Index() {
                 v1.1 Release:
               </span>
               <span className="font-mono text-[11px] text-muted-foreground">
-                Calendar • OLED Ambient • VTU 2025 • Panda Widgets
+                Calendar • OLED Ambient Focus • VTU 2025 • Live Panda Widgets
               </span>
             </div>
 
