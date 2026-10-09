@@ -29,7 +29,7 @@ import { ScreenshotSlot } from "@/components/klytaq/ScreenshotSlot";
 
 const TITLE = "Kletaq — Turn your syllabus into quests";
 const DESCRIPTION =
-  "Kletaq transforms VTU engineering subjects, modules, and backlogs into a visual learning journey. Built with Google Calendar scheduling, an OLED battery-saving focus timer, and live home widgets.";
+  "Kletaq transforms VTU engineering subjects, modules, and backlogs into a visual learning journey. Built with interactive study calendar scheduling, an OLED battery-saving focus timer, and live home widgets.";
 
 const SITE_URL = "https://kletaq.5122006.xyz";
 
@@ -82,7 +82,7 @@ const features = [
   {
     icon: Calendar,
     title: "Study Calendar",
-    body: "Google Calendar-style month & agenda views. Set custom notification reminder times and due dates for assignments, labs, and exams.",
+    body: "Interactive month & agenda calendar views. Set custom notification reminder times and due dates for assignments, labs, and exams.",
     tag: "schedule",
   },
   {
@@ -134,7 +134,7 @@ const shots = [
   {
     index: "02",
     label: "Study calendar & agenda",
-    caption: "Google Calendar-style scheduling with custom notification alarms.",
+    caption: "Interactive calendar scheduling with custom notification alarms.",
     src: calendarShot,
     items: ["Month view", "Daily agenda", "Due date selector", "Custom alarm time", "Quick checkoff"],
   },
@@ -345,7 +345,7 @@ function Index() {
             The dashboard & schedule, drawn in ink
           </h2>
           <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
-            No clutter. Today's quests, your Google Calendar study agenda, and real-time live Panda
+            No clutter. Today's quests, your study calendar agenda, and real-time live Panda
             companion widget sync.
           </p>
 
