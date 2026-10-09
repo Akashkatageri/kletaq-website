@@ -1,12 +1,17 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import {
   Map,
   Swords,
   Flame,
-  Timer,
   Repeat,
-  CalendarCheck,
   Download,
+  Calendar,
+  Moon,
+  Smartphone,
+  Sparkles,
+  QrCode,
+  ShieldCheck,
+  CheckCircle2,
 } from "lucide-react";
 
 import {
@@ -16,16 +21,17 @@ import {
   questShot,
   backlogShot,
   profileShot,
+  calendarShot,
+  quickActionsShot,
 } from "@/lib/screens";
 import { NotebookBackground } from "@/components/klytaq/NotebookBackground";
 import { PhoneMockup } from "@/components/klytaq/PhoneMockup";
 import { DashboardPreview } from "@/components/klytaq/DashboardPreview";
 import { ScreenshotSlot } from "@/components/klytaq/ScreenshotSlot";
 
-
 const TITLE = "Kletaq — Turn your syllabus into quests";
 const DESCRIPTION =
-  "Kletaq transforms subjects, modules, and backlogs into a visual learning journey built for engineering students.";
+  "Kletaq transforms VTU engineering subjects, modules, and backlogs into a visual learning journey. Built with Google Calendar scheduling, an OLED battery-saving focus timer, and live home widgets.";
 
 const SITE_URL = "https://kletaq.5122006.xyz";
 
@@ -50,7 +56,7 @@ export const Route = createFileRoute("/")({
           name: "Kletaq",
           description: DESCRIPTION,
           applicationCategory: "EducationalApplication",
-          operatingSystem: "Android, iOS, Web",
+          operatingSystem: "Android",
           url: `${SITE_URL}/`,
         }),
       },
@@ -72,38 +78,50 @@ const features = [
   {
     icon: Map,
     title: "Journey Mode",
-    body: "Your whole semester as one map. Modules unlock as you clear them, so you always know the next step.",
-    tag: "map",
+    body: "Your whole semester as one interactive quest path. Modules unlock as you clear them, so the next topic is never a guess.",
+    tag: "roadmap",
+  },
+  {
+    icon: Calendar,
+    title: "Study Calendar",
+    body: "Google Calendar-style month & agenda views. Pick exact due dates and custom notification times for exams, labs, and assignments.",
+    tag: "schedule",
+  },
+  {
+    icon: Moon,
+    title: "OLED Ambient Focus",
+    body: "Study for hours with zero battery anxiety. Pitch-black AMOLED sleep display keeps your timer ticking safely without screen burn-in.",
+    tag: "battery-saver",
+  },
+  {
+    icon: Smartphone,
+    title: "Live Panda Widget",
+    body: "Android Glance 2×1 & 4×2 home-screen widgets that atomically sync your streak, today's XP, and reactive mascot mood.",
+    tag: "home-widget",
   },
   {
     icon: Swords,
     title: "Smart Quests",
-    body: "Every topic becomes a quest with concepts, formulas and past-year questions attached.",
-    tag: "quest",
+    body: "Every topic becomes a focused quest with formula sheets, core concepts, and verified past-year VTU exam questions.",
+    tag: "quests",
   },
   {
-    icon: Flame,
-    title: "XP & Streaks",
-    body: "Earn XP per completed topic and keep the streak alive. Progress you can actually see.",
-    tag: "xp",
-  },
-  {
-    icon: Timer,
-    title: "Focus Mode",
-    body: "A distraction-free timer tied to the topic you're studying. Sessions log straight into your stats.",
-    tag: "focus",
+    icon: Sparkles,
+    title: "VTU 2025 Multi-Branch",
+    body: "Complete 2025 Scheme curricula for Computer Science (CSE), Information Science (ISE), IoT, and AIML branches.",
+    tag: "vtu-2025",
   },
   {
     icon: Repeat,
     title: "Spaced Repetition",
-    body: "Kletaq schedules reviews before you forget, so exam week isn't a re-learning marathon.",
+    body: "Kletaq algorithmically schedules reviews before you forget, eliminating high-stress cramming the night before finals.",
     tag: "review",
   },
   {
-    icon: CalendarCheck,
-    title: "Tasks & Deadlines",
-    body: "Assignments, labs and backlogs in one list, ordered by what actually matters this week.",
-    tag: "todo",
+    icon: Flame,
+    title: "XP & Streaks",
+    body: "Earn XP per completed topic, build daily study streaks, and watch real habit progression unfold across your semester.",
+    tag: "habits",
   },
 ];
 
@@ -111,40 +129,53 @@ const shots = [
   {
     index: "01",
     label: "Home dashboard",
-    caption: "Everything you need for today's study session.",
+    caption: "Your clean daily study headquarters.",
     src: homeShot,
-    items: ["Streak", "XP", "Continue learning", "Spaced repetition", "Daily tasks"],
+    items: ["Streak tracking", "Today's XP", "Continue learning", "Spaced review", "Central + button"],
   },
   {
     index: "02",
-    label: "Focus timer",
-    caption: "Focus on one quest at a time.",
-    src: focusShot,
-    items: ["Timer running", "Current topic", "Session duration", "Panda widget"],
+    label: "Study calendar & agenda",
+    caption: "Google Calendar-style schedule with native pickers and alarms.",
+    src: calendarShot,
+    items: ["Month view", "Daily agenda", "Native DatePicker", "Custom alarm time", "Quick checkoff"],
   },
   {
     index: "03",
-    label: "Quest overview",
-    caption: "Every topic becomes a structured quest.",
-    src: questShot,
-    items: ["Concepts", "Formulas", "PYQs", "Estimated time", "Progress"],
+    label: "Focus timer & OLED ambient",
+    caption: "Study without battery drain using pitch-black AMOLED sleep mode.",
+    src: focusShot,
+    items: ["Topic-tied timer", "OLED battery saver", "Anti-burn-in clock", "Panda widget companion"],
   },
   {
     index: "04",
-    label: "Backlog management",
-    caption: "Defeat your backlogs, one topic at a time.",
-    src: backlogShot,
-    items: ["Semester selection", "Backlog badge", "Completed subjects", "Progress"],
+    label: "Quick actions hub",
+    caption: "Everything one tap away without cluttering the home feed.",
+    src: quickActionsShot,
+    items: ["Start Focus", "Add Task", "Open Calendar", "Explore Syllabus", "Clean sheet"],
   },
   {
     index: "05",
-    label: "Profile / statistics",
-    caption: "See how far you've come.",
+    label: "Quest overview & PYQs",
+    caption: "Every module topic converted into an actionable quest.",
+    src: questShot,
+    items: ["Concept notes", "Formulas", "VTU PYQs", "Estimated duration", "Topic progress"],
+  },
+  {
+    index: "06",
+    label: "Backlog management",
+    caption: "Structured roadmap to conquer pending backlog subjects.",
+    src: backlogShot,
+    items: ["Semester filter", "Backlog badge", "Completed modules", "Clear roadmap"],
+  },
+  {
+    index: "07",
+    label: "Profile & statistics",
+    caption: "Track your engineering progress with privacy built in.",
     src: profileShot,
-    items: ["Total XP", "Hours studied", "Topics completed", "Current streak"],
+    items: ["Total XP", "Hours studied", "Topics completed", "Private study goals"],
   },
 ];
-
 
 function Index() {
   return (
@@ -193,12 +224,18 @@ function Index() {
         {/* ---------- Hero ---------- */}
         <section className="mx-auto grid w-full max-w-6xl items-center gap-8 px-4 pt-6 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-10 lg:pt-10">
           <div className="min-w-0">
-            <span className="ink-border inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-[11px] tracking-wider uppercase">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              built by a student
-            </span>
+            {/* What's New Tag */}
+            <div className="mb-4 inline-flex flex-wrap items-center gap-2 rounded-full border-[1.5px] border-border bg-card px-3 py-1 text-xs shadow-[0_1px_0_0_var(--ink)]">
+              <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+              <span className="font-mono text-[11px] font-bold text-primary uppercase tracking-wide">
+                v1.1 Release:
+              </span>
+              <span className="font-mono text-[11px] text-muted-foreground">
+                Calendar • OLED Ambient • VTU 2025 • Panda Widgets
+              </span>
+            </div>
 
-            <h1 className="mt-5 font-hand text-5xl leading-[0.95] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-3 font-hand text-5xl leading-[0.95] sm:text-6xl lg:text-7xl">
               Turn your syllabus into{" "}
               <span className="scribble-underline text-primary">quests.</span>
             </h1>
@@ -207,6 +244,7 @@ function Index() {
               {DESCRIPTION}
             </p>
 
+            {/* CTA Buttons */}
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
                 href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
@@ -214,23 +252,39 @@ function Index() {
                 className="ink-border inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
               >
                 <Download className="h-4 w-4" />
-                Download Android APK
+                Download Android APK (v1.1)
               </a>
               <a
                 href="#screens"
                 className="ink-border rounded-xl bg-card px-5 py-2.5 text-sm font-semibold shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
               >
-                Explore the journey
+                Explore Screens
               </a>
             </div>
 
             <p className="mt-3 font-mono text-xs text-muted-foreground">
-              Direct download • v1.0 • Android 7.0+ • Free
+              Direct download • Benchmark Edition (~22.8 MB) • Android 7.0+ • Free
             </p>
 
-            <dl className="mt-8 grid max-w-md grid-cols-3 gap-3">
+            {/* Desktop QR Scan Card */}
+            <div className="mt-6 flex max-w-md items-center gap-3.5 rounded-2xl border-[1.5px] border-border bg-card p-3 shadow-[0_2px_0_0_var(--ink)]">
+              <img
+                src="/download-qr.png"
+                alt="Scan to download Kletaq APK"
+                className="h-16 w-16 shrink-0 rounded-lg border border-border bg-white p-1"
+              />
+              <div className="min-w-0">
+                <p className="font-hand text-lg leading-tight">Browsing on a PC or Laptop?</p>
+                <p className="font-mono text-[11px] text-muted-foreground">
+                  Scan this QR code with your phone camera to download directly.
+                </p>
+              </div>
+            </div>
+
+            {/* Stats */}
+            <dl className="mt-6 grid max-w-md grid-cols-3 gap-3">
               {[
-                ["6", "core modes"],
+                ["4", "VTU branches"],
                 ["1", "map per semester"],
                 ["0", "distractions"],
               ].map(([v, k]) => (
@@ -253,27 +307,29 @@ function Index() {
                 02 — what's inside
               </p>
               <h2 className="mt-2 font-hand text-4xl leading-none sm:text-5xl">
-                Six pages of your notebook
+                Eight tools for every engineer
               </h2>
             </div>
             <span className="hidden shrink-0 font-hand text-xl text-muted-foreground sm:block">
-              ↓ pick one
+              ✎ notebook essentials
             </span>
           </div>
 
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((f) => (
               <article
                 key={f.title}
-                className="paper-card group p-5 transition-transform hover:-translate-y-1"
+                className="paper-card group flex flex-col justify-between p-5 transition-transform hover:-translate-y-1"
               >
-                <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-[1.5px] border-border">
-                    <f.icon className="h-5 w-5" strokeWidth={1.75} />
-                  </span>
-                  <h3 className="truncate font-hand text-2xl leading-none">{f.title}</h3>
+                <div>
+                  <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-[1.5px] border-border bg-card">
+                      <f.icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
+                    </span>
+                    <h3 className="truncate font-hand text-2xl leading-none">{f.title}</h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
                 <p className="mt-4 font-mono text-[10px] tracking-widest uppercase text-primary">
                   #{f.tag}
                 </p>
@@ -288,11 +344,11 @@ function Index() {
             03 — showcase
           </p>
           <h2 className="mt-2 max-w-2xl font-hand text-4xl leading-none sm:text-5xl">
-            The dashboard, drawn in ink
+            The dashboard & schedule, drawn in ink
           </h2>
           <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
-            No dashboards full of charts you'll never read. Just today's quests, your streak and
-            what's due.
+            No clutter. Today's quests, your Google Calendar study agenda, and real-time live Panda
+            companion widget sync.
           </p>
 
           <div className="mt-8">
@@ -311,12 +367,12 @@ function Index() {
                 Inside the app
               </h2>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                Six pinned clippings from a real semester — the journey map first, then the screens
-                you'll live in every day.
+                Pinned clippings from real engineering semesters — the journey roadmap, the new
+                interactive calendar, and the OLED ambient focus timer.
               </p>
             </div>
             <span className="hidden shrink-0 rotate-2 font-hand text-xl text-muted-foreground sm:block">
-              pinned ↓
+              pinned 📌
             </span>
           </div>
 
@@ -330,7 +386,7 @@ function Index() {
               <figure className="paper-card -rotate-1 p-2.5">
                 <img
                   src={heroShot}
-                  alt="Kletaq journey map for Semester 3 Computer Science"
+                  alt="Kletaq journey map for VTU Engineering"
                   loading="lazy"
                   decoding="async"
                   className="aspect-[9/20] w-full rounded-[12px] object-cover object-top"
@@ -341,21 +397,23 @@ function Index() {
             <div className="min-w-0">
               <span className="ink-border inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-[10px] tracking-widest uppercase">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                hero screen
+                core roadmap
               </span>
               <h3 className="mt-4 font-hand text-4xl leading-none sm:text-5xl">
                 The <span className="text-primary">journey map</span>
               </h3>
               <p className="mt-4 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Your entire semester drawn as one path. Nodes unlock as you clear them, so the next
-                topic is never a guess.
+                Your entire semester mapped as an interactive path. Clear concepts, unlock next
+                chapters, and master modules without feeling overwhelmed.
               </p>
               <ul className="mt-6 flex flex-wrap gap-2">
                 {[
-                  "Semester 3 · Computer Science",
-                  "Partial Differentiation",
-                  "Total Derivative",
-                  "Jacobians",
+                  "VTU 2025 Scheme",
+                  "Computer Science (CSE)",
+                  "Information Science (ISE)",
+                  "IoT & AIML",
+                  "BCS301 Mathematics",
+                  "BCS304 Data Structures",
                 ].map((t) => (
                   <li
                     key={t}
@@ -366,7 +424,7 @@ function Index() {
                 ))}
               </ul>
               <p className="mt-6 font-hand text-xl text-muted-foreground">
-                ↳ one map, one semester, zero guesswork
+                ✦ one map, one semester, zero guesswork
               </p>
             </div>
           </div>
@@ -382,7 +440,7 @@ function Index() {
         </section>
       </main>
 
-            {/* ---------- Footer ---------- */}
+      {/* ---------- Footer ---------- */}
       <footer className="mx-auto w-full max-w-6xl px-4 pb-12 sm:px-6">
         <div className="paper-card flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6">
           <div className="min-w-0">
@@ -390,7 +448,7 @@ function Index() {
               Kletaq — Turn your syllabus into quests.
             </p>
             <p className="mt-1 text-sm text-muted-foreground">
-              Built by a student, for students.
+              Built by a student, for engineering students.
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -403,7 +461,7 @@ function Index() {
               Download APK
             </a>
             <span className="shrink-0 font-mono text-[10px] tracking-widest uppercase text-muted-foreground">
-              © {new Date().getFullYear()}
+              © {new Date().getFullYear()} Kletaq
             </span>
           </div>
         </div>

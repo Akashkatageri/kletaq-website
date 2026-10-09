@@ -1,25 +1,24 @@
-import { Zap, Flame, BookOpen, Target } from "lucide-react";
+﻿import { Zap, Flame, Calendar, Moon } from "lucide-react";
 
 import { heroShot, homeShot } from "@/lib/screens";
-
 
 type Card = { Icon: typeof Zap; label: string; accent?: boolean };
 
 const leftCards: [Card, Card] = [
   { Icon: Zap, label: "840 XP", accent: true },
-  { Icon: BookOpen, label: "4/12 subjects" },
+  { Icon: Calendar, label: "Calendar: 3 tasks" },
 ];
 
 const rightCards: [Card, Card] = [
   { Icon: Flame, label: "12-day streak" },
-  { Icon: Target, label: "3 active backlogs" },
+  { Icon: Moon, label: "OLED Ambient Active" },
 ];
 
 function StatCard({ Icon, label, accent }: Card) {
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-xl border-[1.5px] border-border bg-card px-2.5 py-1.5 font-mono text-[10px] leading-none shadow-[0_2px_0_0_var(--ink)] md:px-2 md:py-1.5 md:text-[10px] lg:px-3 lg:py-2 lg:text-[12px] ${
-        accent ? "text-primary" : ""
+        accent ? "text-primary font-bold" : ""
       }`}
     >
       <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} />
@@ -39,7 +38,7 @@ export function PhoneMockup() {
       {/* note above the phone */}
       <p className="mb-3 flex items-baseline justify-between gap-4 px-1">
         <span className="-rotate-2 font-hand text-lg leading-none text-muted-foreground">
-          VTU exam in 24 days
+          VTU 2025 Scheme • Sem 3
         </span>
         <span className="rotate-2 text-right font-hand text-lg leading-none text-primary">
           Module 1 complete ✓
@@ -60,7 +59,7 @@ export function PhoneMockup() {
         >
           <img
             src={homeShot}
-            alt=""
+            alt="Kletaq home dashboard"
             loading="lazy"
             decoding="async"
             className="aspect-[9/13] w-full object-cover object-top opacity-55"
@@ -71,7 +70,7 @@ export function PhoneMockup() {
           <div className="ink-border overflow-hidden rounded-[24px] bg-card">
             <img
               src={heroShot}
-              alt="Kletaq journey map — Semester 3 Computer Science, Partial Differentiation, Total Derivative, Jacobians"
+              alt="Kletaq journey map — Semester 3, Partial Differentiation, Total Derivative, Jacobians"
               className="aspect-[9/19] w-full object-cover object-top"
               decoding="async"
             />
@@ -92,12 +91,12 @@ export function PhoneMockup() {
         ))}
       </div>
 
-      <p className="mt-4 px-1 font-hand text-lg leading-none text-muted-foreground">
-        PYQs remaining
+      <p className="mt-4 px-1 font-hand text-lg leading-none text-center text-muted-foreground">
+        CSE • ISE • IoT • AIML Branches Supported
       </p>
 
-      <p className="mt-4 text-center font-mono text-[11px] leading-relaxed text-muted-foreground">
-        Semester 3 · Computer Science / Partial Differentiation / Total Derivative / Jacobians
+      <p className="mt-2 text-center font-mono text-[11px] leading-relaxed text-muted-foreground">
+        VTU 2025 Scheme · BCS301 / BCS302 / BCS303 / BCS304
       </p>
     </div>
   );
