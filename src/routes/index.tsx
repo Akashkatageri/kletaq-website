@@ -6,6 +6,7 @@ import {
   Timer,
   Repeat,
   CalendarCheck,
+  Download,
 } from "lucide-react";
 
 import {
@@ -173,9 +174,17 @@ function Index() {
           </a>
           <a
             href="#screens"
-            className="ink-border rounded-full bg-primary px-3.5 py-1.5 font-mono text-xs text-primary-foreground"
+            className="hidden font-mono text-xs text-muted-foreground transition-colors hover:text-primary sm:inline"
           >
-            Explore the journey
+            screens
+          </a>
+          <a
+            href="/kletaq.apk"
+            download="kletaq.apk"
+            className="ink-border inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 font-mono text-xs font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+          >
+            <Download className="h-3.5 w-3.5" />
+            Download APK
           </a>
         </nav>
       </header>
@@ -200,18 +209,24 @@ function Index() {
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
-                href="#screens"
-                className="ink-border rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+                href="/kletaq.apk"
+                download="kletaq.apk"
+                className="ink-border inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
               >
-                Start your journey
+                <Download className="h-4 w-4" />
+                Download Android APK
               </a>
               <a
-                href="#showcase"
+                href="#screens"
                 className="ink-border rounded-xl bg-card px-5 py-2.5 text-sm font-semibold shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
               >
-                See the dashboard
+                Explore the journey
               </a>
             </div>
+
+            <p className="mt-3 font-mono text-xs text-muted-foreground">
+              Direct download • v1.0 • Android 7.0+ • Free
+            </p>
 
             <dl className="mt-8 grid max-w-md grid-cols-3 gap-3">
               {[
@@ -367,9 +382,9 @@ function Index() {
         </section>
       </main>
 
-      {/* ---------- Footer ---------- */}
+            {/* ---------- Footer ---------- */}
       <footer className="mx-auto w-full max-w-6xl px-4 pb-12 sm:px-6">
-        <div className="paper-card grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 p-5 sm:p-6">
+        <div className="paper-card flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6">
           <div className="min-w-0">
             <p className="font-hand text-2xl leading-tight">
               Kletaq — Turn your syllabus into quests.
@@ -378,9 +393,19 @@ function Index() {
               Built by a student, for students.
             </p>
           </div>
-          <span className="shrink-0 font-mono text-[10px] tracking-widest uppercase text-muted-foreground">
-            © {new Date().getFullYear()}
-          </span>
+          <div className="flex items-center gap-3">
+            <a
+              href="/kletaq.apk"
+              download="kletaq.apk"
+              className="ink-border inline-flex items-center gap-1.5 rounded-xl bg-primary px-3.5 py-2 font-mono text-xs font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+            >
+              <Download className="h-3.5 w-3.5" />
+              Download APK
+            </a>
+            <span className="shrink-0 font-mono text-[10px] tracking-widest uppercase text-muted-foreground">
+              © {new Date().getFullYear()}
+            </span>
+          </div>
         </div>
       </footer>
     </div>
