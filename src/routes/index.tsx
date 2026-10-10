@@ -10,6 +10,7 @@ import {
   Smartphone,
   Sparkles,
   Zap,
+  Github,
 } from "lucide-react";
 
 import {
@@ -190,6 +191,15 @@ function Index() {
         </a>
         <nav className="flex shrink-0 items-center gap-2 sm:gap-4">
           <a
+            href="https://github.com/Akashkatageri/kletaq"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden font-mono text-xs text-muted-foreground transition-colors hover:text-primary sm:inline-flex items-center gap-1.5"
+          >
+            <Github className="h-3.5 w-3.5" />
+            github
+          </a>
+          <a
             href="#features"
             className="hidden font-mono text-xs text-muted-foreground transition-colors hover:text-primary sm:inline"
           >
@@ -251,6 +261,15 @@ function Index() {
               >
                 <Download className="h-4 w-4" />
                 Download Android APK (v1.1)
+              </a>
+              <a
+                href="https://github.com/Akashkatageri/kletaq"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ink-border inline-flex items-center gap-2 rounded-xl bg-card px-4 py-2.5 text-sm font-semibold shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+              >
+                <Github className="h-4 w-4" />
+                GitHub
               </a>
               <a
                 href="#screens"
@@ -449,7 +468,16 @@ function Index() {
               Built by a student, for engineering students.
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="https://github.com/Akashkatageri/kletaq"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ink-border inline-flex items-center gap-1.5 rounded-xl bg-card px-3.5 py-2 font-mono text-xs font-semibold shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+            >
+              <Github className="h-3.5 w-3.5" />
+              GitHub
+            </a>
             <a
               href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
               download="kletaq.apk"
