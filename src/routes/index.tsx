@@ -198,7 +198,7 @@ function Index() {
               <span className="hidden sm:inline">GitHub</span>
             </a>
             <a
-              href="/kletaq.apk"
+              href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
               download="kletaq.apk"
               className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 px-4 py-2 text-xs font-mono font-bold text-slate-950 shadow-[0_0_20px_-3px_rgba(16,185,129,0.5)] transition-all hover:-translate-y-0.5"
             >
@@ -240,7 +240,7 @@ function Index() {
               {/* CTA Action Buttons */}
               <div className="mt-8 flex flex-wrap items-center gap-3.5">
                 <a
-                  href="/kletaq.apk"
+                  href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
                   download="kletaq.apk"
                   className="inline-flex items-center gap-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 px-6 py-3.5 text-sm font-bold text-slate-950 shadow-[0_0_25px_-5px_rgba(16,185,129,0.6)] transition-all hover:-translate-y-0.5"
                 >
@@ -439,7 +439,7 @@ function Index() {
 
                 <div className="mt-8 flex flex-wrap items-center gap-3">
                   <a
-                    href="/kletaq.apk"
+                    href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
                     download="kletaq.apk"
                     className="inline-flex items-center gap-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 px-6 py-3.5 text-sm font-bold text-slate-950 shadow-[0_0_25px_-5px_rgba(16,185,129,0.6)] transition-all hover:-translate-y-0.5"
                   >
