@@ -1,16 +1,24 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
 import {
   Map,
-  Swords,
-  Flame,
-  Repeat,
-  Download,
   Calendar,
   Moon,
   Smartphone,
   Sparkles,
-  Zap,
+  Download,
   Github,
+  Zap,
+  Flame,
+  CheckCircle2,
+  Repeat,
+  Shield,
+  Layers,
+  Award,
+  ChevronRight,
+  ArrowDown,
+  QrCode,
+  BookOpen
 } from "lucide-react";
 
 import {
@@ -18,17 +26,16 @@ import {
   homeShot,
   focusShot,
   oledShot,
+  calendarShot,
   questShot,
   profileShot,
-  calendarShot,
-  quickActionsShot,
 } from "@/lib/screens";
+
 import { NotebookBackground } from "@/components/klytaq/NotebookBackground";
 import { PhoneMockup } from "@/components/klytaq/PhoneMockup";
-import { DashboardPreview } from "@/components/klytaq/DashboardPreview";
-import { ScreenshotSlot } from "@/components/klytaq/ScreenshotSlot";
+import { WidgetShowcase } from "@/components/klytaq/WidgetShowcase";
 
-const TITLE = "Kletaq — Turn your syllabus into quests";
+const TITLE = "Kletaq — Turn Your Engineering Syllabus Into Quests";
 const DESCRIPTION =
   "Kletaq transforms VTU engineering subjects, modules, and backlogs into a visual learning journey. Built with interactive study calendar scheduling, an OLED battery-saving focus timer, and live home widgets.";
 
@@ -46,449 +53,438 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/` }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          name: "Kletaq",
-          description: DESCRIPTION,
-          applicationCategory: "EducationalApplication",
-          operatingSystem: "Android",
-          url: `${SITE_URL}/`,
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          name: "Kletaq",
-          url: `${SITE_URL}/`,
-        }),
-      },
-    ],
   }),
   component: Index,
 });
 
-const features = [
+const coreFeatures = [
   {
     icon: Map,
-    title: "Journey Mode",
-    body: "Your entire semester as an interactive quest roadmap. Modules unlock as you master concepts, so you always know what to study next.",
-    tag: "roadmap",
+    title: "Journey Quest Roadmap",
+    desc: "Your entire semester mapped as an unlocking skill tree. Each module breaks down into bite-sized concepts with verified past-year VTU exam questions.",
+    tag: "Roadmap",
   },
   {
     icon: Calendar,
-    title: "Study Calendar",
-    body: "Interactive month & agenda calendar views. Set custom notification reminder times and due dates for assignments, labs, and exams.",
-    tag: "schedule",
+    title: "Interactive Study Calendar",
+    desc: "Month & agenda schedule views. Set custom notification reminder alarms for assignments, internal assessments, labs, and VTU finals.",
+    tag: "Planner",
   },
   {
     icon: Moon,
-    title: "OLED Ambient Focus",
-    body: "Study for hours with zero battery drain. Pitch-black AMOLED sleep display keeps your timer running safely with an anti-burn-in clock.",
-    tag: "battery-saver",
+    title: "OLED Ambient Sleep Mode",
+    desc: "Study for hours with zero battery drain. Pitch-black AMOLED display keeps your timer active safely with an anti-burn-in clock.",
+    tag: "Battery Saver",
   },
   {
     icon: Smartphone,
-    title: "Live Panda Widget",
-    body: "Android Glance 2×1 & 4×2 home-screen widgets that atomically sync your streak, today's XP, and reactive panda mascot mood.",
-    tag: "home-widget",
-  },
-  {
-    icon: Swords,
-    title: "Smart Quests",
-    body: "Every syllabus topic broken into digestible quests with formulas, core concepts, and verified past-year VTU exam questions.",
-    tag: "quests",
-  },
-  {
-    icon: Sparkles,
-    title: "VTU 2025 Multi-Branch",
-    body: "Official 2025 Scheme curricula mapped for Computer Science (CSE), Information Science (ISE), IoT, and AIML branches.",
-    tag: "vtu-2025",
+    title: "Duolingo-Style Panda Widgets",
+    desc: "Glance 2x1 & 2x2 home screen widgets that atomically sync your streak count and react with expressive character moods throughout the day.",
+    tag: "Glance Widgets",
   },
   {
     icon: Repeat,
-    title: "Spaced Repetition",
-    body: "Automated review intervals prevent memory decay before finals, eliminating chaotic cramming sessions.",
-    tag: "review",
+    title: "Spaced Repetition Review",
+    desc: "Automated review intervals prevent memory decay before finals, eliminating chaotic last-minute all-nighter cramming sessions.",
+    tag: "Retention",
   },
   {
-    icon: Flame,
-    title: "XP & Daily Streaks",
-    body: "Earn experience points with every cleared concept, keep your streak alive, and build lasting engineering study habits.",
-    tag: "habits",
+    icon: Zap,
+    title: "Benchmark Native Performance",
+    desc: "Engineered in 100% Jetpack Compose with offline-first Room database. Instant 120Hz scrolling, zero ads, and zero telemetry tracking.",
+    tag: "Native Speed",
   },
 ];
 
-const shots = [
-  {
-    index: "01",
-    label: "Home dashboard",
-    caption: "Your clean daily study headquarters.",
-    src: homeShot,
-    items: ["Daily streak", "XP progression", "Continue learning", "Upcoming tasks", "Central + button"],
-  },
-  {
-    index: "02",
-    label: "Study calendar & agenda",
-    caption: "Interactive calendar scheduling with custom notification alarms.",
-    src: calendarShot,
-    items: ["Month view", "Daily agenda", "Due date selector", "Custom alarm time", "Quick checkoff"],
-  },
-  {
-    index: "03",
-    label: "Focus timer",
-    caption: "Distraction-free Pomodoro sessions tied directly to your syllabus topics.",
-    src: focusShot,
-    items: ["25:00 dial", "Session presets", "Topic binding", "XP rewards", "OLED Sleep toggle"],
-  },
-  {
-    index: "04",
-    label: "OLED Ambient Sleep Mode",
-    caption: "Study without battery drain using pitch-black AMOLED power-saving display.",
-    src: oledShot,
-    items: ["Pure black background", "Minimal glowing clock", "Anti-burn-in shift", "Tap anywhere to wake"],
-  },
-  {
-    index: "05",
-    label: "Smart quest & PYQs",
-    caption: "Every topic broken into actionable concepts, formulas, and VTU PYQs.",
-    src: questShot,
-    items: ["Theory lesson", "Concept breakdown", "VTU PYQ practice", "+80 XP completion"],
-  },
-  {
-    index: "06",
-    label: "Quick actions hub",
-    caption: "Start a focus timer, open the calendar, or create tasks in one clean tap.",
-    src: quickActionsShot,
-    items: ["Floating + menu", "Calendar shortcut", "New task creator", "Focus timer launcher"],
-  },
-  {
-    index: "07",
-    label: "Student profile & stats",
-    caption: "Track engineering study hours, achievement badges, and activity heatmaps.",
-    src: profileShot,
-    items: ["Study heatmap", "Weekly hours", "Badges & trophies", "Streak records", "Private goals"],
-  },
+const branches = [
+  { code: "CSE", name: "Computer Science & Engineering", icon: "💻" },
+  { code: "ISE", name: "Information Science & Engineering", icon: "⚡" },
+  { code: "AIML", name: "Artificial Intelligence & Machine Learning", icon: "🤖" },
+  { code: "IoT", name: "Internet of Things & Cyber Security", icon: "🌐" },
+];
+
+const screenShots = [
+  { id: "journey", label: "Quest Roadmap", src: heroShot, caption: "Semester 3 Mathematics concept skill tree" },
+  { id: "home", label: "Home Dashboard", src: homeShot, caption: "Daily streak, continuous study queue & upcoming tasks" },
+  { id: "calendar", label: "Study Calendar", src: calendarShot, caption: "Interactive calendar with custom alarm time selector" },
+  { id: "focus", label: "Focus Timer", src: focusShot, caption: "Dial timer tied directly to active syllabus topics" },
+  { id: "oled", label: "OLED Ambient", src: oledShot, caption: "True pitch-black battery saving sleep screen" },
+  { id: "quest", label: "Concept Details", src: questShot, caption: "Formula sheets, definitions and VTU PYQ questions" },
+  { id: "profile", label: "Profile & Stats", src: profileShot, caption: "XP progression milestones and badge achievements" },
 ];
 
 function Index() {
+  const [activeScreenTab, setActiveScreenTab] = useState("journey");
+  const currentScreen = screenShots.find((s) => s.id === activeScreenTab) || screenShots[0];
+
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-[#090D16] text-[#F8FAFC]">
       <NotebookBackground />
 
-      {/* ---------- Nav ---------- */}
-      <header className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-5 sm:px-6">
-        <a href="#top" className="flex min-w-0 items-center gap-2.5">
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border-[1.5px] border-border font-hand text-xl leading-none">
-            K
-          </span>
-          <span className="truncate font-hand text-2xl leading-none">Kletaq</span>
-        </a>
-        <nav className="flex shrink-0 items-center gap-2 sm:gap-4">
-          <a
-            href="https://github.com/Akashkatageri/kletaq"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden font-mono text-xs text-muted-foreground transition-colors hover:text-primary sm:inline-flex items-center gap-1.5"
-          >
-            <Github className="h-3.5 w-3.5" />
-            github
+      {/* ---------- Glass Navbar ---------- */}
+      <header className="sticky top-0 z-50 glass-panel border-b border-white/5">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
+          <a href="#top" className="flex items-center gap-2.5 group">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 font-extrabold text-lg shadow-[0_0_15px_rgba(16,185,129,0.4)] group-hover:scale-105 transition-transform">
+              K
+            </span>
+            <span className="font-extrabold tracking-tight text-xl text-white">
+              Kletaq
+            </span>
+            <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              v1.2
+            </span>
           </a>
-          <a
-            href="#features"
-            className="hidden font-mono text-xs text-muted-foreground transition-colors hover:text-primary sm:inline"
-          >
-            features
-          </a>
-          <a
-            href="#showcase"
-            className="hidden font-mono text-xs text-muted-foreground transition-colors hover:text-primary sm:inline"
-          >
-            showcase
-          </a>
-          <a
-            href="#screens"
-            className="hidden font-mono text-xs text-muted-foreground transition-colors hover:text-primary sm:inline"
-          >
-            screens
-          </a>
-          <a
-            href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
-            download="kletaq.apk"
-            className="ink-border inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 font-mono text-xs font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
-          >
-            <Download className="h-3.5 w-3.5" />
-            Download APK
-          </a>
-        </nav>
+
+          <nav className="flex items-center gap-4 sm:gap-6">
+            <a href="#features" className="hidden md:inline-block text-xs font-mono text-slate-400 hover:text-white transition-colors">
+              Features
+            </a>
+            <a href="#widgets" className="hidden md:inline-block text-xs font-mono text-slate-400 hover:text-emerald-400 transition-colors">
+              Mascot Widgets
+            </a>
+            <a href="#screens" className="hidden md:inline-block text-xs font-mono text-slate-400 hover:text-white transition-colors">
+              Screens
+            </a>
+            <a
+              href="https://github.com/Akashkatageri/kletaq"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-mono text-slate-400 hover:text-white inline-flex items-center gap-1.5 transition-colors"
+            >
+              <Github className="h-4 w-4" />
+              <span className="hidden sm:inline">GitHub</span>
+            </a>
+            <a
+              href="/kletaq.apk"
+              download="kletaq.apk"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 px-4 py-2 text-xs font-mono font-bold text-slate-950 shadow-[0_0_20px_-3px_rgba(16,185,129,0.5)] transition-all hover:-translate-y-0.5"
+            >
+              <Download className="h-3.5 w-3.5" />
+              Download APK
+            </a>
+          </nav>
+        </div>
       </header>
 
       <main id="top">
-        {/* ---------- Hero ---------- */}
-        <section className="mx-auto grid w-full max-w-6xl items-center gap-8 px-4 pt-6 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-10 lg:pt-10">
-          <div className="min-w-0">
-            {/* What's New Tag */}
-            <div className="mb-4 inline-flex flex-wrap items-center gap-2 rounded-full border-[1.5px] border-border bg-card px-3 py-1 text-xs shadow-[0_1px_0_0_var(--ink)]">
-              <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-              <span className="font-mono text-[11px] font-bold text-primary uppercase tracking-wide">
-                v1.1 Release:
-              </span>
-              <span className="font-mono text-[11px] text-muted-foreground">
-                Calendar • OLED Ambient Focus • VTU 2025 • Live Panda Widgets
-              </span>
-            </div>
-
-            <h1 className="mt-3 font-hand text-5xl leading-[0.95] sm:text-6xl lg:text-7xl">
-              Turn your syllabus into{" "}
-              <span className="scribble-underline text-primary">quests.</span>
-            </h1>
-
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {DESCRIPTION}
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a
-                href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
-                download="kletaq.apk"
-                className="ink-border inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
-              >
-                <Download className="h-4 w-4" />
-                Download Android APK (v1.1)
-              </a>
-              <a
-                href="https://github.com/Akashkatageri/kletaq"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ink-border inline-flex items-center gap-2 rounded-xl bg-card px-4 py-2.5 text-sm font-semibold shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
-              >
-                <Github className="h-4 w-4" />
-                GitHub
-              </a>
-              <a
-                href="#screens"
-                className="ink-border rounded-xl bg-card px-5 py-2.5 text-sm font-semibold shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
-              >
-                Explore Screens
-              </a>
-            </div>
-
-            <p className="mt-3 font-mono text-xs text-muted-foreground">
-              Direct download • Benchmark Edition (~22.8 MB) • Android 7.0+ • Free
-            </p>
-
-            {/* Desktop QR Scan Card */}
-            <div className="mt-6 flex max-w-md items-center gap-3.5 rounded-2xl border-[1.5px] border-border bg-card p-3 shadow-[0_2px_0_0_var(--ink)]">
-              <img
-                src="/download-qr.png"
-                alt="Scan to download Kletaq APK"
-                className="h-16 w-16 shrink-0 rounded-lg border border-border bg-white p-1"
-              />
-              <div className="min-w-0">
-                <p className="font-hand text-lg leading-tight">Browsing on a PC or Laptop?</p>
-                <p className="font-mono text-[11px] text-muted-foreground">
-                  Scan this QR code with your phone camera to download directly.
-                </p>
+        {/* ---------- Hero Section ---------- */}
+        <section className="mx-auto w-full max-w-6xl px-4 pt-12 pb-20 sm:px-6 lg:pt-16">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              {/* Release Pill */}
+              <div className="inline-flex items-center gap-2 rounded-full glass-panel px-3.5 py-1.5 text-xs text-slate-300 border border-white/10">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="font-mono text-emerald-400 font-bold uppercase tracking-wider text-[11px]">
+                  v1.2 Benchmark Edition:
+                </span>
+                <span className="font-mono text-slate-400 text-[11px] hidden sm:inline">
+                  Dynamic Panda Widgets • VTU 2025 Scheme
+                </span>
               </div>
+
+              {/* Main Headline */}
+              <h1 className="mt-5 text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
+                Turn your syllabus into{" "}
+                <span className="text-gradient-emerald">quests.</span>
+              </h1>
+
+              {/* Subtitle */}
+              <p className="mt-5 text-base sm:text-lg text-slate-400 leading-relaxed max-w-xl">
+                Transform complex engineering modules and backlog anxiety into an interactive visual roadmap. Complete with live Duolingo-style panda desktop widgets, battery-saving OLED focus timer, and smart study calendar scheduling.
+              </p>
+
+              {/* CTA Action Buttons */}
+              <div className="mt-8 flex flex-wrap items-center gap-3.5">
+                <a
+                  href="/kletaq.apk"
+                  download="kletaq.apk"
+                  className="inline-flex items-center gap-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 px-6 py-3.5 text-sm font-bold text-slate-950 shadow-[0_0_25px_-5px_rgba(16,185,129,0.6)] transition-all hover:-translate-y-0.5"
+                >
+                  <Download className="h-4 w-4" />
+                  Download Android APK
+                  <span className="px-2 py-0.5 rounded-md bg-slate-950/20 text-slate-950 font-mono text-xs font-semibold">
+                    ~32.4 MB
+                  </span>
+                </a>
+                <a
+                  href="https://github.com/Akashkatageri/kletaq"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl glass-panel hover:bg-slate-800 px-5 py-3.5 text-sm font-semibold text-slate-200 border border-white/10 transition-all hover:-translate-y-0.5"
+                >
+                  <Github className="h-4 w-4" />
+                  View on GitHub
+                </a>
+                <a
+                  href="#widgets"
+                  className="inline-flex items-center gap-1.5 rounded-xl px-4 py-3.5 text-sm font-semibold text-slate-400 hover:text-white transition-colors"
+                >
+                  Live Widgets
+                  <ChevronRight className="h-4 w-4" />
+                </a>
+              </div>
+
+              {/* Quick Specs */}
+              <p className="mt-3 text-xs font-mono text-slate-500">
+                Direct APK download • Android 7.0+ • 100% Free & Open-Source • Zero Ads
+              </p>
+
+              {/* Key Highlights Metrics */}
+              <dl className="mt-10 grid grid-cols-3 gap-3 max-w-md">
+                <div className="rounded-2xl glass-panel p-3.5 border border-white/5">
+                  <dt className="text-2xl font-extrabold text-emerald-400 font-mono">4</dt>
+                  <dd className="text-xs text-slate-400 font-mono mt-0.5">VTU branches</dd>
+                </div>
+                <div className="rounded-2xl glass-panel p-3.5 border border-white/5">
+                  <dt className="text-2xl font-extrabold text-white font-mono">100%</dt>
+                  <dd className="text-xs text-slate-400 font-mono mt-0.5">Offline-first</dd>
+                </div>
+                <div className="rounded-2xl glass-panel p-3.5 border border-white/5">
+                  <dt className="text-2xl font-extrabold text-emerald-400 font-mono">0</dt>
+                  <dd className="text-xs text-slate-400 font-mono mt-0.5">Distractions</dd>
+                </div>
+              </dl>
             </div>
 
-            {/* Stats */}
-            <dl className="mt-6 grid max-w-md grid-cols-3 gap-3">
-              {[
-                ["4", "VTU branches"],
-                ["1", "map per semester"],
-                ["0", "distractions"],
-              ].map(([v, k]) => (
-                <div key={k} className="paper-card-flat p-3">
-                  <dt className="font-mono text-2xl text-primary">{v}</dt>
-                  <dd className="font-mono text-[11px] text-muted-foreground">{k}</dd>
-                </div>
-              ))}
-            </dl>
+            {/* Hero Phone Showcase */}
+            <div className="relative">
+              <PhoneMockup />
+            </div>
           </div>
-
-          <PhoneMockup />
         </section>
 
-        {/* ---------- Features ---------- */}
-        <section id="features" className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
-          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
-            <div className="min-w-0">
-              <p className="font-mono text-[11px] tracking-widest uppercase text-muted-foreground">
-                02 — what's inside
-              </p>
-              <h2 className="mt-2 font-hand text-4xl leading-none sm:text-5xl">
-                Eight tools for every engineer
-              </h2>
-            </div>
-            <span className="hidden shrink-0 font-hand text-xl text-muted-foreground sm:block">
-              ✎ notebook essentials
+        {/* ---------- Interactive Mascot Widgets Section ---------- */}
+        <WidgetShowcase />
+
+        {/* ---------- Core Features Bento Grid ---------- */}
+        <section id="features" className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6">
+          <div className="max-w-2xl">
+            <span className="font-mono text-xs font-semibold text-emerald-400 uppercase tracking-widest">
+              Engineered For Focus
             </span>
+            <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+              Six tools crafted for serious engineering students.
+            </h2>
+            <p className="mt-3 text-slate-400 text-sm sm:text-base">
+              No generic flashcard gimmicks or AI hallucinations. Everything is built around actual VTU syllabus modules, past-year questions, and proven cognitive science.
+            </p>
           </div>
 
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((f) => (
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {coreFeatures.map((f) => (
               <article
                 key={f.title}
-                className="paper-card group flex flex-col justify-between p-5 transition-transform hover:-translate-y-1"
+                className="rounded-3xl glass-panel-elevated glass-panel-hover p-6 border border-white/10 flex flex-col justify-between"
               >
                 <div>
-                  <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3">
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border-[1.5px] border-border bg-card">
-                      <f.icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                      <f.icon className="h-5 w-5" />
                     </span>
-                    <h3 className="truncate font-hand text-2xl leading-none">{f.title}</h3>
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-slate-800 text-slate-400 border border-white/5">
+                      {f.tag}
+                    </span>
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
+                  <h3 className="mt-5 text-xl font-bold text-white tracking-tight">
+                    {f.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-400 leading-relaxed">
+                    {f.desc}
+                  </p>
                 </div>
-                <p className="mt-4 font-mono text-[10px] tracking-widest uppercase text-primary">
-                  #{f.tag}
-                </p>
               </article>
             ))}
           </div>
         </section>
 
-        {/* ---------- Showcase ---------- */}
-        <section id="showcase" className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
-          <p className="font-mono text-[11px] tracking-widest uppercase text-muted-foreground">
-            03 — showcase
-          </p>
-          <h2 className="mt-2 max-w-2xl font-hand text-4xl leading-none sm:text-5xl">
-            The dashboard & schedule, drawn in ink
-          </h2>
-          <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
-            No clutter. Today's quests, your study calendar agenda, and real-time live Panda
-            companion widget sync.
-          </p>
+        {/* ---------- VTU 2025 Multi-Branch Support ---------- */}
+        <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
+          <div className="rounded-3xl glass-panel p-8 sm:p-12 border border-white/10">
+            <div className="max-w-xl">
+              <span className="font-mono text-xs font-semibold text-emerald-400 uppercase tracking-widest">
+                Official Scheme Support
+              </span>
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight">
+                Mapped to VTU 2025 Syllabus
+              </h2>
+              <p className="mt-2 text-slate-400 text-sm">
+                Pre-loaded with official branch curricula, course codes (BCS301, BCS302, BCS303, BCS304), modules, and verified pyq questions.
+              </p>
+            </div>
 
-          <div className="mt-8">
-            <DashboardPreview />
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {branches.map((b) => (
+                <div
+                  key={b.code}
+                  className="rounded-2xl bg-slate-900/70 p-4 border border-white/5 hover:border-emerald-500/30 transition-colors"
+                >
+                  <span className="text-2xl">{b.icon}</span>
+                  <p className="mt-2 font-mono font-bold text-lg text-emerald-400">{b.code}</p>
+                  <p className="text-xs text-slate-300 mt-1">{b.name}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* ---------- Screens ---------- */}
+        {/* ---------- Interactive Screenshots Showcase ---------- */}
         <section id="screens" className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6">
-          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
-            <div className="min-w-0">
-              <p className="font-mono text-[11px] tracking-widest uppercase text-muted-foreground">
-                04 — screens
-              </p>
-              <h2 className="mt-2 font-hand text-4xl leading-none sm:text-5xl lg:text-6xl">
-                Inside the app
-              </h2>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                Pinned clippings from real engineering semesters — the journey roadmap, the new
-                interactive calendar, and the OLED ambient focus timer.
-              </p>
-            </div>
-            <span className="hidden shrink-0 rotate-2 font-hand text-xl text-muted-foreground sm:block">
-              pinned 📌
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="font-mono text-xs font-semibold text-emerald-400 uppercase tracking-widest">
+              In-App Tour
             </span>
+            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight">
+              Explore the Kletaq Interface
+            </h2>
+            <p className="mt-2 text-slate-400 text-sm">
+              Take a look inside the actual Android application running in real production mode.
+            </p>
           </div>
 
-          {/* Hero clipping — journey map */}
-          <div className="mt-12 grid items-center gap-10 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-16">
-            <div className="relative mx-auto w-full max-w-[300px]">
-              <span
-                aria-hidden
-                className="absolute -top-2 left-1/2 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-[1.5px] border-border bg-primary shadow-[0_1px_0_0_var(--ink)]"
-              />
-              <figure className="paper-card -rotate-1 p-2.5">
-                <img
-                  src={heroShot}
-                  alt="Kletaq journey map for VTU Engineering"
-                  loading="lazy"
-                  decoding="async"
-                  className="aspect-[9/20] w-full rounded-[12px] object-cover object-top"
-                />
-              </figure>
-            </div>
-
-            <div className="min-w-0">
-              <span className="ink-border inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-[10px] tracking-widest uppercase">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                core roadmap
-              </span>
-              <h3 className="mt-4 font-hand text-4xl leading-none sm:text-5xl">
-                The <span className="text-primary">journey map</span>
-              </h3>
-              <p className="mt-4 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Your entire semester mapped as an interactive path. Clear concepts, unlock next
-                chapters, and master modules without feeling overwhelmed.
-              </p>
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {[
-                  "VTU 2025 Scheme",
-                  "Computer Science (CSE)",
-                  "Information Science (ISE)",
-                  "IoT & AIML",
-                  "BCS301 Mathematics",
-                  "BCS304 Data Structures",
-                ].map((t) => (
-                  <li
-                    key={t}
-                    className="ink-border rounded-full bg-card px-3 py-1 font-mono text-[11px] text-muted-foreground"
-                  >
-                    {t}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 font-hand text-xl text-muted-foreground">
-                ✦ one map, one semester, zero guesswork
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-16 h-px w-full bg-border/25" />
-
-          {/* Remaining clippings */}
-          <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-            {shots.map((s) => (
-              <ScreenshotSlot key={s.label} {...s} />
+          {/* Screen Tabs */}
+          <div className="mt-8 flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
+            {screenShots.map((s) => (
+              <button
+                key={s.id}
+                onClick={() => setActiveScreenTab(s.id)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all border ${
+                  activeScreenTab === s.id
+                    ? "bg-white text-slate-950 border-white shadow-lg"
+                    : "bg-slate-900/60 text-slate-400 border-white/5 hover:text-white hover:bg-slate-800"
+                }`}
+              >
+                {s.label}
+              </button>
             ))}
+          </div>
+
+          {/* Screenshot Display Frame */}
+          <div className="mt-8 mx-auto max-w-xl rounded-3xl glass-panel-elevated p-4 sm:p-6 border border-white/10">
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+              <img
+                src={currentScreen.src}
+                alt={currentScreen.caption}
+                className="w-full aspect-[9/16] object-cover object-top select-none"
+              />
+            </div>
+            <p className="mt-3 text-center text-xs font-mono text-slate-400">
+              {currentScreen.caption}
+            </p>
+          </div>
+        </section>
+
+        {/* ---------- Direct Download & QR Code Section ---------- */}
+        <section id="download" className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6">
+          <div className="rounded-3xl glass-panel-elevated p-8 sm:p-12 border border-white/10 relative overflow-hidden">
+            {/* Background Light Haze */}
+            <div
+              aria-hidden
+              className="absolute -right-20 -bottom-20 h-96 w-96 rounded-full bg-emerald-500/15 blur-3xl"
+            />
+
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-center">
+              <div>
+                <span className="font-mono text-xs font-semibold text-emerald-400 uppercase tracking-widest">
+                  Ready to Start?
+                </span>
+                <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight">
+                  Download Kletaq for Android
+                </h2>
+                <p className="mt-3 text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Get the official Benchmark build directly from Cloudflare CDN or GitHub Releases. Includes in-app OTA updates via Settings &gt; Check for Updates.
+                </p>
+
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <a
+                    href="/kletaq.apk"
+                    download="kletaq.apk"
+                    className="inline-flex items-center gap-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 px-6 py-3.5 text-sm font-bold text-slate-950 shadow-[0_0_25px_-5px_rgba(16,185,129,0.6)] transition-all hover:-translate-y-0.5"
+                  >
+                    <Download className="h-4 w-4" />
+                    Download APK Directly
+                    <span className="px-2 py-0.5 rounded-md bg-slate-950/20 text-slate-950 font-mono text-xs font-semibold">
+                      ~32.4 MB
+                    </span>
+                  </a>
+                  <a
+                    href="https://github.com/Akashkatageri/kletaq/releases/tag/Latest"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl glass-panel hover:bg-slate-800 px-5 py-3.5 text-sm font-semibold text-slate-200 border border-white/10 transition-all hover:-translate-y-0.5"
+                  >
+                    <Github className="h-4 w-4" />
+                    GitHub Release
+                  </a>
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-4 text-xs font-mono text-slate-400">
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
+                    <span>Android 7.0+ (Nougat through 15)</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
+                    <span>SHA-256 Verified Binary</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop QR Scan Card */}
+              <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-900/80 border border-white/10 text-center">
+                <div className="p-3 bg-white rounded-2xl shadow-xl">
+                  <img
+                    src="/download-qr.png"
+                    alt="Scan QR Code to download Kletaq APK"
+                    className="h-36 w-36 object-contain"
+                  />
+                </div>
+                <p className="mt-4 font-semibold text-sm text-white flex items-center gap-1.5">
+                  <QrCode className="h-4 w-4 text-emerald-400" />
+                  Visiting on your Computer?
+                </p>
+                <p className="text-xs text-slate-400 mt-1 max-w-xs">
+                  Point your phone camera at this QR code to download the APK directly to your device.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
       </main>
 
-      {/* ---------- Footer ---------- */}
-      <footer className="mx-auto w-full max-w-6xl px-4 pb-12 sm:px-6">
-        <div className="paper-card flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6">
-          <div className="min-w-0">
-            <p className="font-hand text-2xl leading-tight">
-              Kletaq — Turn your syllabus into quests.
-            </p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Built by a student, for engineering students.
-            </p>
+      {/* ---------- Modern Clean Footer ---------- */}
+      <footer className="border-t border-white/5 bg-[#070A11] py-12">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 font-bold text-sm">
+              K
+            </span>
+            <span className="font-extrabold text-white text-base">Kletaq</span>
+            <span className="text-xs text-slate-500 font-mono">
+              • Built for engineering students by Akash Katageri
+            </span>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
+
+          <div className="flex items-center gap-6 text-xs font-mono text-slate-400">
             <a
               href="https://github.com/Akashkatageri/kletaq"
               target="_blank"
               rel="noopener noreferrer"
-              className="ink-border inline-flex items-center gap-1.5 rounded-xl bg-card px-3.5 py-2 font-mono text-xs font-semibold shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+              className="hover:text-emerald-400 transition-colors"
             >
-              <Github className="h-3.5 w-3.5" />
-              GitHub
+              GitHub Repository
             </a>
             <a
-              href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
-              download="kletaq.apk"
-              className="ink-border inline-flex items-center gap-1.5 rounded-xl bg-primary px-3.5 py-2 font-mono text-xs font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+              href="https://github.com/Akashkatageri/kletaq/blob/master/LICENSE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-emerald-400 transition-colors"
             >
-              <Download className="h-3.5 w-3.5" />
-              Download APK
+              MIT License
             </a>
-            <span className="shrink-0 font-mono text-[10px] tracking-widest uppercase text-muted-foreground">
-              © {new Date().getFullYear()} Kletaq
-            </span>
+            <a href="#top" className="hover:text-white transition-colors">
+              Back to Top ↑
+            </a>
           </div>
         </div>
       </footer>

@@ -1,103 +1,73 @@
-﻿import { Zap, Flame, Calendar, Moon } from "lucide-react";
-
-import { heroShot, homeShot } from "@/lib/screens";
-
-type Card = { Icon: typeof Zap; label: string; accent?: boolean };
-
-const leftCards: [Card, Card] = [
-  { Icon: Zap, label: "840 XP", accent: true },
-  { Icon: Calendar, label: "Calendar: 3 tasks" },
-];
-
-const rightCards: [Card, Card] = [
-  { Icon: Flame, label: "12-day streak" },
-  { Icon: Moon, label: "OLED Ambient Active" },
-];
-
-function StatCard({ Icon, label, accent }: Card) {
-  return (
-    <span
-      className={`inline-flex items-center gap-1.5 rounded-xl border-[1.5px] border-border bg-card px-2.5 py-1.5 font-mono text-[10px] leading-none shadow-[0_2px_0_0_var(--ink)] md:px-2 md:py-1.5 md:text-[10px] lg:px-3 lg:py-2 lg:text-[12px] ${
-        accent ? "text-primary font-bold" : ""
-      }`}
-    >
-      <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} />
-      <span className="whitespace-nowrap">{label}</span>
-    </span>
-  );
-}
+import { Zap, Flame, Shield, Sparkles } from "lucide-react";
+import { heroShot } from "@/lib/screens";
 
 /**
- * Hero visual: the Journey screenshot pinned in a phone frame with the home
- * dashboard tucked behind it, flanked by stat cards laid out on a grid so
- * nothing ever overlaps the phone screen.
+ * Precision Titanium Smartphone Mockup displaying the live VTU 2025 Journey Map.
  */
 export function PhoneMockup() {
   return (
-    <div className="mx-auto w-full max-w-[560px]">
-      {/* note above the phone */}
-      <p className="mb-3 flex items-baseline justify-between gap-4 px-1">
-        <span className="-rotate-2 font-hand text-lg leading-none text-muted-foreground">
-          VTU 2025 Scheme • Sem 3
-        </span>
-        <span className="rotate-2 text-right font-hand text-lg leading-none text-primary">
-          Module 1 complete ✓
-        </span>
-      </p>
+    <div className="relative mx-auto w-full max-w-[420px] lg:max-w-[460px]">
+      {/* Subtle Ambient Backlight */}
+      <div
+        aria-hidden
+        className="absolute -inset-4 -z-10 rounded-[50px] bg-gradient-to-tr from-emerald-500/25 via-cyan-500/15 to-indigo-500/20 blur-2xl opacity-60"
+      />
 
-      {/* top row: cards sit above the phone, outside its bounds */}
-      <div className="mb-6 hidden items-center justify-between gap-6 sm:flex">
-        <StatCard {...leftCards[0]} />
-        <StatCard {...rightCards[0]} />
-      </div>
-
-      {/* phone */}
-      <div className="relative mx-auto w-full max-w-[300px] sm:max-w-[340px]">
-        <div
-          aria-hidden
-          className="absolute inset-x-6 top-4 -z-10 -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)]"
-        >
-          <img
-            src={homeShot}
-            alt="Kletaq home dashboard"
-            loading="lazy"
-            decoding="async"
-            className="aspect-[9/13] w-full object-cover object-top opacity-55"
-          />
+      {/* Floating Badge: Streak */}
+      <div className="absolute -top-3 -right-2 z-20 hidden sm:flex items-center gap-2 rounded-2xl glass-panel px-3.5 py-2 text-xs font-mono font-semibold text-white shadow-xl border border-white/10 glow-emerald-sm">
+        <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 text-sm">
+          🔥
+        </span>
+        <div>
+          <p className="text-[10px] uppercase tracking-wider text-slate-400 font-normal">Active Streak</p>
+          <p className="text-emerald-400 font-bold leading-none">12 Days Lit</p>
         </div>
+      </div>
 
-        <figure className="paper-card relative rotate-1 rounded-[32px] p-2.5">
-          <div className="ink-border overflow-hidden rounded-[24px] bg-card">
-            <img
-              src={heroShot}
-              alt="Kletaq journey map — Semester 3, Partial Differentiation, Total Derivative, Jacobians"
-              className="aspect-[9/19] w-full object-cover object-top"
-              decoding="async"
-            />
+      {/* Floating Badge: XP */}
+      <div className="absolute top-28 -left-6 z-20 hidden sm:flex items-center gap-2 rounded-2xl glass-panel px-3.5 py-2 text-xs font-mono font-semibold text-white shadow-xl border border-white/10">
+        <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-amber-500/20 text-amber-400">
+          <Zap className="h-3.5 w-3.5 fill-amber-400" />
+        </span>
+        <div>
+          <p className="text-[10px] uppercase tracking-wider text-slate-400 font-normal">Session XP</p>
+          <p className="text-amber-300 font-bold leading-none">+240 XP Earned</p>
+        </div>
+      </div>
+
+      {/* Smartphone Device Frame */}
+      <div className="relative rounded-[44px] p-2.5 bg-gradient-to-b from-slate-700/80 via-slate-800/90 to-slate-950 border border-white/15 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)]">
+        {/* Inner Titanium Bezel */}
+        <div className="relative overflow-hidden rounded-[36px] bg-[#090D16] border border-black/60 shadow-inner">
+          {/* Dynamic Island Pill */}
+          <div className="absolute top-2.5 left-1/2 -translate-x-1/2 z-30 h-4 w-20 rounded-full bg-black/90 flex items-center justify-end px-2 gap-1.5 border border-white/5">
+            <span className="h-2 w-2 rounded-full bg-slate-900 border border-slate-700" />
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500/70" />
           </div>
-        </figure>
+
+          {/* Screenshot Display */}
+          <img
+            src={heroShot}
+            alt="Kletaq VTU Journey Map - Semester 3 Mathematics Quests"
+            className="w-full aspect-[9/19] object-cover object-top select-none"
+            loading="eager"
+            decoding="async"
+          />
+
+          {/* Bottom Nav Home Bar */}
+          <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 z-30 h-1 w-28 rounded-full bg-white/30" />
+        </div>
       </div>
 
-      {/* bottom row (desktop/tablet) */}
-      <div className="mt-6 hidden items-center justify-between gap-6 sm:flex">
-        <StatCard {...leftCards[1]} />
-        <StatCard {...rightCards[1]} />
+      {/* Bottom Info Tag */}
+      <div className="mt-4 flex items-center justify-center gap-2 text-center text-xs font-mono text-slate-400">
+        <span className="inline-flex items-center gap-1 text-emerald-400">
+          <Sparkles className="h-3.5 w-3.5" />
+          VTU 2025 Scheme
+        </span>
+        <span>•</span>
+        <span>CSE / ISE / AIML / IoT</span>
       </div>
-
-      {/* stacked cards (mobile) */}
-      <div className="mt-6 flex flex-wrap justify-center gap-3 sm:hidden">
-        {[...leftCards, ...rightCards].map((c) => (
-          <StatCard key={c.label} {...c} />
-        ))}
-      </div>
-
-      <p className="mt-4 px-1 font-hand text-lg leading-none text-center text-muted-foreground">
-        CSE • ISE • IoT • AIML Branches Supported
-      </p>
-
-      <p className="mt-2 text-center font-mono text-[11px] leading-relaxed text-muted-foreground">
-        VTU 2025 Scheme · BCS301 / BCS302 / BCS303 / BCS304
-      </p>
     </div>
   );
 }
