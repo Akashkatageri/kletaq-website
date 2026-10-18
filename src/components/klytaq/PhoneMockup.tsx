@@ -19,7 +19,9 @@ export function PhoneMockup() {
           🔥
         </span>
         <div>
-          <p className="text-[10px] uppercase tracking-wider text-slate-400 font-normal">Active Streak</p>
+          <p className="text-[10px] uppercase tracking-wider text-slate-400 font-normal">
+            Active Streak
+          </p>
           <p className="text-emerald-400 font-bold leading-none">12 Days Lit</p>
         </div>
       </div>
@@ -30,7 +32,9 @@ export function PhoneMockup() {
           <Zap className="h-3.5 w-3.5 fill-amber-400" />
         </span>
         <div>
-          <p className="text-[10px] uppercase tracking-wider text-slate-400 font-normal">Session XP</p>
+          <p className="text-[10px] uppercase tracking-wider text-slate-400 font-normal">
+            Session XP
+          </p>
           <p className="text-amber-300 font-bold leading-none">+240 XP Earned</p>
         </div>
       </div>

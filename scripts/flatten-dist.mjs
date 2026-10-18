@@ -23,4 +23,6 @@ await rm(path.join(dist, "server"), { recursive: true, force: true });
 // Removing it from dist ensures Cloudflare Pages asset upload succeeds.
 await rm(path.join(dist, "kletaq.apk"), { force: true });
 
-console.log("[flatten-dist] static output ready in dist/ (large assets excluded for CF Pages 25MB limit)");
+console.log(
+  "[flatten-dist] static output ready in dist/ (large assets excluded for CF Pages 25MB limit)",
+);

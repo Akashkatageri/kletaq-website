@@ -17,8 +17,8 @@ Kletaq transforms subjects, modules, and backlogs into a visual learning journey
 
 ## Screenshots
 
-| Home | Focus Timer | Quest Overview |
-|------|------|------|
+| Home                                          | Focus Timer                                 | Quest Overview                                 |
+| --------------------------------------------- | ------------------------------------------- | ---------------------------------------------- |
 | ![Home](public/screens/2.home_dashboard.webp) | ![Focus](public/screens/3.focus_timer.webp) | ![Quest](public/screens/4.quest_overview.webp) |
 
 ## Philosophy

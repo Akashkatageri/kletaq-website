@@ -18,7 +18,7 @@ import {
   ChevronRight,
   ArrowDown,
   QrCode,
-  BookOpen
+  BookOpen,
 } from "lucide-react";
 
 import {
@@ -104,18 +104,53 @@ const branches = [
 ];
 
 const screenShots = [
-  { id: "journey", label: "Quest Roadmap", src: heroShot, caption: "Semester 3 Mathematics concept skill tree" },
-  { id: "home", label: "Home Dashboard", src: homeShot, caption: "Daily streak, continuous study queue & upcoming tasks" },
-  { id: "calendar", label: "Study Calendar", src: calendarShot, caption: "Interactive calendar with custom alarm time selector" },
-  { id: "focus", label: "Focus Timer", src: focusShot, caption: "Dial timer tied directly to active syllabus topics" },
-  { id: "oled", label: "OLED Ambient", src: oledShot, caption: "True pitch-black battery saving sleep screen" },
-  { id: "quest", label: "Concept Details", src: questShot, caption: "Formula sheets, definitions and VTU PYQ questions" },
-  { id: "profile", label: "Profile & Stats", src: profileShot, caption: "XP progression milestones and badge achievements" },
+  {
+    id: "journey",
+    label: "Quest Roadmap",
+    src: heroShot,
+    caption: "Semester 3 Mathematics concept skill tree",
+  },
+  {
+    id: "home",
+    label: "Home Dashboard",
+    src: homeShot,
+    caption: "Daily streak, continuous study queue & upcoming tasks",
+  },
+  {
+    id: "calendar",
+    label: "Study Calendar",
+    src: calendarShot,
+    caption: "Interactive calendar with custom alarm time selector",
+  },
+  {
+    id: "focus",
+    label: "Focus Timer",
+    src: focusShot,
+    caption: "Dial timer tied directly to active syllabus topics",
+  },
+  {
+    id: "oled",
+    label: "OLED Ambient",
+    src: oledShot,
+    caption: "True pitch-black battery saving sleep screen",
+  },
+  {
+    id: "quest",
+    label: "Concept Details",
+    src: questShot,
+    caption: "Formula sheets, definitions and VTU PYQ questions",
+  },
+  {
+    id: "profile",
+    label: "Profile & Stats",
+    src: profileShot,
+    caption: "XP progression milestones and badge achievements",
+  },
 ];
 
 function Index() {
   const [activeScreenTab, setActiveScreenTab] = useState("journey");
-  const currentScreen = screenShots.find((s) => s.id === activeScreenTab) || screenShots[0];
+  const currentScreen = (screenShots.find((s) => s.id === activeScreenTab) ?? screenShots[0])!;
 
   return (
     <div className="relative min-h-screen bg-[#090D16] text-[#F8FAFC]">
@@ -128,22 +163,29 @@ function Index() {
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 font-extrabold text-lg shadow-[0_0_15px_rgba(16,185,129,0.4)] group-hover:scale-105 transition-transform">
               K
             </span>
-            <span className="font-extrabold tracking-tight text-xl text-white">
-              Kletaq
-            </span>
+            <span className="font-extrabold tracking-tight text-xl text-white">Kletaq</span>
             <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
               v1.2
             </span>
           </a>
 
           <nav className="flex items-center gap-4 sm:gap-6">
-            <a href="#features" className="hidden md:inline-block text-xs font-mono text-slate-400 hover:text-white transition-colors">
+            <a
+              href="#features"
+              className="hidden md:inline-block text-xs font-mono text-slate-400 hover:text-white transition-colors"
+            >
               Features
             </a>
-            <a href="#widgets" className="hidden md:inline-block text-xs font-mono text-slate-400 hover:text-emerald-400 transition-colors">
+            <a
+              href="#widgets"
+              className="hidden md:inline-block text-xs font-mono text-slate-400 hover:text-emerald-400 transition-colors"
+            >
               Mascot Widgets
             </a>
-            <a href="#screens" className="hidden md:inline-block text-xs font-mono text-slate-400 hover:text-white transition-colors">
+            <a
+              href="#screens"
+              className="hidden md:inline-block text-xs font-mono text-slate-400 hover:text-white transition-colors"
+            >
               Screens
             </a>
             <a
@@ -185,13 +227,14 @@ function Index() {
 
               {/* Main Headline */}
               <h1 className="mt-5 text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
-                Turn your syllabus into{" "}
-                <span className="text-gradient-emerald">quests.</span>
+                Turn your syllabus into <span className="text-gradient-emerald">quests.</span>
               </h1>
 
               {/* Subtitle */}
               <p className="mt-5 text-base sm:text-lg text-slate-400 leading-relaxed max-w-xl">
-                Transform complex engineering modules and backlog anxiety into an interactive visual roadmap. Complete with live Duolingo-style panda desktop widgets, battery-saving OLED focus timer, and smart study calendar scheduling.
+                Transform complex engineering modules and backlog anxiety into an interactive visual
+                roadmap. Complete with live Duolingo-style panda desktop widgets, battery-saving
+                OLED focus timer, and smart study calendar scheduling.
               </p>
 
               {/* CTA Action Buttons */}
@@ -267,7 +310,8 @@ function Index() {
               Six tools crafted for serious engineering students.
             </h2>
             <p className="mt-3 text-slate-400 text-sm sm:text-base">
-              No generic flashcard gimmicks or AI hallucinations. Everything is built around actual VTU syllabus modules, past-year questions, and proven cognitive science.
+              No generic flashcard gimmicks or AI hallucinations. Everything is built around actual
+              VTU syllabus modules, past-year questions, and proven cognitive science.
             </p>
           </div>
 
@@ -286,12 +330,8 @@ function Index() {
                       {f.tag}
                     </span>
                   </div>
-                  <h3 className="mt-5 text-xl font-bold text-white tracking-tight">
-                    {f.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-                    {f.desc}
-                  </p>
+                  <h3 className="mt-5 text-xl font-bold text-white tracking-tight">{f.title}</h3>
+                  <p className="mt-2 text-sm text-slate-400 leading-relaxed">{f.desc}</p>
                 </div>
               </article>
             ))}
@@ -309,7 +349,8 @@ function Index() {
                 Mapped to VTU 2025 Syllabus
               </h2>
               <p className="mt-2 text-slate-400 text-sm">
-                Pre-loaded with official branch curricula, course codes (BCS301, BCS302, BCS303, BCS304), modules, and verified pyq questions.
+                Pre-loaded with official branch curricula, course codes (BCS301, BCS302, BCS303,
+                BCS304), modules, and verified pyq questions.
               </p>
             </div>
 
@@ -392,7 +433,8 @@ function Index() {
                   Download Kletaq for Android
                 </h2>
                 <p className="mt-3 text-slate-300 text-sm sm:text-base leading-relaxed">
-                  Get the official Benchmark build directly from Cloudflare CDN or GitHub Releases. Includes in-app OTA updates via Settings &gt; Check for Updates.
+                  Get the official Benchmark build directly from Cloudflare CDN or GitHub Releases.
+                  Includes in-app OTA updates via Settings &gt; Check for Updates.
                 </p>
 
                 <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -444,7 +486,8 @@ function Index() {
                   Visiting on your Computer?
                 </p>
                 <p className="text-xs text-slate-400 mt-1 max-w-xs">
-                  Point your phone camera at this QR code to download the APK directly to your device.
+                  Point your phone camera at this QR code to download the APK directly to your
+                  device.
                 </p>
               </div>
             </div>

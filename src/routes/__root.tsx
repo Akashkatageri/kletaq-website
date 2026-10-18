@@ -76,7 +76,10 @@ export const Route = createRootRouteWithContext<{
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://kletaq.5122006.xyz" },
-      { property: "og:image", content: "https://kletaq.5122006.xyz/widgets/kletaq_widgets_duolingo_matrix.png" },
+      {
+        property: "og:image",
+        content: "https://kletaq.5122006.xyz/widgets/kletaq_widgets_duolingo_matrix.png",
+      },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [

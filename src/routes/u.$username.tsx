@@ -1,5 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Download, Sparkles, Trophy, ArrowRight, Shield, Flame, Smartphone, ArrowLeft } from "lucide-react";
+import {
+  Download,
+  Sparkles,
+  Trophy,
+  ArrowRight,
+  Shield,
+  Flame,
+  Smartphone,
+  ArrowLeft,
+} from "lucide-react";
 import { NotebookBackground } from "@/components/klytaq/NotebookBackground";
 
 export const Route = createFileRoute("/u/$username")({
@@ -68,7 +77,8 @@ function UserInvitePage() {
           </h1>
 
           <p className="mt-3 text-sm text-slate-400 leading-relaxed max-w-md mx-auto">
-            Join the study journey, master VTU syllabus modules, keep your daily study streaks alive, and view your semester leaderboards.
+            Join the study journey, master VTU syllabus modules, keep your daily study streaks
+            alive, and view your semester leaderboards.
           </p>
 
           {/* Download CTA */}

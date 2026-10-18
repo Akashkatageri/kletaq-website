@@ -118,10 +118,14 @@ export function DashboardPreview() {
                     {item.done ? "✓" : ""}
                   </span>
                   <div className="min-w-0">
-                    <p className={`font-mono text-[10px] ${item.done ? "text-muted-foreground line-through" : "text-primary font-semibold"}`}>
+                    <p
+                      className={`font-mono text-[10px] ${item.done ? "text-muted-foreground line-through" : "text-primary font-semibold"}`}
+                    >
                       {item.time}
                     </p>
-                    <p className={`truncate ${item.done ? "text-muted-foreground line-through" : "text-foreground font-medium"}`}>
+                    <p
+                      className={`truncate ${item.done ? "text-muted-foreground line-through" : "text-foreground font-medium"}`}
+                    >
                       {item.title}
                     </p>
                   </div>
@@ -133,7 +137,9 @@ export function DashboardPreview() {
           {/* Spaced Repetition */}
           <div className="ink-border rounded-2xl p-4">
             <h4 className="font-hand text-xl leading-none">Spaced Repetition</h4>
-            <p className="mt-1 font-mono text-[11px] text-muted-foreground">6 review cards due today</p>
+            <p className="mt-1 font-mono text-[11px] text-muted-foreground">
+              6 review cards due today
+            </p>
             <div className="mt-3 flex gap-1">
               {Array.from({ length: 14 }).map((_, i) => (
                 <span

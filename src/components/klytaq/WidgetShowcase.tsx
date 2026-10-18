@@ -20,7 +20,8 @@ const widgetStates: WidgetState[] = [
     timeRange: "5:00 AM – 11:59 AM",
     flameStatus: "grey",
     message: "Ready to learn? ⚡",
-    themeScene: "Radiant golden sunburst rays, fluttering green bamboo leaves & morning dew sparkles",
+    themeScene:
+      "Radiant golden sunburst rays, fluttering green bamboo leaves & morning dew sparkles",
     characterProps: "Athletic cyan workout headband winking playfully",
     badge: "Daybreak Nudge",
     image: "/widgets/widget_preview_morning.png",
@@ -76,7 +77,8 @@ const widgetStates: WidgetState[] = [
     flameStatus: "lit",
     message: "Streak secured today! 🏆",
     themeScene: "Radiant emerald victory sunburst rays with 4-point golden stars & ambient motes",
-    characterProps: "Cool panda wearing sunglasses & holding shiny Golden Trophy Cup with both paws",
+    characterProps:
+      "Cool panda wearing sunglasses & holding shiny Golden Trophy Cup with both paws",
     badge: "Victory Celebration",
     image: "/widgets/widget_preview_secured.png",
   },
@@ -86,7 +88,7 @@ export function WidgetShowcase() {
   const [selectedId, setSelectedId] = useState("secured");
   const [showEmulator, setShowEmulator] = useState(false);
 
-  const active = widgetStates.find((s) => s.id === selectedId) || widgetStates[5];
+  const active = (widgetStates.find((s) => s.id === selectedId) ?? widgetStates[5])!;
 
   return (
     <section id="widgets" className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6">
@@ -101,7 +103,9 @@ export function WidgetShowcase() {
           <span className="text-gradient-emerald">Live on Your Home Screen.</span>
         </h2>
         <p className="mt-3 text-slate-400 text-sm sm:text-base leading-relaxed">
-          The widget reacts dynamically to your study progress throughout the day. The streak flame stays greyed out until you study, and bursts into burning fire with a golden trophy when secured!
+          The widget reacts dynamically to your study progress throughout the day. The streak flame
+          stays greyed out until you study, and bursts into burning fire with a golden trophy when
+          secured!
         </p>
       </div>
 
@@ -186,7 +190,9 @@ export function WidgetShowcase() {
                     {active.flameStatus === "lit" ? "🔥" : "🩶"}
                   </span>
                   <div>
-                    <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">Streak Flame State</p>
+                    <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">
+                      Streak Flame State
+                    </p>
                     <p className="text-sm font-semibold text-white">
                       {active.flameStatus === "lit"
                         ? "Lit Burning Flame (Today's study streak secured!)"
@@ -198,7 +204,9 @@ export function WidgetShowcase() {
                 <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-white/5">
                   <span className="text-lg shrink-0">🎨</span>
                   <div>
-                    <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">Thematic Scene</p>
+                    <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">
+                      Thematic Scene
+                    </p>
                     <p className="text-sm text-slate-200">{active.themeScene}</p>
                   </div>
                 </div>
@@ -206,7 +214,9 @@ export function WidgetShowcase() {
                 <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-white/5">
                   <span className="text-lg shrink-0">🐼</span>
                   <div>
-                    <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">Character Expression</p>
+                    <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">
+                      Character Expression
+                    </p>
                     <p className="text-sm text-slate-200">{active.characterProps}</p>
                   </div>
                 </div>
@@ -246,7 +256,9 @@ export function WidgetShowcase() {
                 Runs Natively on Android Launcher
               </h3>
               <p className="text-sm text-slate-300 leading-relaxed">
-                Kletaq widgets are built with modern <strong>Jetpack Compose Glance</strong>. When you complete a module quest or study session in the app, your home screen widget updates in real-time without polling loops or battery-hogging background alarms.
+                Kletaq widgets are built with modern <strong>Jetpack Compose Glance</strong>. When
+                you complete a module quest or study session in the app, your home screen widget
+                updates in real-time without polling loops or battery-hogging background alarms.
               </p>
               <ul className="space-y-2 pt-2 text-xs font-mono text-slate-300">
                 <li className="flex items-center gap-2">
