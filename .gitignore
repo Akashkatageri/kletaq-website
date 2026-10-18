@@ -30,3 +30,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Binary Android APKs (exceeds Cloudflare Pages 25MB limit; redirected via _redirects)
+public/*.apk
+public/kletaq.apk

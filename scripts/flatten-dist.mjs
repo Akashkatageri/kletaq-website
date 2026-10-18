@@ -18,4 +18,9 @@ for (const entry of await readdir(client)) {
 await rm(client, { recursive: true, force: true });
 await rm(path.join(dist, "server"), { recursive: true, force: true });
 
-console.log("[flatten-dist] static output ready in dist/");
+// Cloudflare Pages enforces a strict 25 MiB asset limit per static file.
+// The APK is ~33 MB and served via _redirects to GitHub Releases.
+// Removing it from dist ensures Cloudflare Pages asset upload succeeds.
+await rm(path.join(dist, "kletaq.apk"), { force: true });
+
+console.log("[flatten-dist] static output ready in dist/ (large assets excluded for CF Pages 25MB limit)");
