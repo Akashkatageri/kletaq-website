@@ -205,45 +205,45 @@ function Index() {
       <NotebookBackground />
 
       {/* ---------- Nav ---------- */}
-      <header className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-5 sm:px-6">
+      <header className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-5 sm:px-6 text-white">
         <a href="#top" className="flex min-w-0 items-center gap-2.5">
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border-[1.5px] border-border font-hand text-xl leading-none">
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white border-2 border-slate-200 text-slate-900 font-extrabold text-base shadow-[0_2px_0_0_#CBD5E1]">
             K
           </span>
-          <span className="truncate font-hand text-2xl leading-none">Kletaq</span>
+          <span className="truncate font-extrabold text-2xl text-white tracking-tight">Kletaq</span>
         </a>
         <nav className="flex shrink-0 items-center gap-2 sm:gap-4">
           <a
             href="https://github.com/Akashkatageri/kletaq"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden font-mono text-xs text-muted-foreground transition-colors hover:text-primary sm:inline-flex items-center gap-1.5"
+            className="hidden font-mono text-xs text-white/80 transition-colors hover:text-white sm:inline-flex items-center gap-1.5"
           >
             <Github className="h-3.5 w-3.5" />
             github
           </a>
           <a
             href="#features"
-            className="hidden font-mono text-xs text-muted-foreground transition-colors hover:text-primary sm:inline"
+            className="hidden font-mono text-xs text-white/80 transition-colors hover:text-white sm:inline"
           >
             features
           </a>
           <a
             href="#showcase"
-            className="hidden font-mono text-xs text-muted-foreground transition-colors hover:text-primary sm:inline"
+            className="hidden font-mono text-xs text-white/80 transition-colors hover:text-white sm:inline"
           >
             showcase
           </a>
           <a
             href="#screens"
-            className="hidden font-mono text-xs text-muted-foreground transition-colors hover:text-primary sm:inline"
+            className="hidden font-mono text-xs text-white/80 transition-colors hover:text-white sm:inline"
           >
             screens
           </a>
           <a
             href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
             download="kletaq.apk"
-            className="ink-border inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 font-mono text-xs font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+            className="btn-3d-green px-4 py-2 font-mono text-xs font-bold rounded-xl"
           >
             <Download className="h-3.5 w-3.5" />
             Download APK
@@ -256,7 +256,7 @@ function Index() {
         <section className="mx-auto grid w-full max-w-6xl items-center gap-8 px-4 pt-6 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-10 lg:pt-10">
           <div className="min-w-0">
             {/* What's New Tag */}
-            <div className="mb-4 inline-flex flex-wrap items-center gap-2 rounded-full border-[1.5px] border-border bg-card px-3 py-1 text-xs shadow-[0_1px_0_0_var(--ink)]">
+            <div className="mb-4 inline-flex flex-wrap items-center gap-2 rounded-full border-2 border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-1.5 text-xs text-white shadow-[0_2px_0_0_rgba(0,0,0,0.2)]">
               <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
               <span className="font-mono text-[11px] font-bold text-primary uppercase tracking-wide">
                 v1.1 Release:
@@ -266,12 +266,14 @@ function Index() {
               </span>
             </div>
 
-            <h1 className="mt-3 font-hand text-5xl leading-[0.95] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-3 font-extrabold text-5xl leading-[0.98] sm:text-6xl lg:text-7xl text-white tracking-tight">
               Turn your syllabus into{" "}
-              <span className="scribble-underline text-primary">quests.</span>
+              <span className="text-[#58CC02] underline decoration-4 underline-offset-8">
+                quests.
+              </span>
             </h1>
 
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
               {DESCRIPTION}
             </p>
 
@@ -280,7 +282,7 @@ function Index() {
               <a
                 href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
                 download="kletaq.apk"
-                className="ink-border inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+                className="btn-3d-green px-6 py-3.5 text-sm sm:text-base font-bold rounded-2xl"
               >
                 <Download className="h-4 w-4" />
                 Download Android APK (v1.1)
@@ -289,33 +291,35 @@ function Index() {
                 href="https://github.com/Akashkatageri/kletaq"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ink-border inline-flex items-center gap-2 rounded-xl bg-card px-4 py-2.5 text-sm font-semibold shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+                className="btn-3d-white px-5 py-3.5 text-sm sm:text-base font-bold rounded-2xl"
               >
                 <Github className="h-4 w-4" />
                 GitHub
               </a>
               <a
                 href="#screens"
-                className="ink-border rounded-xl bg-card px-5 py-2.5 text-sm font-semibold shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+                className="btn-3d-white px-5 py-3.5 text-sm sm:text-base font-bold rounded-2xl"
               >
                 Explore Screens
               </a>
             </div>
 
-            <p className="mt-3 font-mono text-xs text-muted-foreground">
+            <p className="mt-3 font-mono text-xs text-white/70">
               Direct download • Benchmark Edition (~22.8 MB) • Android 7.0+ • Free
             </p>
 
             {/* Desktop QR Scan Card */}
-            <div className="mt-6 flex max-w-md items-center gap-3.5 rounded-2xl border-[1.5px] border-border bg-card p-3 shadow-[0_2px_0_0_var(--ink)]">
+            <div className="mt-6 flex max-w-md items-center gap-3.5 rounded-2xl border-2 border-white/20 bg-white/10 backdrop-blur-md p-3.5 text-white shadow-[0_3px_0_0_rgba(0,0,0,0.2)]">
               <img
                 src="/download-qr.png"
                 alt="Scan to download Kletaq APK"
                 className="h-16 w-16 shrink-0 rounded-lg border border-border bg-white p-1"
               />
               <div className="min-w-0">
-                <p className="font-hand text-lg leading-tight">Browsing on a PC or Laptop?</p>
-                <p className="font-mono text-[11px] text-muted-foreground">
+                <p className="font-extrabold text-lg leading-tight text-white">
+                  Browsing on a PC or Laptop?
+                </p>
+                <p className="font-mono text-[11px] text-white/80">
                   Scan this QR code with your phone camera to download directly.
                 </p>
               </div>
@@ -383,10 +387,10 @@ function Index() {
           <p className="font-mono text-[11px] tracking-widest uppercase text-muted-foreground">
             03 — showcase
           </p>
-          <h2 className="mt-2 max-w-2xl font-hand text-4xl leading-none sm:text-5xl">
-            The dashboard & schedule, drawn in ink
+          <h2 className="mt-2 max-w-2xl font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
+            The dashboard & schedule
           </h2>
-          <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
+          <p className="mt-3 max-w-xl text-sm text-white/85 sm:text-base">
             No clutter. Today's quests, your study calendar agenda, and real-time live Panda
             companion widget sync.
           </p>
@@ -406,7 +410,7 @@ function Index() {
               <h2 className="mt-2 font-hand text-4xl leading-none sm:text-5xl lg:text-6xl">
                 Inside the app
               </h2>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-white/85">
                 Pinned clippings from real engineering semesters — the journey roadmap, the new
                 interactive calendar, and the OLED ambient focus timer.
               </p>
@@ -496,7 +500,7 @@ function Index() {
               href="https://github.com/Akashkatageri/kletaq"
               target="_blank"
               rel="noopener noreferrer"
-              className="ink-border inline-flex items-center gap-1.5 rounded-xl bg-card px-3.5 py-2 font-mono text-xs font-semibold shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+              className="btn-3d-white px-4 py-2 font-mono text-xs font-bold rounded-xl"
             >
               <Github className="h-3.5 w-3.5" />
               GitHub
@@ -504,7 +508,7 @@ function Index() {
             <a
               href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
               download="kletaq.apk"
-              className="ink-border inline-flex items-center gap-1.5 rounded-xl bg-primary px-3.5 py-2 font-mono text-xs font-semibold text-primary-foreground shadow-[0_2px_0_0_var(--ink)] transition-transform hover:-translate-y-0.5"
+              className="btn-3d-green px-4 py-2 font-mono text-xs font-bold rounded-xl"
             >
               <Download className="h-3.5 w-3.5" />
               Download APK

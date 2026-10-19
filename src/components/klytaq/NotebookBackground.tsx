@@ -1,19 +1,18 @@
+import { GradientBackground } from "@/components/ui/iris-petal";
+
 /**
- * Full-page animated notebook background: grid rules, margin lines,
- * and monochrome paper grain. Purely decorative.
+ * Full-page 21st.dev Iris Petal Gradient Background with built-in
+ * fractalNoise SVG grain texture and subtle margin lines.
  */
 export function NotebookBackground() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      {/* notebook grid */}
-      <div className="anim-drift absolute -inset-24 grid-paper opacity-70" />
+      {/* 21st.dev Iris Petal Gradient */}
+      <GradientBackground className="absolute inset-0 w-full h-full" />
 
-      {/* margin rule */}
-      <div className="absolute inset-y-0 left-8 hidden w-px bg-border/25 md:block" />
-      <div className="absolute inset-y-0 left-[38px] hidden w-px bg-border/15 md:block" />
-
-      {/* paper grain */}
-      <div className="paper-grain absolute inset-0 opacity-[0.045] mix-blend-multiply dark:opacity-[0.06] dark:mix-blend-screen" />
+      {/* Delicate margin guides */}
+      <div className="absolute inset-y-0 left-8 hidden w-px bg-white/10 md:block" />
+      <div className="absolute inset-y-0 left-[38px] hidden w-px bg-white/5 md:block" />
     </div>
   );
 }

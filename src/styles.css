@@ -167,18 +167,26 @@
 /* ---------- Notebook primitives ---------- */
 
 @utility paper-card {
-  background-color: var(--card);
-  color: var(--card-foreground);
-  border: 1.5px solid var(--ink);
-  border-radius: 16px;
-  box-shadow: var(--shadow-paper);
+  background-color: rgba(255, 255, 255, 0.96);
+  color: #0f172a;
+  border: 2px solid #e2e8f0;
+  border-bottom: 5px solid #cbd5e1;
+  border-radius: 20px;
+  box-shadow:
+    0 6px 0 0 #cbd5e1,
+    0 14px 28px -10px rgba(27, 16, 53, 0.25);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 @utility paper-card-flat {
-  background-color: var(--card);
-  color: var(--card-foreground);
-  border: 1.5px solid var(--ink);
-  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+  border: 2px solid #e2e8f0;
+  border-bottom: 4px solid #cbd5e1;
+  border-radius: 18px;
+  box-shadow: 0 3px 0 0 #cbd5e1;
 }
 
 @utility ink-border {
@@ -301,4 +309,130 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* ==========================================================================
+   Duolingo-Style 3D Physical Buttons & Tactile Cards
+   ========================================================================== */
+
+.btn-3d-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #58cc02;
+  color: #ffffff !important;
+  border: 2px solid #46a302;
+  border-bottom: 5px solid #368501;
+  border-radius: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow:
+    0 4px 0 0 #368501,
+    0 8px 16px -4px rgba(88, 204, 2, 0.4);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    filter 0.08s ease;
+  user-select: none;
+  text-decoration: none;
+}
+.btn-3d-green:hover {
+  filter: brightness(1.06);
+}
+.btn-3d-green:active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+  box-shadow: 0 1px 0 0 #368501;
+}
+
+.btn-3d-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  color: #1e293b !important;
+  border: 2px solid #e2e8f0;
+  border-bottom: 5px solid #cbd5e1;
+  border-radius: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow:
+    0 4px 0 0 #cbd5e1,
+    0 6px 14px -4px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    filter 0.08s ease;
+  user-select: none;
+  text-decoration: none;
+}
+.btn-3d-white:hover {
+  background-color: #f8fafc;
+}
+.btn-3d-white:active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+  box-shadow: 0 1px 0 0 #cbd5e1;
+}
+
+.btn-3d-purple {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #8b5cf6;
+  color: #ffffff !important;
+  border: 2px solid #7c3aed;
+  border-bottom: 5px solid #6d28d9;
+  border-radius: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow:
+    0 4px 0 0 #5b21b6,
+    0 8px 16px -4px rgba(139, 92, 246, 0.4);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    filter 0.08s ease;
+  user-select: none;
+  text-decoration: none;
+}
+.btn-3d-purple:hover {
+  filter: brightness(1.06);
+}
+.btn-3d-purple:active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+  box-shadow: 0 1px 0 0 #5b21b6;
+}
+
+.btn-3d-amber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #f59e0b;
+  color: #0f172a !important;
+  border: 2px solid #d97706;
+  border-bottom: 5px solid #b45309;
+  border-radius: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 0 0 #92400e;
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    filter 0.08s ease;
+  user-select: none;
+  text-decoration: none;
+}
+.btn-3d-amber:hover {
+  filter: brightness(1.06);
+}
+.btn-3d-amber:active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+  box-shadow: 0 1px 0 0 #92400e;
 }
