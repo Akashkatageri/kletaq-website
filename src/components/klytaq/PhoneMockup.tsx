@@ -1,51 +1,103 @@
-import { Sparkles } from "lucide-react";
-import { heroShot } from "@/lib/screens";
+﻿import { Zap, Flame, Calendar, Moon } from "lucide-react";
+
+import { heroShot, homeShot } from "@/lib/screens";
+
+type Card = { Icon: typeof Zap; label: string; accent?: boolean };
+
+const leftCards: [Card, Card] = [
+  { Icon: Zap, label: "840 XP", accent: true },
+  { Icon: Calendar, label: "Calendar: 3 tasks" },
+];
+
+const rightCards: [Card, Card] = [
+  { Icon: Flame, label: "12-day streak" },
+  { Icon: Moon, label: "OLED Ambient Active" },
+];
+
+function StatCard({ Icon, label, accent }: Card) {
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-xl border-[1.5px] border-border bg-card px-2.5 py-1.5 font-mono text-[10px] leading-none shadow-[0_2px_0_0_var(--ink)] md:px-2 md:py-1.5 md:text-[10px] lg:px-3 lg:py-2 lg:text-[12px] ${
+        accent ? "text-primary font-bold" : ""
+      }`}
+    >
+      <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={1.75} />
+      <span className="whitespace-nowrap">{label}</span>
+    </span>
+  );
+}
 
 /**
- * Authentic Android Smartphone Device Frame (Punch-Hole Display).
- * No iPhone dynamic island, no floating gradient blobs.
+ * Hero visual: the Journey screenshot pinned in a phone frame with the home
+ * dashboard tucked behind it, flanked by stat cards laid out on a grid so
+ * nothing ever overlaps the phone screen.
  */
 export function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-full max-w-[340px] sm:max-w-[380px]">
-      {/* Android Device Body with solid dark bezel */}
-      <div className="relative rounded-[40px] p-3 bg-[#1A2230] border-2 border-[#2F3D52] shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
-        {/* Screen Viewport */}
-        <div className="relative overflow-hidden rounded-[30px] bg-[#090D14] border border-black/80 aspect-[9/19]">
-          {/* Android Status Bar */}
-          <div className="absolute top-0 inset-x-0 z-30 flex items-center justify-between px-6 pt-2 pb-1 bg-gradient-to-b from-black/80 to-transparent text-[11px] font-mono font-semibold text-white/90">
-            <span>9:41</span>
-            {/* Centered Android Punch-hole Camera */}
-            <div className="h-3 w-3 rounded-full bg-black border border-white/20 shadow-inner" />
-            <div className="flex items-center gap-1.5 text-[10px]">
-              <span>5G</span>
-              <span>100%</span>
-            </div>
-          </div>
-
-          {/* Authentic In-App Screenshot: Semester Quest Roadmap */}
-          <img
-            src={heroShot}
-            alt="Kletaq Engineering Journey Map Screen"
-            className="w-full h-full object-cover object-top select-none"
-            loading="eager"
-            decoding="async"
-          />
-
-          {/* Android Gesture Bar */}
-          <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 z-30 h-1 w-24 rounded-full bg-white/40" />
-        </div>
-      </div>
-
-      {/* Caption Tag */}
-      <div className="mt-3.5 flex items-center justify-center gap-2 text-center text-xs font-mono text-slate-400">
-        <span className="inline-flex items-center gap-1 text-emerald-400 font-semibold">
-          <Sparkles className="h-3.5 w-3.5" />
-          Interactive Quest Tree
+    <div className="mx-auto w-full max-w-[560px]">
+      {/* note above the phone */}
+      <p className="mb-3 flex items-baseline justify-between gap-4 px-1">
+        <span className="-rotate-2 font-hand text-lg leading-none text-muted-foreground">
+          VTU 2025 Scheme • Sem 3
         </span>
-        <span>•</span>
-        <span>Concept Nodes & Exam PYQs</span>
+        <span className="rotate-2 text-right font-hand text-lg leading-none text-primary">
+          Module 1 complete ✓
+        </span>
+      </p>
+
+      {/* top row: cards sit above the phone, outside its bounds */}
+      <div className="mb-6 hidden items-center justify-between gap-6 sm:flex">
+        <StatCard {...leftCards[0]} />
+        <StatCard {...rightCards[0]} />
       </div>
+
+      {/* phone */}
+      <div className="relative mx-auto w-full max-w-[300px] sm:max-w-[340px]">
+        <div
+          aria-hidden
+          className="absolute inset-x-6 top-4 -z-10 -rotate-6 overflow-hidden rounded-[26px] border-[1.5px] border-border bg-card shadow-[0_2px_0_0_var(--ink)]"
+        >
+          <img
+            src={homeShot}
+            alt="Kletaq home dashboard"
+            loading="lazy"
+            decoding="async"
+            className="aspect-[9/13] w-full object-cover object-top opacity-55"
+          />
+        </div>
+
+        <figure className="paper-card relative rotate-1 rounded-[32px] p-2.5">
+          <div className="ink-border overflow-hidden rounded-[24px] bg-card">
+            <img
+              src={heroShot}
+              alt="Kletaq journey map — Semester 3, Partial Differentiation, Total Derivative, Jacobians"
+              className="aspect-[9/19] w-full object-cover object-top"
+              decoding="async"
+            />
+          </div>
+        </figure>
+      </div>
+
+      {/* bottom row (desktop/tablet) */}
+      <div className="mt-6 hidden items-center justify-between gap-6 sm:flex">
+        <StatCard {...leftCards[1]} />
+        <StatCard {...rightCards[1]} />
+      </div>
+
+      {/* stacked cards (mobile) */}
+      <div className="mt-6 flex flex-wrap justify-center gap-3 sm:hidden">
+        {[...leftCards, ...rightCards].map((c) => (
+          <StatCard key={c.label} {...c} />
+        ))}
+      </div>
+
+      <p className="mt-4 px-1 font-hand text-lg leading-none text-center text-muted-foreground">
+        CSE • ISE • IoT • AIML Branches Supported
+      </p>
+
+      <p className="mt-2 text-center font-mono text-[11px] leading-relaxed text-muted-foreground">
+        VTU 2025 Scheme · BCS301 / BCS302 / BCS303 / BCS304
+      </p>
     </div>
   );
 }
