@@ -1,9 +1,9 @@
 import { useState, useEffect, type FormEvent } from "react";
-import { Mail, Send, Copy, Check, AlertCircle } from "lucide-react";
+import { Mail, Send, Copy, Check, AlertCircle, Loader2 } from "lucide-react";
 
 const CONTACT_EMAIL = "kletaq.dev@gmail.com";
-const RATE_LIMIT_SECONDS = 60;
-const MAX_PER_HOUR = 3;
+const RATE_LIMIT_SECONDS = 600; // 10 minutes between submissions
+const MAX_PER_HOUR = 2;
 const STORAGE_KEY = "kletaq_contact_history";
 
 export function ContactSection() {
@@ -12,13 +12,14 @@ export function ContactSection() {
   const [subject, setSubject] = useState("General Feedback");
   const [message, setMessage] = useState("");
   const [copied, setCopied] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [cooldownRemaining, setCooldownRemaining] = useState(0);
 
   // Check rate limit on load and tick countdown
   useEffect(() => {
-    const timer = setInterval(() => {
+    const checkCooldown = () => {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw) {
@@ -36,9 +37,21 @@ export function ContactSection() {
       } catch {
         // LocalStorage blocked or invalid
       }
-    }, 1000);
+    };
+
+    checkCooldown();
+    const timer = setInterval(checkCooldown, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  const formatCooldown = (seconds: number) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    if (m > 0) {
+      return `${m}m ${s > 0 ? `${s}s` : ""}`.trim();
+    }
+    return `${s}s`;
+  };
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(CONTACT_EMAIL);
@@ -46,7 +59,7 @@ export function ContactSection() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setErrorMsg("");
     setSuccessMsg("");
@@ -80,7 +93,7 @@ export function ContactSection() {
       if (elapsedSeconds < RATE_LIMIT_SECONDS) {
         const remaining = RATE_LIMIT_SECONDS - elapsedSeconds;
         setErrorMsg(
-          `⏳ Rate limit active: please wait ${remaining}s before sending another message.`,
+          `Please wait ${formatCooldown(remaining)} before sending another message.`,
         );
         return;
       }
@@ -88,37 +101,62 @@ export function ContactSection() {
 
     if (history.length >= MAX_PER_HOUR) {
       setErrorMsg(
-        `⚠️ Limit reached (${MAX_PER_HOUR} messages/hour). Please write directly to ${CONTACT_EMAIL}.`,
+        `Submission limit reached for this hour. Please write directly to ${CONTACT_EMAIL}.`,
       );
       return;
     }
 
-    // Record submission
-    history.push(now);
+    setIsSubmitting(true);
+
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+      const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: trimmedName,
+          email: trimmedEmail,
+          _subject: `[Kletaq] ${subject} - from ${trimmedName}`,
+          message: trimmedMsg,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (
+        response.ok &&
+        (data?.success === "true" || data?.success === true || response.status === 200)
+      ) {
+        // Record successful submission
+        history.push(now);
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+        } catch {
+          // Ignore storage errors
+        }
+
+        setSuccessMsg(
+          "Message sent successfully! Thanks for reaching out — we'll get back to you soon.",
+        );
+        setName("");
+        setEmail("");
+        setMessage("");
+        setCooldownRemaining(RATE_LIMIT_SECONDS);
+      } else {
+        const messageDetail = data?.message || "Failed to deliver message.";
+        throw new Error(messageDetail);
+      }
     } catch {
-      // Ignore storage errors
+      setErrorMsg(
+        "Could not send directly from browser. Please use the direct email button above to send your message to kletaq.dev@gmail.com.",
+      );
+    } finally {
+      setIsSubmitting(false);
     }
-
-    // Build mailto URI and trigger client
-    const mailtoSubject = encodeURIComponent(`[Kletaq App] ${subject} - from ${trimmedName}`);
-    const mailtoBody = encodeURIComponent(
-      `Hi Akash,\n\n${trimmedMsg}\n\n---\nSender Name: ${trimmedName}\nSender Email: ${trimmedEmail}`,
-    );
-    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${mailtoSubject}&body=${mailtoBody}`;
-
-    // Open mail client
-    window.location.href = mailtoUrl;
-
-    // Provide user feedback
-    setSuccessMsg(
-      `✓ Opening your email client to send to ${CONTACT_EMAIL}. Thank you for your feedback!`,
-    );
-    setName("");
-    setEmail("");
-    setMessage("");
-    setCooldownRemaining(RATE_LIMIT_SECONDS);
   };
 
   return (
@@ -172,9 +210,9 @@ export function ContactSection() {
             </div>
 
             <div className="space-y-2 text-xs text-slate-500 font-mono">
-              <p>✓ Typically replied within 24 hours</p>
-              <p>✓ Spam-protected &amp; rate-limited</p>
-              <p>✓ College &amp; student requests prioritized</p>
+              <p>✨ Direct message to the developer</p>
+              <p>⚡ Typically replied within 24 hours</p>
+              <p>🎓 College, feature &amp; syllabus requests prioritized</p>
             </div>
           </div>
 
@@ -275,15 +313,26 @@ export function ContactSection() {
 
             <button
               type="submit"
-              disabled={cooldownRemaining > 0}
+              disabled={cooldownRemaining > 0 || isSubmitting}
               className={`w-full py-3 text-sm font-mono font-bold rounded-xl flex items-center justify-center gap-2 ${
-                cooldownRemaining > 0
-                  ? "bg-slate-300 text-slate-500 cursor-not-allowed border-2 border-slate-400"
+                cooldownRemaining > 0 || isSubmitting
+                  ? "bg-slate-200 text-slate-500 cursor-not-allowed border-2 border-slate-300"
                   : "btn-3d-iris"
               }`}
             >
-              <Send className="h-4 w-4" />
-              {cooldownRemaining > 0 ? `Wait ${cooldownRemaining}s (Rate Limit)` : "Send Message"}
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin text-purple-700" />
+                  <span>Sending Message...</span>
+                </>
+              ) : cooldownRemaining > 0 ? (
+                <span>Please wait {formatCooldown(cooldownRemaining)}</span>
+              ) : (
+                <>
+                  <Send className="h-4 w-4" />
+                  <span>Send Message</span>
+                </>
+              )}
             </button>
           </form>
         </div>
