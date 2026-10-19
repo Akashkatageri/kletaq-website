@@ -2,6 +2,7 @@ import { useState, useEffect, type FormEvent } from "react";
 import { Mail, Send, Copy, Check, AlertCircle, Loader2 } from "lucide-react";
 
 const CONTACT_EMAIL = "kletaq.dev@gmail.com";
+const WEB3FORMS_ACCESS_KEY = "989e3cbd-1648-41f0-a0c0-b50f31f52e88";
 const RATE_LIMIT_SECONDS = 600; // 10 minutes between submissions
 const MAX_PER_HOUR = 2;
 const STORAGE_KEY = "kletaq_contact_history";
@@ -11,6 +12,7 @@ export function ContactSection() {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("General Feedback");
   const [message, setMessage] = useState("");
+  const [botcheck, setBotcheck] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -64,6 +66,11 @@ export function ContactSection() {
     setErrorMsg("");
     setSuccessMsg("");
 
+    // Bot detection via honeypot
+    if (botcheck) {
+      return;
+    }
+
     const trimmedName = name.trim();
     const trimmedEmail = email.trim();
     const trimmedMsg = message.trim();
@@ -109,29 +116,26 @@ export function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
           name: trimmedName,
           email: trimmedEmail,
-          _subject: `[Kletaq] ${subject} - from ${trimmedName}`,
+          subject: `[Kletaq] ${subject} - from ${trimmedName}`,
           message: trimmedMsg,
-          _template: "table",
-          _captcha: "false",
+          from_name: "Kletaq Website Visitor",
         }),
       });
 
       const data = await response.json().catch(() => null);
 
-      if (
-        response.ok &&
-        (data?.success === "true" || data?.success === true || response.status === 200)
-      ) {
-        // Record successful submission
+      if (response.ok && data?.success) {
+        // Record successful submission for rate-limiting
         history.push(now);
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
@@ -147,12 +151,12 @@ export function ContactSection() {
         setMessage("");
         setCooldownRemaining(RATE_LIMIT_SECONDS);
       } else {
-        const messageDetail = data?.message || "Failed to deliver message.";
-        throw new Error(messageDetail);
+        const detail = data?.message || "Failed to deliver message.";
+        throw new Error(detail);
       }
     } catch {
       setErrorMsg(
-        "Could not send directly from browser. Please use the direct email button above to send your message to kletaq.dev@gmail.com.",
+        "Could not deliver directly. Please use the direct email button above to send your message to kletaq.dev@gmail.com.",
       );
     } finally {
       setIsSubmitting(false);
@@ -218,6 +222,18 @@ export function ContactSection() {
 
           {/* Right: Message Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Honeypot field for bot spam prevention */}
+            <input
+              type="checkbox"
+              name="botcheck"
+              className="hidden"
+              style={{ display: "none" }}
+              checked={botcheck}
+              onChange={(e) => setBotcheck(e.target.checked)}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+
             {errorMsg && (
               <div className="p-3.5 rounded-xl bg-red-50 border-2 border-red-200 text-red-700 text-xs font-medium flex items-center gap-2">
                 <AlertCircle className="h-4 w-4 shrink-0" />
