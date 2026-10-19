@@ -19,12 +19,12 @@ export const Route = createFileRoute("/u/$username")({
         { title: `${name} invited you to Kletaq — Turn your syllabus into quests` },
         {
           name: "description",
-          content: `${name} wants you to join their study league on Kletaq. Compete on weekly leaderboards and track your VTU engineering progress.`,
+          content: `${name} wants you to join their study league on Kletaq. Compete on weekly leaderboards and track your study progress and protect your daily streak.`,
         },
         { property: "og:title", content: `${name} invited you to Kletaq` },
         {
           property: "og:description",
-          content: "Compete on weekly engineering leaderboards and turn your syllabus into quests.",
+          content: "Compete on weekly academic leaderboards and turn your syllabus into quests.",
         },
         { property: "og:type", content: "website" },
       ],

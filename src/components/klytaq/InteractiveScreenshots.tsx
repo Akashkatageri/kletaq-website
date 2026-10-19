@@ -15,16 +15,16 @@ const TABS: ScreenTab[] = [
     label: "Quest Tree",
     title: "Visual Quest Roadmap",
     description:
-      "Every engineering module mapped into an unlocking milestone tree with bite-sized concept nodes and exam PYQs.",
+      "Every subject module mapped into an unlocking milestone tree with bite-sized concept nodes and past exam questions.",
     src: "/screens/hero_journey.png",
-    tag: "VTU 2025 & Autonomous Curricula",
+    tag: "University & College Curricula",
   },
   {
     id: "dashboard",
     label: "Dashboard",
     title: "Home Study Headquarters",
     description:
-      "Daily study streak flame, XP progression, college timetable card, and one-tap continue learning.",
+      "Daily study streak flame, XP progression, class timetable card, and one-tap continue learning.",
     src: "/screens/home_dashboard.png",
     tag: "Clean Daily Momentum",
   },
@@ -33,7 +33,7 @@ const TABS: ScreenTab[] = [
     label: "Study Calendar",
     title: "Interactive Calendar & Agenda",
     description:
-      "Month and agenda views. Schedule assignment due dates, lab internals, and set custom local notification alarms.",
+      "Month and agenda views. Schedule assignment due dates, internal tests, and set custom local notification alarms.",
     src: "/screens/calendar_agenda.png",
     tag: "Exact Local Alarms",
   },
@@ -58,11 +58,11 @@ const TABS: ScreenTab[] = [
   {
     id: "pyqs",
     label: "Exam PYQs",
-    title: "Smart Quests & VTU PYQs",
+    title: "Smart Quests & PYQs",
     description:
-      "Every topic broken into digestible theory, clean code snippets, math formulas, and verified university past-year questions.",
+      "Every topic broken into digestible theory, clean code snippets, math formulas, and verified past-year questions.",
     src: "/screens/quest_detail.png",
-    tag: "Verified University PYQs",
+    tag: "Verified Past-Year Questions",
   },
   {
     id: "stats",
@@ -135,19 +135,8 @@ export function InteractiveScreenshots() {
       {/* Device frame preview */}
       <div className="mt-10 relative w-full max-w-[340px] sm:max-w-[370px]">
         <div className="relative rounded-[42px] p-3.5 bg-[#130E24] border-2 border-[#2F2150] shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
-          {/* Screen window */}
+          {/* Screen window — clean without fake timing overlay since the screenshot already has real status bar */}
           <div className="relative overflow-hidden rounded-[30px] bg-[#0A0714] border border-black/80 aspect-[9/19.5]">
-            {/* Status bar */}
-            <div className="absolute top-0 inset-x-0 z-30 flex items-center justify-between px-6 pt-2 pb-1 bg-gradient-to-b from-black/80 via-black/40 to-transparent text-[11px] font-mono font-semibold text-white/90">
-              <span>11:30</span>
-              <div className="h-3.5 w-3.5 rounded-full bg-black border border-white/20 shadow-inner" />
-              <div className="flex items-center gap-1.5 text-[10px]">
-                <span>5G</span>
-                <span>100%</span>
-              </div>
-            </div>
-
-            {/* Screen content */}
             <img
               key={activeScreen.id}
               src={activeScreen.src}
@@ -155,9 +144,6 @@ export function InteractiveScreenshots() {
               className="w-full h-full object-cover object-top select-none animate-in fade-in duration-200"
               loading="eager"
             />
-
-            {/* Android Navigation bar */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 h-1 w-28 rounded-full bg-white/40" />
           </div>
         </div>
 

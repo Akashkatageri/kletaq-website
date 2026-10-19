@@ -40,7 +40,7 @@ export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
 }>()({
   head: () => ({
-    title: "Kletaq – AI Study Planner for Engineering Students | Turn Your Syllabus Into Quests",
+    title: "Kletaq — Gamified Study Planner for Students | Turn Your Syllabus Into Quests",
 
     meta: [
       { charSet: "utf-8" },
@@ -52,12 +52,13 @@ export const Route = createRootRouteWithContext<{
 
       {
         name: "description",
-        content: "Kletaq is an AI-powered study planner for engineering students.",
+        content:
+          "Kletaq is a gamified study planner and focus engine for university and college students.",
       },
 
       {
         name: "keywords",
-        content: "kletaq, ai study planner, engineering study app, syllabus tracker",
+        content: "kletaq, study planner, study app, syllabus tracker, pomodoro focus timer",
       },
 
       {

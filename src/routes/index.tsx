@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   Map,
-  Flame,
-  Repeat,
   Download,
   Calendar,
   Moon,
@@ -12,15 +10,17 @@ import {
   Github,
   Trophy,
   Bot,
-  CheckCircle2,
+  Repeat,
+  Mail,
 } from "lucide-react";
 
 import { NotebookBackground } from "@/components/klytaq/NotebookBackground";
 import { InteractiveScreenshots } from "@/components/klytaq/InteractiveScreenshots";
+import { ContactSection } from "@/components/klytaq/ContactSection";
 
-const TITLE = "Kletaq — Gamified Engineering Curriculum & Focus Engine";
+const TITLE = "Kletaq — Gamified Curriculum & Focus Engine for Students";
 const DESCRIPTION =
-  "Kletaq transforms rigid engineering syllabi into visual unlocking quests. Complete with Parkinson's Law 2× bonus XP timer, SuperMemo SM-2 spaced repetition, OLED battery-saving focus mode, and dynamic Android mascot widgets.";
+  "Kletaq transforms rigid academic syllabi into visual unlocking quests. Complete with Parkinson's Law 2× bonus XP timer, SuperMemo SM-2 spaced repetition, OLED battery-saving focus mode, and dynamic Android mascot widgets.";
 
 const SITE_URL = "https://kletaq.5122006.xyz";
 
@@ -60,7 +60,7 @@ const tools = [
     title: "Visual Quest Roadmap",
     tag: "#curriculum",
     description:
-      "Engineering modules deconstructed into bite-sized concept nodes. Unlocks step-by-step with formulas, code snippets, and verified past-year questions.",
+      "Academic modules deconstructed into bite-sized concept nodes. Unlocks step-by-step with formulas, key definitions, and verified past-year questions.",
   },
   {
     icon: Zap,
@@ -109,7 +109,7 @@ const tools = [
     title: "Socratic AI Topic Tutor",
     tag: "#ai-tutor",
     description:
-      "Built-in Gemini AI tutor inside syllabus topics. Get step-by-step guidance on complex derivations and code debugging without leaving the app.",
+      "Built-in Gemini AI tutor inside syllabus topics. Get step-by-step guidance on complex derivations, code snippets, and concepts without leaving the app.",
   },
 ];
 
@@ -154,6 +154,13 @@ function Index() {
             Screens
           </a>
           <a
+            href="#contact"
+            className="hidden font-mono text-xs text-purple-300 font-bold transition-colors hover:text-white sm:inline-flex items-center gap-1"
+          >
+            <Mail className="h-3 w-3" />
+            Contact
+          </a>
+          <a
             href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
             download="kletaq.apk"
             className="btn-3d-iris px-4 py-2 font-mono text-xs font-bold rounded-xl"
@@ -172,7 +179,7 @@ function Index() {
             <div className="mb-4 inline-flex flex-wrap items-center gap-2 rounded-full border-2 border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-1.5 text-xs text-white shadow-[0_2px_0_0_rgba(0,0,0,0.2)]">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="font-mono text-[11px] font-bold text-purple-300 uppercase tracking-wide">
-                Engineered For University Students
+                Engineered For Students
               </span>
               <span className="hidden sm:inline font-mono text-[11px] text-white/70">
                 • 100% Offline-First
@@ -181,7 +188,7 @@ function Index() {
 
             {/* Headline */}
             <h1 className="mt-3 font-extrabold text-5xl leading-[1.05] sm:text-6xl lg:text-7xl text-white tracking-tight">
-              Turn your engineering syllabus into{" "}
+              Turn your syllabus into{" "}
               <span className="text-[#A78BFA] underline decoration-4 underline-offset-8">
                 quests.
               </span>
@@ -189,7 +196,7 @@ function Index() {
 
             {/* Subtitle */}
             <p className="mt-5 max-w-lg text-base sm:text-lg leading-relaxed text-slate-200">
-              Transform rigid university syllabi into bite-sized visual journeys. Complete with
+              Transform rigid college syllabi into bite-sized visual journeys. Complete with
               Parkinson's Law 2× bonus XP timer, SuperMemo SM-2 spaced repetition, OLED
               battery-saver mode, and dynamic Android companion widgets.
             </p>
@@ -259,28 +266,16 @@ function Index() {
             </dl>
           </div>
 
-          {/* Hero Smartphone Preview */}
+          {/* Hero Smartphone Preview (clean without fake timing overlay) */}
           <div className="mx-auto w-full max-w-[340px] sm:max-w-[370px]">
             <div className="relative rounded-[42px] p-3.5 bg-[#140E26] border-2 border-[#322358] shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
               <div className="relative overflow-hidden rounded-[30px] bg-[#0A0714] border border-black aspect-[9/19.5]">
-                {/* Android Status Bar */}
-                <div className="absolute top-0 inset-x-0 z-30 flex items-center justify-between px-6 pt-2 pb-1 bg-gradient-to-b from-black/80 via-black/40 to-transparent text-[11px] font-mono font-semibold text-white/90">
-                  <span>9:41</span>
-                  <div className="h-3.5 w-3.5 rounded-full bg-black border border-white/20 shadow-inner" />
-                  <div className="flex items-center gap-1.5 text-[10px]">
-                    <span>5G</span>
-                    <span>100%</span>
-                  </div>
-                </div>
-
                 <img
                   src="/screens/hero_journey.png"
                   alt="Kletaq Visual Quest Tree Screen"
                   className="w-full h-full object-cover object-top select-none"
                   loading="eager"
                 />
-
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 h-1 w-28 rounded-full bg-white/40" />
               </div>
             </div>
 
@@ -290,7 +285,7 @@ function Index() {
                 Visual Quest Tree
               </span>
               <span>•</span>
-              <span>Concept Nodes &amp; Exam PYQs</span>
+              <span>Concept Nodes &amp; Past Questions</span>
             </div>
           </div>
         </section>
@@ -302,7 +297,7 @@ function Index() {
               COGNITIVE ARCHITECTURE &amp; FOCUS
             </span>
             <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-              Eight tools engineered for engineering students
+              Eight tools engineered for students
             </h2>
             <p className="mt-3 text-slate-200 text-sm sm:text-base leading-relaxed">
               Built around validated cognitive psychology: Parkinson's Law urgency, Ebbinghaus
@@ -344,6 +339,11 @@ function Index() {
         {/* ---------- Interactive Screenshots Section (Matches Reference) ---------- */}
         <section id="screens" className="mx-auto w-full max-w-6xl px-4 sm:px-6">
           <InteractiveScreenshots />
+        </section>
+
+        {/* ---------- Contact / Send Message Section (Rate Limited) ---------- */}
+        <section className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+          <ContactSection />
         </section>
 
         {/* ---------- Download Banner ---------- */}
@@ -391,16 +391,22 @@ function Index() {
               className="h-6 w-6 rounded-full object-contain"
             />
             <span className="font-bold text-white">Kletaq</span>
-            <span>• Built for engineering students by Akash Katageri</span>
+            <span>• Built for students by Akash Katageri</span>
           </div>
           <div className="flex items-center gap-4">
+            <a
+              href="mailto:kletaq.dev@gmail.com"
+              className="hover:text-white transition-colors text-purple-300 font-bold"
+            >
+              kletaq.dev@gmail.com
+            </a>
             <a
               href="https://github.com/Akashkatageri/kletaq"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
             >
-              GitHub Repository
+              GitHub
             </a>
             <a
               href="https://github.com/Akashkatageri/kletaq/releases/tag/Latest"
