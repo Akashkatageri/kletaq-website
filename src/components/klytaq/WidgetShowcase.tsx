@@ -1,283 +1,198 @@
 import { useState } from "react";
-import { Sparkles, Flame, Clock, Eye, CheckCircle2 } from "lucide-react";
+import { Smartphone } from "lucide-react";
 
-type WidgetState = {
+interface WidgetState {
   id: string;
   name: string;
   timeRange: string;
-  flameStatus: "grey" | "lit";
-  message: string;
-  themeScene: string;
-  characterProps: string;
   badge: string;
+  flameStatus: "greyed" | "lit";
   image: string;
-};
+  description: string;
+  flameDesc: string;
+}
 
 const widgetStates: WidgetState[] = [
   {
     id: "morning",
     name: "Morning Fresh",
-    timeRange: "5:00 AM – 11:59 AM",
-    flameStatus: "grey",
-    message: "Ready to learn? ⚡",
-    themeScene:
-      "Radiant golden sunburst rays, fluttering green bamboo leaves & morning dew sparkles",
-    characterProps: "Athletic cyan workout headband winking playfully",
-    badge: "Daybreak Nudge",
+    timeRange: "08:00 AM",
+    badge: "Day Begins",
+    flameStatus: "greyed",
     image: "/widgets/widget_preview_morning.png",
+    description:
+      "Yawning sleepy panda ready to study. Streak flame stays frozen in grey until your first quest of the day.",
+    flameDesc: "Muted Grey (Awaiting today's study)",
   },
   {
     id: "afternoon",
     name: "Afternoon Focus",
-    timeRange: "12:00 PM – 4:59 PM",
-    flameStatus: "grey",
-    message: "Time to practice! 📚",
-    themeScene: "Warm amber gradient, spiral notebooks, yellow wooden pencils & study notes",
-    characterProps: "Focused panda reading open blue textbook",
-    badge: "Study Prime",
+    timeRange: "02:30 PM",
+    badge: "Study Hours",
+    flameStatus: "greyed",
     image: "/widgets/widget_preview_afternoon.png",
+    description:
+      "Panda with glasses and textbook encouraging an afternoon review block before evening activities.",
+    flameDesc: "Muted Grey (Still pending)",
   },
   {
     id: "sunset",
     name: "Sunset Warning",
-    timeRange: "5:00 PM – 7:59 PM",
-    flameStatus: "grey",
-    message: "Don't let it break! 🔥",
-    themeScene: "Sunset coral heatwaves, warning heat ripples & glowing ember sparks",
-    characterProps: "Worried panda with pleading teary eyes",
-    badge: "Urgency Nudge",
+    timeRange: "06:45 PM",
+    badge: "Golden Hour",
+    flameStatus: "greyed",
     image: "/widgets/widget_preview_sunset.png",
+    description:
+      "Panda glancing anxiously at the clock as daylight fades without a completed quest.",
+    flameDesc: "Muted Grey (Streak expiring soon)",
   },
   {
     id: "evening",
     name: "Evening Danger",
-    timeRange: "8:00 PM – 10:59 PM",
-    flameStatus: "grey",
-    message: "Save your streak! 🚨",
-    themeScene: "Roaring comic inferno flames licking up both borders & floating fire sparks",
-    characterProps: "Panicking panda with comical dripping sweat drops",
+    timeRange: "09:15 PM",
     badge: "High Alert",
+    flameStatus: "greyed",
     image: "/widgets/widget_preview_evening.png",
+    description:
+      "Panicked panda with an ice pack on head warning you that the midnight deadline is approaching.",
+    flameDesc: "Muted Grey (Danger zone)",
   },
   {
     id: "midnight",
     name: "Midnight Last Call",
-    timeRange: "11:00 PM – 4:59 AM",
-    flameStatus: "grey",
-    message: "Last chance! 🌙",
-    themeScene: "Deep midnight violet sky, glowing golden crescent moon & soft cloud bed",
-    characterProps: "Sleepy panda wearing striped blue-and-white nightcap with pompom",
-    badge: "Final Countdown",
+    timeRange: "11:40 PM",
+    badge: "Final Minutes",
+    flameStatus: "greyed",
     image: "/widgets/widget_preview_midnight.png",
+    description:
+      "Panda in nightcap pleading for just one quick quest to protect your streak before day reset.",
+    flameDesc: "Muted Grey (Final 20 minutes)",
   },
   {
     id: "secured",
-    name: "Streak Secured",
-    timeRange: "Triggered on Study XP > 0",
+    name: "Streak Secured!",
+    timeRange: "On Quest Complete",
+    badge: "Victory State",
     flameStatus: "lit",
-    message: "Streak secured today! 🏆",
-    themeScene: "Radiant emerald victory sunburst rays with 4-point golden stars & ambient motes",
-    characterProps:
-      "Cool panda wearing sunglasses & holding shiny Golden Trophy Cup with both paws",
-    badge: "Victory Celebration",
     image: "/widgets/widget_preview_secured.png",
+    description:
+      "Panda puts on sunglasses, golden trophy pops up, and flame ignites into radiant burning fire!",
+    flameDesc: "🔥 Lit Burning Fire (Streak protected!)",
   },
 ];
 
 export function WidgetShowcase() {
-  const [selectedId, setSelectedId] = useState("secured");
-  const [showEmulator, setShowEmulator] = useState(false);
+  const [selectedId, setSelectedId] = useState<string>("secured");
+  const [showHomescreen, setShowHomescreen] = useState(false);
 
-  const active = (widgetStates.find((s) => s.id === selectedId) ?? widgetStates[5])!;
+  const active: WidgetState = (widgetStates.find((s) => s.id === selectedId) ?? widgetStates[5])!;
 
   return (
-    <section id="widgets" className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6">
-      {/* Header */}
-      <div className="text-center max-w-2xl mx-auto">
-        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 text-xs font-mono font-medium text-emerald-400">
-          <Sparkles className="h-3.5 w-3.5" />
-          Android Glance 2x1 & 2x2 Desktop Widgets
+    <div className="duo-card p-6 sm:p-8">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b-2 border-[#263345]">
+        <div>
+          <span className="font-mono text-xs font-bold text-amber-400 uppercase tracking-wider">
+            Android Glance Companion
+          </span>
+          <h3 className="text-xl sm:text-2xl font-extrabold text-white mt-1">
+            Dynamic Mascot Widget that judges your procrastination
+          </h3>
+          <p className="text-slate-400 text-sm mt-1 max-w-xl">
+            Just like Duolingo, the widget reacts to the time of day. If you haven't studied, the
+            flame stays muted grey. Complete any quest to ignite the burning fire!
+          </p>
         </div>
-        <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-          Duolingo-Style Mascot Widgets.{" "}
-          <span className="text-gradient-emerald">Live on Your Home Screen.</span>
-        </h2>
-        <p className="mt-3 text-slate-400 text-sm sm:text-base leading-relaxed">
-          The widget reacts dynamically to your study progress throughout the day. The streak flame
-          stays greyed out until you study, and bursts into burning fire with a golden trophy when
-          secured!
-        </p>
-      </div>
 
-      {/* State Switcher Pills */}
-      <div className="mt-10 flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto">
-        {widgetStates.map((s) => {
-          const isSelected = s.id === selectedId && !showEmulator;
-          return (
-            <button
-              key={s.id}
-              onClick={() => {
-                setSelectedId(s.id);
-                setShowEmulator(false);
-              }}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all border ${
-                isSelected
-                  ? "bg-emerald-500 text-slate-950 border-emerald-400 shadow-[0_0_20px_-3px_rgba(16,185,129,0.5)] scale-105"
-                  : "bg-slate-900/80 text-slate-300 border-white/10 hover:border-emerald-500/40 hover:bg-slate-800"
-              }`}
-            >
-              {s.flameStatus === "lit" ? "🔥" : "🩶"} {s.name}
-            </button>
-          );
-        })}
-
+        {/* Real Homescreen Toggle */}
         <button
-          onClick={() => setShowEmulator(true)}
-          className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all border ${
-            showEmulator
-              ? "bg-cyan-500 text-slate-950 border-cyan-400 shadow-[0_0_20px_-3px_rgba(6,182,212,0.5)] scale-105"
-              : "bg-slate-900/80 text-cyan-300 border-cyan-500/20 hover:border-cyan-400/50 hover:bg-slate-800"
+          onClick={() => setShowHomescreen(!showHomescreen)}
+          className={`shrink-0 px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all border-2 ${
+            showHomescreen
+              ? "bg-emerald-500 text-slate-950 border-emerald-400"
+              : "bg-[#1E2738] text-slate-300 border-[#2E3C52] hover:bg-[#28344B]"
           }`}
         >
-          📱 Live Homescreen Capture
+          <Smartphone className="inline h-3.5 w-3.5 mr-1.5" />
+          {showHomescreen ? "Show Widget States" : "View on Real Homescreen"}
         </button>
       </div>
 
-      {/* Main Interactive Stage */}
-      <div className="mt-10 rounded-3xl glass-panel-elevated p-6 sm:p-10 border border-white/10">
-        {!showEmulator ? (
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
-            {/* Widget Preview Card */}
-            <div className="flex flex-col items-center justify-center">
-              <div className="relative group w-full max-w-[480px]">
-                {/* Glow Backdrop */}
-                <div
-                  aria-hidden
-                  className={`absolute -inset-3 rounded-[36px] blur-xl opacity-50 transition-all ${
-                    active.flameStatus === "lit" ? "bg-emerald-500/30" : "bg-slate-500/20"
+      {showHomescreen ? (
+        <div className="mt-6 flex flex-col items-center">
+          <div className="rounded-2xl overflow-hidden border-2 border-[#263345] shadow-2xl max-w-md w-full">
+            <img
+              src="/widgets/live_emulator_widget_rich.png"
+              alt="Kletaq 2x1 Panda Widget live on Android launcher"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+          <p className="mt-3 text-xs font-mono text-slate-400">
+            Live Android 15 Pixel 8 homescreen • 2×1 Glance AppWidget with atomic DataStore sync
+          </p>
+        </div>
+      ) : (
+        <div className="mt-6">
+          {/* State Switcher Pills */}
+          <div className="flex flex-wrap gap-2">
+            {widgetStates.map((state) => {
+              const isSelected = selectedId === state.id;
+              const isLit = state.flameStatus === "lit";
+              return (
+                <button
+                  key={state.id}
+                  onClick={() => setSelectedId(state.id)}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all border-2 ${
+                    isSelected
+                      ? isLit
+                        ? "bg-amber-500 text-slate-950 border-amber-400 shadow-[0_3px_0_0_#b45309]"
+                        : "bg-white text-slate-950 border-white shadow-[0_3px_0_0_#cbd5e1]"
+                      : "bg-[#1A2230] text-slate-300 border-[#2A374A] hover:border-[#3D4E68]"
                   }`}
+                >
+                  <span className="mr-1">{isLit ? "🔥" : "🩶"}</span>
+                  {state.name}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Widget Preview Grid */}
+          <div className="mt-6 grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-center bg-[#0F1520] p-5 sm:p-6 rounded-2xl border-2 border-[#202B3B]">
+            {/* Widget Graphic Frame */}
+            <div className="flex flex-col items-center justify-center">
+              <div className="rounded-2xl overflow-hidden border-2 border-[#2B394D] shadow-xl w-full max-w-[420px]">
+                <img
+                  src={active.image}
+                  alt={`${active.name} widget preview`}
+                  className="w-full h-auto object-cover select-none"
                 />
-                {/* Widget Graphic */}
-                <div className="relative rounded-[28px] overflow-hidden border border-white/20 shadow-2xl transition-transform group-hover:scale-[1.02]">
-                  <img
-                    src={active.image}
-                    alt={`${active.name} Widget Preview`}
-                    className="w-full h-auto object-cover select-none"
-                  />
-                </div>
               </div>
-              <p className="mt-3 text-xs font-mono text-slate-400 text-center">
-                2×1 Android Glance AppWidget • Fixed 42dp mascot illustration area
+              <p className="mt-2.5 text-xs font-mono text-slate-400 text-center">
+                2×1 Android Glance Widget • 68×42dp mascot illustration area
               </p>
             </div>
 
-            {/* State Specs Details */}
-            <div className="space-y-4">
+            {/* Widget State Details */}
+            <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs font-semibold">
+                <span className="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-[#1C2638] text-emerald-400 border border-[#2E3E58]">
                   {active.badge}
                 </span>
                 <span className="text-xs font-mono text-slate-400">• {active.timeRange}</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                {active.name}
-              </h3>
+              <h4 className="text-xl sm:text-2xl font-extrabold text-white">{active.name}</h4>
+              <p className="text-sm text-slate-300 leading-relaxed">{active.description}</p>
 
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-white/5">
-                  <span className="text-lg shrink-0">
-                    {active.flameStatus === "lit" ? "🔥" : "🩶"}
-                  </span>
-                  <div>
-                    <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">
-                      Streak Flame State
-                    </p>
-                    <p className="text-sm font-semibold text-white">
-                      {active.flameStatus === "lit"
-                        ? "Lit Burning Flame (Today's study streak secured!)"
-                        : "Greyed Out Flame (Waiting for today's study session)"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-white/5">
-                  <span className="text-lg shrink-0">🎨</span>
-                  <div>
-                    <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">
-                      Thematic Scene
-                    </p>
-                    <p className="text-sm text-slate-200">{active.themeScene}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-white/5">
-                  <span className="text-lg shrink-0">🐼</span>
-                  <div>
-                    <p className="text-xs font-mono text-slate-400 uppercase tracking-wider">
-                      Character Expression
-                    </p>
-                    <p className="text-sm text-slate-200">{active.characterProps}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-white/5 flex items-center gap-2 text-xs font-mono text-slate-400">
-                <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
-                <span>Single-Pass Atomic DataStore Sync — Zero battery drain</span>
+              <div className="pt-2 border-t border-[#202B3B]">
+                <p className="text-xs font-mono text-slate-400">
+                  Flame State: <span className="font-bold text-white">{active.flameDesc}</span>
+                </p>
               </div>
             </div>
           </div>
-        ) : (
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
-            {/* Live Android Emulator Capture */}
-            <div className="relative group w-full max-w-[460px] mx-auto">
-              <div
-                aria-hidden
-                className="absolute -inset-3 rounded-[36px] bg-cyan-500/20 blur-xl opacity-60"
-              />
-              <div className="relative rounded-[28px] overflow-hidden border border-white/20 shadow-2xl">
-                <img
-                  src="/widgets/live_emulator_widget_rich.png"
-                  alt="Live Kletaq widget on Pixel 8 Emulator"
-                  className="w-full h-auto object-cover select-none"
-                />
-              </div>
-              <p className="mt-3 text-xs font-mono text-slate-400 text-center">
-                Actual physical capture on Android 14 / Pixel 8 launcher screen
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <span className="px-2.5 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs font-semibold">
-                Physical Device Capture
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Runs Natively on Android Launcher
-              </h3>
-              <p className="text-sm text-slate-300 leading-relaxed">
-                Kletaq widgets are built with modern <strong>Jetpack Compose Glance</strong>. When
-                you complete a module quest or study session in the app, your home screen widget
-                updates in real-time without polling loops or battery-hogging background alarms.
-              </p>
-              <ul className="space-y-2 pt-2 text-xs font-mono text-slate-300">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-cyan-400" />
-                  <span>2×1 Compact Panda Widget & 2×2 Full Dashboard</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-cyan-400" />
-                  <span>Tap widget anytime to launch directly into current quest</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-cyan-400" />
-                  <span>Instant logout wipe ensures privacy on shared devices</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        )}
-      </div>
-    </section>
+        </div>
+      )}
+    </div>
   );
 }

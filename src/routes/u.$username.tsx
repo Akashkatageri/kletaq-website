@@ -1,14 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Download,
-  Sparkles,
-  Trophy,
-  ArrowRight,
-  Shield,
-  Flame,
-  Smartphone,
-  ArrowLeft,
-} from "lucide-react";
+import { Download, Sparkles, Trophy, ArrowRight, Flame, Smartphone, ArrowLeft } from "lucide-react";
 import { NotebookBackground } from "@/components/klytaq/NotebookBackground";
 
 export const Route = createFileRoute("/u/$username")({
@@ -19,14 +10,13 @@ export const Route = createFileRoute("/u/$username")({
         { title: `${name} invited you to Kletaq — Turn your syllabus into quests` },
         {
           name: "description",
-          content: `${name} wants you to join their study league on Kletaq. Compete on weekly leaderboards and track your VTU engineering progress.`,
+          content: `${name} wants to study with you on Kletaq! Slay your engineering syllabus together with quest roadmaps, focus timers, and streak widgets.`,
         },
-        { property: "og:title", content: `${name} invited you to Kletaq` },
+        { property: "og:title", content: `${name} invited you to study on Kletaq` },
         {
           property: "og:description",
-          content: "Compete on weekly engineering leaderboards and turn your syllabus into quests.",
+          content: `${name} is tracking their engineering syllabus on Kletaq. Download the APK and keep the streak burning!`,
         },
-        { property: "og:type", content: "website" },
       ],
     };
   },
@@ -35,77 +25,74 @@ export const Route = createFileRoute("/u/$username")({
 
 function UserInvitePage() {
   const { username } = Route.useParams();
-  const displayName = decodeURIComponent(username || "A classmate");
+  const decoded = decodeURIComponent(username || "Fellow Engineer");
 
   return (
-    <div className="relative min-h-screen bg-[#090D16] text-[#F8FAFC] flex flex-col justify-between selection:bg-emerald-500/20">
+    <div className="relative min-h-screen bg-[#0D121C] text-[#F8FAFC]">
       <NotebookBackground />
 
-      {/* Top Header */}
-      <header className="mx-auto flex w-full max-w-4xl items-center justify-between px-6 py-6">
+      <header className="mx-auto flex w-full max-w-4xl items-center justify-between px-4 py-5 sm:px-6 border-b-2 border-[#202B3B]">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 font-extrabold text-lg group-hover:scale-105 transition-transform">
-            K
+          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#22C55E] text-[#0D121C] font-extrabold text-sm border-2 border-[#16A34A] shadow-[0_2px_0_0_#15803D]">
+            🐼
           </span>
-          <span className="font-extrabold tracking-tight text-xl text-white">Kletaq</span>
+          <span className="font-extrabold tracking-tight text-lg text-white">Kletaq</span>
         </Link>
+
         <Link
           to="/"
-          className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-white transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-slate-300 hover:text-white transition-colors"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Back to Home
         </Link>
       </header>
 
-      {/* Hero Invitation Card */}
-      <main className="mx-auto w-full max-w-xl px-6 py-10 flex flex-col items-center">
-        <div className="w-full rounded-3xl glass-panel-elevated p-8 sm:p-10 border border-white/10 text-center">
-          {/* Avatar Ring */}
-          <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/10 border-2 border-emerald-500/30 text-3xl shadow-inner">
-            🎓
+      <main className="mx-auto w-full max-w-2xl px-4 py-16 sm:px-6">
+        <div className="duo-card p-6 sm:p-10 text-center">
+          {/* Avatar Icon */}
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400 border-2 border-emerald-500/40 text-3xl shadow-xl">
+            🐼
           </div>
 
-          {/* League Invite Tag */}
-          <div className="mx-auto mb-3 inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 px-3.5 py-1 text-xs font-mono font-bold text-amber-400 border border-amber-500/20">
-            <Trophy className="h-3.5 w-3.5" />
-            Classmate Study League
+          <div className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-[#1A2230] px-3.5 py-1 text-xs font-mono font-bold text-amber-400 border border-amber-500/20">
+            <Flame className="h-3.5 w-3.5 fill-amber-400" />
+            Study League Invite
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-            {displayName} is studying on Kletaq
+          <h1 className="mt-4 text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <span className="text-[#22C55E]">{decoded}</span> invited you to study on Kletaq!
           </h1>
 
-          <p className="mt-3 text-sm text-slate-400 leading-relaxed max-w-md mx-auto">
-            Join the study journey, master VTU syllabus modules, keep your daily study streaks
-            alive, and view your semester leaderboards.
+          <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed max-w-lg mx-auto">
+            Stop drowning in messy PDF syllabi. Join {decoded} on Kletaq to unlock engineering
+            concepts, schedule with exact alarms, and keep your daily streak alive.
           </p>
 
-          {/* Download CTA */}
-          <div className="mt-8 flex flex-col gap-3">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href="/kletaq.apk"
+              href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
               download="kletaq.apk"
-              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 px-6 py-3.5 text-sm font-bold text-slate-950 shadow-[0_0_20px_-3px_rgba(16,185,129,0.5)] transition-all hover:-translate-y-0.5"
+              className="btn-3d-green w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm"
             >
               <Download className="h-4 w-4" />
-              Download Kletaq APK (Android)
+              Download Kletaq APK (v1.2)
             </a>
+
             <Link
               to="/"
-              className="inline-flex items-center justify-center gap-1.5 text-xs font-mono text-slate-400 hover:text-white transition-colors py-2"
+              className="btn-3d-dark w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm"
             >
-              Learn more about Kletaq
-              <ArrowRight className="h-3.5 w-3.5" />
+              Explore App
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
+
+          <p className="mt-4 text-xs font-mono text-slate-400">
+            Android 7.0+ • Free & Open-Source • No Ads • Direct APK
+          </p>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="py-6 text-center text-xs font-mono text-slate-600">
-        Kletaq • Turn your engineering syllabus into quests
-      </footer>
     </div>
   );
 }
