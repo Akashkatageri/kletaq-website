@@ -86,7 +86,7 @@ function UserInvitePage() {
             <a
               href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
               download="kletaq.apk"
-              className="btn-3d-green w-full py-4 text-base font-bold rounded-2xl"
+              className="btn-3d-iris w-full py-4 text-base font-bold rounded-2xl"
             >
               <Download className="h-4 w-4" />
               Download Kletaq APK (Android)

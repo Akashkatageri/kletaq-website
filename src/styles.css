@@ -436,3 +436,34 @@
   border-bottom-width: 2px;
   box-shadow: 0 1px 0 0 #92400e;
 }
+
+.btn-3d-iris {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #7c3aed;
+  color: #ffffff !important;
+  border: 2px solid #8b5cf6;
+  border-bottom: 5px solid #5b21b6;
+  border-radius: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow:
+    0 4px 0 0 #4c1d95,
+    0 10px 20px -5px rgba(124, 58, 237, 0.45);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    filter 0.08s ease;
+  user-select: none;
+  text-decoration: none;
+}
+.btn-3d-iris:hover {
+  filter: brightness(1.08);
+}
+.btn-3d-iris:active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+  box-shadow: 0 1px 0 0 #4c1d95;
+}
