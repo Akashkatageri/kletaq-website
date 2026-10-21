@@ -20,7 +20,7 @@ import { ContactSection } from "@/components/klytaq/ContactSection";
 
 const TITLE = "Kletaq — Gamified Curriculum & Focus Engine for Students";
 const DESCRIPTION =
-  "Kletaq transforms rigid academic syllabi into visual unlocking quests. Complete with Parkinson's Law 2× bonus XP timer, SuperMemo SM-2 spaced repetition, OLED battery-saving focus mode, and dynamic Android mascot widgets.";
+  "Kletaq transforms rigid academic syllabi into visual unlocking quests. Build custom roadmaps with visual buttons or import with AI. Complete with Parkinson's Law 2× bonus XP timer, SuperMemo SM-2 spaced repetition, OLED battery-saving focus mode, and dynamic Android mascot widgets.";
 
 const SITE_URL = "https://kletaq.5122006.xyz";
 
@@ -57,10 +57,10 @@ export const Route = createFileRoute("/")({
 const tools = [
   {
     icon: Map,
-    title: "Visual Quest Roadmap",
-    tag: "#curriculum",
+    title: "Visual Roadmap Builder",
+    tag: "#curriculum-builder",
     description:
-      "Academic modules deconstructed into bite-sized concept nodes. Unlocks step-by-step with formulas, key definitions, and verified past-year questions.",
+      "Design custom course roadmaps visually with buttons to add subjects, modules, and topic nodes, or import syllabuses with AI. Built for VTU and all autonomous universities.",
   },
   {
     icon: Zap,
@@ -109,7 +109,7 @@ const tools = [
     title: "Socratic AI Topic Tutor",
     tag: "#ai-tutor",
     description:
-      "Built-in Gemini AI tutor inside syllabus topics. Get step-by-step guidance on complex derivations, code snippets, and concepts without leaving the app.",
+      "Built-in Gemini AI tutor inside syllabus topics. Get step-by-step guidance on complex derivations, math formulas, and concepts without leaving the app.",
   },
 ];
 
@@ -196,7 +196,8 @@ function Index() {
 
             {/* Subtitle */}
             <p className="mt-5 max-w-lg text-base sm:text-lg leading-relaxed text-slate-200">
-              Transform rigid college syllabi into bite-sized visual journeys. Complete with
+              Transform rigid college syllabi into bite-sized visual journeys. Visually
+              build custom course roadmaps or import with AI. Complete with
               Parkinson's Law 2× bonus XP timer, SuperMemo SM-2 spaced repetition, OLED
               battery-saver mode, and dynamic Android companion widgets.
             </p>

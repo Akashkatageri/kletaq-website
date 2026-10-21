@@ -12,12 +12,12 @@ interface ScreenTab {
 const TABS: ScreenTab[] = [
   {
     id: "quest-tree",
-    label: "Quest Tree",
-    title: "Visual Quest Roadmap",
+    label: "Roadmap Builder",
+    title: "Visual Roadmap Builder & Quests",
     description:
-      "Every subject module mapped into an unlocking milestone tree with bite-sized concept nodes and past exam questions.",
+      "Design custom syllabi visually with buttons to add subjects, modules, and topic nodes, or import syllabi with AI. Features interactive milestone trees and exam model questions.",
     src: "/screens/hero_journey.png",
-    tag: "University & College Curricula",
+    tag: "Visual Builder & Universal Curricula",
   },
   {
     id: "dashboard",
@@ -60,7 +60,7 @@ const TABS: ScreenTab[] = [
     label: "Exam PYQs",
     title: "Smart Quests & PYQs",
     description:
-      "Every topic broken into digestible theory, clean code snippets, math formulas, and verified past-year questions.",
+      "Every topic broken into digestible theory, math formulas, evaluator rubrics, and verified past-year university questions.",
     src: "/screens/quest_detail.png",
     tag: "Verified Past-Year Questions",
   },
