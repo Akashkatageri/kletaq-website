@@ -176,13 +176,13 @@ function Index() {
         <section className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 pt-6 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:pt-10">
           <div className="min-w-0">
             {/* Release pill */}
-            <div className="mb-4 inline-flex flex-wrap items-center gap-2 rounded-full border-2 border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-1.5 text-xs text-white shadow-[0_2px_0_0_rgba(0,0,0,0.2)]">
+            <div className="mb-4 inline-flex flex-wrap items-center gap-2 rounded-full border-2 border-purple-400/30 bg-purple-950/60 backdrop-blur-md px-3.5 py-1.5 text-xs text-white shadow-[0_2px_10px_rgba(167,139,250,0.2)]">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="font-mono text-[11px] font-bold text-purple-300 uppercase tracking-wide">
-                Engineered For Students
+                ✨ Visual Roadmap Builder
               </span>
-              <span className="hidden sm:inline font-mono text-[11px] text-white/70">
-                • 100% Offline-First
+              <span className="hidden sm:inline font-mono text-[11px] text-white/80">
+                • Universal For All Universities
               </span>
             </div>
 
@@ -272,8 +272,8 @@ function Index() {
             <div className="relative rounded-[42px] p-3.5 bg-[#140E26] border-2 border-[#322358] shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
               <div className="relative overflow-hidden rounded-[30px] bg-[#0A0714] border border-black aspect-[9/19.5]">
                 <img
-                  src="/screens/hero_journey.png"
-                  alt="Kletaq Visual Quest Tree Screen"
+                  src="/screens/roadmap_builder.png"
+                  alt="Kletaq Visual Roadmap Builder Screen"
                   className="w-full h-full object-cover object-top select-none"
                   loading="eager"
                 />
@@ -283,10 +283,59 @@ function Index() {
             <div className="mt-3.5 flex items-center justify-center gap-2 text-center text-xs font-mono text-slate-200">
               <span className="inline-flex items-center gap-1 text-emerald-300 font-semibold">
                 <Sparkles className="h-3.5 w-3.5" />
-                Visual Quest Tree
+                Visual Roadmap Builder
               </span>
               <span>•</span>
-              <span>Concept Nodes &amp; Past Questions</span>
+              <span>Subjects, Modules &amp; Topic Nodes</span>
+            </div>
+          </div>
+        </section>
+
+                {/* ---------- Visual Roadmap Builder Spotlight Banner ---------- */}
+        <section className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+          <div className="relative overflow-hidden rounded-3xl border-2 border-purple-500/30 bg-gradient-to-r from-purple-950/70 via-[#1C1438] to-[#120B24] p-6 sm:p-8 backdrop-blur-xl shadow-[0_12px_40px_rgba(124,58,237,0.25)]">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+              <div className="space-y-3 text-left max-w-2xl">
+                <div className="inline-flex items-center gap-2 rounded-full border border-purple-400/40 bg-purple-500/20 px-3 py-1 text-xs font-mono font-bold text-purple-300">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                  NEW FEATURE
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                  Visual Roadmap Builder for All Universities &amp; Autonomous Colleges
+                </h2>
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+                  Not at VTU or studying an autonomous curriculum? You&#x27;re no longer locked into rigid presets. Build your semester roadmap visually with buttons to add custom <span className="text-purple-300 font-bold">Subjects</span> with emoji icons, <span className="text-purple-300 font-bold">Modules</span>, and <span className="text-purple-300 font-bold">Topic Nodes</span> with study duration timers—or import instantly with Gemini AI.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <span className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-1 text-xs font-mono text-slate-200">
+                    ➕ Add Subjects Manually
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-1 text-xs font-mono text-slate-200">
+                    📚 Module &amp; Unit Appender
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-1 text-xs font-mono text-slate-200">
+                    ⏱️ 15–45m Study Chips
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-1 text-xs font-mono text-slate-200">
+                    ✨ AI Syllabus PDF Import
+                  </span>
+                </div>
+              </div>
+              <div className="shrink-0 flex flex-col sm:flex-row lg:flex-col gap-3 w-full sm:w-auto">
+                <a
+                  href="#screens"
+                  className="btn-3d-iris px-5 py-3 text-center text-xs font-mono font-bold rounded-xl whitespace-nowrap"
+                >
+                  View Roadmap Builder Screen ↓
+                </a>
+                <a
+                  href="https://github.com/Akashkatageri/kletaq/releases/latest/download/kletaq.apk"
+                  download="kletaq.apk"
+                  className="btn-3d-white px-5 py-3 text-center text-xs font-mono font-bold rounded-xl whitespace-nowrap"
+                >
+                  Download Latest APK
+                </a>
+              </div>
             </div>
           </div>
         </section>

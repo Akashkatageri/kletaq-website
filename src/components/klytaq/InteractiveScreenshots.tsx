@@ -15,8 +15,8 @@ const TABS: ScreenTab[] = [
     label: "Roadmap Builder",
     title: "Visual Roadmap Builder & Quests",
     description:
-      "Design custom syllabi visually with buttons to add subjects, modules, and topic nodes, or import syllabi with AI. Features interactive milestone trees and exam model questions.",
-    src: "/screens/hero_journey.png",
+      "Build custom curriculum journeys visually with buttons to add subjects, modules, and topic nodes with custom study timers, or import syllabuses with AI. Built for VTU and all autonomous universities.",
+    src: "/screens/roadmap_builder.png",
     tag: "Visual Builder & Universal Curricula",
   },
   {
@@ -76,7 +76,7 @@ const TABS: ScreenTab[] = [
 ];
 
 export function InteractiveScreenshots() {
-  const [activeTabId, setActiveTabId] = useState<string>("timer");
+  const [activeTabId, setActiveTabId] = useState<string>("quest-tree");
   const activeScreen = TABS.find((t) => t.id === activeTabId) || TABS[0]!;
 
   return (
