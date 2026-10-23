@@ -17,6 +17,7 @@ import {
 import { NotebookBackground } from "@/components/klytaq/NotebookBackground";
 import { InteractiveScreenshots } from "@/components/klytaq/InteractiveScreenshots";
 import { ContactSection } from "@/components/klytaq/ContactSection";
+import { VisitorCounter } from "@/components/klytaq/VisitorCounter";
 
 const TITLE = "Kletaq — Gamified Curriculum & Focus Engine for Students";
 const DESCRIPTION =
@@ -443,6 +444,8 @@ function Index() {
             <span className="font-bold text-white">Kletaq</span>
             <span>• Built for students by Akash Katageri</span>
           </div>
+
+          <VisitorCounter />
           <div className="flex items-center gap-4">
             <a
               href="mailto:kletaq.dev@gmail.com"
