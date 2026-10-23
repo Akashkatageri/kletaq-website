@@ -7,7 +7,7 @@ const CACHED_COUNT_KEY = "kletaq_cached_visit_count";
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
 /**
- * Polymorphic (tactile 3D physical) live unique visitor counter.
+ * Polymorphic (tactile 3D physical white) live visitor counter.
  * Deduplicates page refreshes and multi-tab visits for 24 hours via localStorage.
  */
 export function VisitorCounter() {
@@ -33,7 +33,7 @@ export function VisitorCounter() {
         const isReturning = lastVisitTime > 0 && now - lastVisitTime < ONE_DAY_MS;
 
         // If visited within 24h (or page refresh), perform a read-only GET.
-        // Otherwise, perform a HIT to increment unique visits.
+        // Otherwise, perform a HIT to increment visits.
         const endpoint = isReturning
           ? `https://countapi.mileshilliard.com/api/v1/get/${COUNTER_KEY}`
           : `https://countapi.mileshilliard.com/api/v1/hit/${COUNTER_KEY}`;
@@ -82,25 +82,19 @@ export function VisitorCounter() {
 
   return (
     <div
-      title="Unique daily visits · Page refreshes deduplicated"
-      className="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-[#16102b] border-2 border-[#7c3aed] border-b-[5px] border-b-[#5b21b6] shadow-[0_4px_0_0_#4c1d95,0_8px_16px_rgba(0,0,0,0.35)] font-mono text-xs select-none cursor-default transition-all duration-100 hover:brightness-105 active:translate-y-[3px] active:border-b-2 active:shadow-[0_1px_0_0_#4c1d95]"
+      title="Website visits"
+      className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white border-2 border-[#e2e8f0] border-b-[4px] border-b-[#cbd5e1] shadow-[0_3px_0_0_#cbd5e1,0_6px_14px_-4px_rgba(0,0,0,0.12)] font-mono text-xs select-none cursor-default transition-all duration-100 hover:bg-slate-50 active:translate-y-[2px] active:border-b-2 active:shadow-[0_1px_0_0_#cbd5e1]"
     >
-      {/* Live Pulsing Indicator */}
-      <span className="relative flex h-2 w-2 items-center justify-center shrink-0">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
-      </span>
-
       {/* 3D Tactile Icon */}
-      <Users className="h-3.5 w-3.5 text-purple-300 shrink-0" />
+      <Users className="h-3.5 w-3.5 text-purple-600 shrink-0" />
 
       {/* Label and Count */}
-      <div className="flex items-center gap-2">
-        <span className="font-black text-white tracking-wide text-xs sm:text-sm tabular-nums">
+      <div className="flex items-center gap-1.5">
+        <span className="font-extrabold text-slate-900 tracking-wide text-xs sm:text-sm tabular-nums">
           {count !== null ? count.toLocaleString() : loading ? "..." : "---"}
         </span>
-        <span className="text-[10px] font-bold uppercase tracking-widest text-purple-300/90">
-          Unique Visits
+        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+          Visits
         </span>
       </div>
     </div>
