@@ -14,7 +14,7 @@ import {
   Mail,
 } from "lucide-react";
 
-import { NotebookBackground } from "@/components/klytaq/NotebookBackground";
+import { GradientBackground } from "@/components/ui/dark-gradient-background";
 import { InteractiveScreenshots } from "@/components/klytaq/InteractiveScreenshots";
 import { ContactSection } from "@/components/klytaq/ContactSection";
 import { VisitorCounter } from "@/components/klytaq/VisitorCounter";
@@ -116,8 +116,7 @@ const tools = [
 
 function Index() {
   return (
-    <div className="relative min-h-screen text-slate-100">
-      <NotebookBackground />
+    <GradientBackground className="text-slate-100">
 
       {/* ---------- Header Navigation ---------- */}
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
@@ -128,7 +127,7 @@ function Index() {
             className="h-9 w-9 rounded-full object-contain shadow-[0_2px_10px_rgba(0,0,0,0.5)] border border-white/20 group-hover:scale-105 transition-transform"
           />
           <span className="font-extrabold text-2xl text-white tracking-tight">Kletaq</span>
-          <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/10 text-purple-300 border border-white/20">
+          <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/10 text-cyan-300 border border-white/20">
             v1.2 Benchmark
           </span>
         </a>
@@ -156,7 +155,7 @@ function Index() {
           </a>
           <a
             href="#contact"
-            className="hidden font-mono text-xs text-purple-300 font-bold transition-colors hover:text-white sm:inline-flex items-center gap-1"
+            className="hidden font-mono text-xs text-cyan-300 font-bold transition-colors hover:text-white sm:inline-flex items-center gap-1"
           >
             <Mail className="h-3 w-3" />
             Contact
@@ -177,9 +176,9 @@ function Index() {
         <section className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 pt-6 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:pt-10">
           <div className="min-w-0">
             {/* Release pill */}
-            <div className="mb-4 inline-flex flex-wrap items-center gap-2 rounded-full border-2 border-purple-400/30 bg-purple-950/60 backdrop-blur-md px-3.5 py-1.5 text-xs text-white shadow-[0_2px_10px_rgba(167,139,250,0.2)]">
+            <div className="mb-4 inline-flex flex-wrap items-center gap-2 rounded-full border-2 border-cyan-400/30 bg-cyan-950/60 backdrop-blur-md px-3.5 py-1.5 text-xs text-white shadow-[0_2px_10px_rgba(8,145,178,0.25)]">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-mono text-[11px] font-bold text-purple-300 uppercase tracking-wide">
+              <span className="font-mono text-[11px] font-bold text-cyan-300 uppercase tracking-wide">
                 ✨ Visual Roadmap Builder
               </span>
               <span className="hidden sm:inline font-mono text-[11px] text-white/80">
@@ -254,7 +253,7 @@ function Index() {
             {/* Quick stats */}
             <dl className="mt-6 grid max-w-md grid-cols-3 gap-3">
               <div className="paper-card-flat p-3 text-center">
-                <dt className="font-mono text-2xl font-extrabold text-[#7C3AED]">100%</dt>
+                <dt className="font-mono text-2xl font-extrabold text-[#0891b2]">100%</dt>
                 <dd className="font-mono text-[11px] font-bold text-slate-600">Offline-first</dd>
               </div>
               <div className="paper-card-flat p-3 text-center">
@@ -294,10 +293,10 @@ function Index() {
 
                 {/* ---------- Visual Roadmap Builder Spotlight Banner ---------- */}
         <section className="mx-auto w-full max-w-6xl px-4 sm:px-6">
-          <div className="relative overflow-hidden rounded-3xl border-2 border-purple-500/30 bg-gradient-to-r from-purple-950/70 via-[#1C1438] to-[#120B24] p-6 sm:p-8 backdrop-blur-xl shadow-[0_12px_40px_rgba(124,58,237,0.25)]">
+          <div className="relative overflow-hidden rounded-3xl border-2 border-cyan-500/30 bg-gradient-to-r from-cyan-950/70 via-[#032F3A] to-[#05080F] p-6 sm:p-8 backdrop-blur-xl shadow-[0_12px_40px_rgba(8,145,178,0.25)]">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
               <div className="space-y-3 text-left max-w-2xl">
-                <div className="inline-flex items-center gap-2 rounded-full border border-purple-400/40 bg-purple-500/20 px-3 py-1 text-xs font-mono font-bold text-purple-300">
+                <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-500/20 px-3 py-1 text-xs font-mono font-bold text-cyan-300">
                   <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
                   NEW FEATURE
                 </div>
@@ -305,7 +304,7 @@ function Index() {
                   Visual Roadmap Builder for All Universities &amp; Autonomous Colleges
                 </h2>
                 <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                  Not at VTU or studying an autonomous curriculum? You&#x27;re no longer locked into rigid presets. Build your semester roadmap visually with buttons to add custom <span className="text-purple-300 font-bold">Subjects</span> with emoji icons, <span className="text-purple-300 font-bold">Modules</span>, and <span className="text-purple-300 font-bold">Topic Nodes</span> with study duration timers—or import instantly with Gemini AI.
+                  Not at VTU or studying an autonomous curriculum? You&#x27;re no longer locked into rigid presets. Build your semester roadmap visually with buttons to add custom <span className="text-cyan-300 font-bold">Subjects</span> with emoji icons, <span className="text-cyan-300 font-bold">Modules</span>, and <span className="text-cyan-300 font-bold">Topic Nodes</span> with study duration timers—or import instantly with Gemini AI.
                 </p>
                 <div className="flex flex-wrap gap-2 pt-1">
                   <span className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-1 text-xs font-mono text-slate-200">
@@ -344,7 +343,7 @@ function Index() {
         {/* ---------- Scientific Study Tools Section ---------- */}
         <section id="tools" className="mx-auto w-full max-w-6xl px-4 sm:px-6">
           <div className="max-w-2xl">
-            <span className="font-mono text-xs font-bold tracking-widest uppercase text-purple-300">
+            <span className="font-mono text-xs font-bold tracking-widest uppercase text-cyan-300">
               COGNITIVE ARCHITECTURE &amp; FOCUS
             </span>
             <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
@@ -367,8 +366,8 @@ function Index() {
                 >
                   <div>
                     <div className="flex items-center gap-3">
-                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border-2 border-purple-100 bg-purple-50 text-purple-700 shadow-[0_2px_0_0_#E9D5FF]">
-                        <Icon className="h-6 w-6 text-[#7C3AED]" />
+                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border-2 border-cyan-100 bg-cyan-50 text-cyan-700 shadow-[0_2px_0_0_#A5F3FC]">
+                        <Icon className="h-6 w-6 text-[#0891b2]" />
                       </span>
                       <h3 className="font-extrabold text-xl text-slate-900 leading-snug">
                         {t.title}
@@ -378,7 +377,7 @@ function Index() {
                       {t.description}
                     </p>
                   </div>
-                  <p className="mt-5 font-mono text-[11px] font-bold tracking-widest uppercase text-[#7C3AED]">
+                  <p className="mt-5 font-mono text-[11px] font-bold tracking-widest uppercase text-[#0891b2]">
                     {t.tag}
                   </p>
                 </article>
@@ -449,7 +448,7 @@ function Index() {
           <div className="flex items-center gap-4">
             <a
               href="mailto:kletaq.dev@gmail.com"
-              className="hover:text-white transition-colors text-purple-300 font-bold"
+              className="hover:text-white transition-colors text-cyan-300 font-bold"
             >
               kletaq.dev@gmail.com
             </a>
@@ -475,6 +474,6 @@ function Index() {
           </div>
         </div>
       </footer>
-    </div>
+    </GradientBackground>
   );
 }

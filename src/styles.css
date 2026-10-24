@@ -437,21 +437,22 @@
   box-shadow: 0 1px 0 0 #92400e;
 }
 
-.btn-3d-iris {
+.btn-3d-iris,
+.btn-3d-cyan {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: #7c3aed;
+  background-color: #0891b2;
   color: #ffffff !important;
-  border: 2px solid #8b5cf6;
-  border-bottom: 5px solid #5b21b6;
+  border: 2px solid #22d3ee;
+  border-bottom: 5px solid #0e7490;
   border-radius: 16px;
   font-weight: 800;
   cursor: pointer;
   box-shadow:
-    0 4px 0 0 #4c1d95,
-    0 10px 20px -5px rgba(124, 58, 237, 0.45);
+    0 4px 0 0 #155e75,
+    0 10px 20px -5px rgba(8, 145, 178, 0.45);
   transition:
     transform 0.08s ease,
     box-shadow 0.08s ease,
@@ -459,11 +460,13 @@
   user-select: none;
   text-decoration: none;
 }
-.btn-3d-iris:hover {
+.btn-3d-iris:hover,
+.btn-3d-cyan:hover {
   filter: brightness(1.08);
 }
-.btn-3d-iris:active {
+.btn-3d-iris:active,
+.btn-3d-cyan:active {
   transform: translateY(3px);
   border-bottom-width: 2px;
-  box-shadow: 0 1px 0 0 #4c1d95;
+  box-shadow: 0 1px 0 0 #155e75;
 }

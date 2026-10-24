@@ -105,7 +105,7 @@ export function InteractiveScreenshots() {
               className={
                 isActive
                   ? "px-4 py-2 rounded-full text-xs font-mono font-bold bg-white text-slate-950 border-2 border-white shadow-[0_3px_0_0_#CBD5E1] transition-all cursor-pointer"
-                  : "px-4 py-2 rounded-full text-xs font-mono font-bold bg-[#1B1431]/80 hover:bg-[#291F47] text-slate-200 border border-white/20 transition-all cursor-pointer"
+                  : "px-4 py-2 rounded-full text-xs font-mono font-bold bg-[#05080F]/80 hover:bg-[#032F3A] border-cyan-900/30 text-slate-200 border border-white/20 transition-all cursor-pointer"
               }
             >
               {tab.label}
@@ -123,7 +123,7 @@ export function InteractiveScreenshots() {
               className={
                 isActive
                   ? "px-5 py-2 rounded-full text-xs font-mono font-bold bg-white text-slate-950 border-2 border-white shadow-[0_3px_0_0_#CBD5E1] transition-all cursor-pointer"
-                  : "px-5 py-2 rounded-full text-xs font-mono font-bold bg-[#1B1431]/80 hover:bg-[#291F47] text-slate-200 border border-white/20 transition-all cursor-pointer"
+                  : "px-5 py-2 rounded-full text-xs font-mono font-bold bg-[#05080F]/80 hover:bg-[#032F3A] border-cyan-900/30 text-slate-200 border border-white/20 transition-all cursor-pointer"
               }
             >
               {tab.label}
@@ -134,7 +134,7 @@ export function InteractiveScreenshots() {
 
       {/* Device frame preview */}
       <div className="mt-10 relative w-full max-w-[340px] sm:max-w-[370px]">
-        <div className="relative rounded-[42px] p-3.5 bg-[#130E24] border-2 border-[#2F2150] shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+        <div className="relative rounded-[42px] p-3.5 bg-[#032F3A]/40 border-2 border-cyan-900/50 shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
           {/* Screen window — clean without fake timing overlay since the screenshot already has real status bar */}
           <div className="relative overflow-hidden rounded-[30px] bg-[#0A0714] border border-black/80 aspect-[9/19.5]">
             <img

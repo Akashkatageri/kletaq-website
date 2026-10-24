@@ -170,7 +170,7 @@ export function ContactSection() {
           {/* Left: Contact Info */}
           <div className="space-y-5">
             <div>
-              <span className="font-mono text-xs font-bold tracking-widest uppercase text-purple-700">
+              <span className="font-mono text-xs font-bold tracking-widest uppercase text-cyan-700">
                 GET IN TOUCH
               </span>
               <h2 className="mt-1 text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -183,9 +183,9 @@ export function ContactSection() {
             </div>
 
             {/* Email pill with copy button */}
-            <div className="p-4 rounded-2xl bg-purple-50/70 border-2 border-purple-100 flex flex-col gap-2.5">
+            <div className="p-4 rounded-2xl bg-cyan-50/70 border-2 border-cyan-100 flex flex-col gap-2.5">
               <span className="font-mono text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                <Mail className="h-3.5 w-3.5 text-[#7C3AED]" />
+                <Mail className="h-3.5 w-3.5 text-[#0891b2]" />
                 Direct Email
               </span>
               <div className="flex items-center justify-between gap-2">
@@ -263,7 +263,7 @@ export function ContactSection() {
                   placeholder="Alex"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border-2 border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-[#7C3AED] transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border-2 border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-[#0891b2] transition-colors"
                 />
               </div>
 
@@ -281,7 +281,7 @@ export function ContactSection() {
                   placeholder="alex@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border-2 border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-[#7C3AED] transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border-2 border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-[#0891b2] transition-colors"
                 />
               </div>
             </div>
@@ -297,7 +297,7 @@ export function ContactSection() {
                 id="contact-subject"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-white border-2 border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-[#7C3AED] transition-colors cursor-pointer"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border-2 border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-[#0891b2] transition-colors cursor-pointer"
               >
                 <option value="General Feedback">General Feedback &amp; Ideas</option>
                 <option value="Curriculum / Syllabus Request">
@@ -323,7 +323,7 @@ export function ContactSection() {
                 placeholder="Share your thoughts, suggestions, or curriculum requests here..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-white border-2 border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-[#7C3AED] transition-colors resize-none"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-white border-2 border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-[#0891b2] transition-colors resize-none"
               />
             </div>
 
@@ -338,7 +338,7 @@ export function ContactSection() {
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="h-4 w-4 animate-spin text-purple-700" />
+                  <Loader2 className="h-4 w-4 animate-spin text-cyan-700" />
                   <span>Sending Message...</span>
                 </>
               ) : cooldownRemaining > 0 ? (

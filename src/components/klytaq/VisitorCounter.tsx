@@ -86,7 +86,7 @@ export function VisitorCounter() {
       className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white border-2 border-[#e2e8f0] border-b-[4px] border-b-[#cbd5e1] shadow-[0_3px_0_0_#cbd5e1,0_6px_14px_-4px_rgba(0,0,0,0.12)] font-mono text-xs select-none cursor-default transition-all duration-100 hover:bg-slate-50 active:translate-y-[2px] active:border-b-2 active:shadow-[0_1px_0_0_#cbd5e1]"
     >
       {/* 3D Tactile Icon */}
-      <Users className="h-3.5 w-3.5 text-purple-600 shrink-0" />
+      <Users className="h-3.5 w-3.5 text-cyan-600 shrink-0" />
 
       {/* Label and Count */}
       <div className="flex items-center gap-1.5">
